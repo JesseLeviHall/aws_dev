@@ -3,4 +3,6 @@ Here begins the course on aws developer cert.
 
 the class component isnt supported here. 
 
+amazon web services provides developers with cloud services 
+
 */
