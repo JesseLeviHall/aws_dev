@@ -1,6 +1,6 @@
 /* 
 Here begins the course on aws developer cert. 
 
-
+the class component isnt supported here. 
 
 */
