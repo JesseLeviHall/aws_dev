@@ -16,4 +16,8 @@ Animals for life rescue organization, IoT and big data. Animal care, activists a
 A company may use many aws accounts with emails and passwords.. each account is like a container, the account owner cannot limit the permissions for itself, but AIM accounts can be added to them with various permissions.
 
 IAM is the service that manages users and permissions.
+
+IAM is a global service, it is not region specific.
+
+
 */
