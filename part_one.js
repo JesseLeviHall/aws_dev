@@ -14,4 +14,6 @@ The aws console is the place to go to manage your aws services.
 Animals for life rescue organization, IoT and big data. 
 
 Animal care, activists and lobbyists, as distributed business scenario that utilzes cloud architecture 
+
+AWS is a cloud service provider.
 */
