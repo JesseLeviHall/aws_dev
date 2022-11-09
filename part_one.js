@@ -21,4 +21,6 @@ IAM is a global service, it is not region specific.
 
 simple systems might operate on a single aws account. Large app systems might use hundreds of accounts. 
 
+multi-account management is part of the skillset. 
+
 */
