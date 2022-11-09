@@ -19,5 +19,6 @@ IAM is the service that manages users and permissions.
 
 IAM is a global service, it is not region specific.
 
+simple systems might operate on a single aws account. 
 
 */
