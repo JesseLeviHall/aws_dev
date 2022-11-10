@@ -23,4 +23,8 @@ simple systems might operate on a single aws account. Large app systems might us
 
 multi-account management is part of the skillset. 
 
+start with a Gerneal (management) account with a 'root' user. there can only be one per account. create multifactor auth, and IAM user called admin to do stuff in the account.  Then create a completely seperate new aws account for Production with an IAM account called admin. 
+This is simpler with gmail as you can add +AWSAccount1@gmail.com as many times as needed. 
+
+
 */
