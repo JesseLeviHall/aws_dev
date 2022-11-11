@@ -23,8 +23,16 @@ simple systems might operate on a single aws account. Large app systems might us
 
 multi-account management is part of the skillset. 
 
+============steps to set up accounts====================
+
 start with a Gerneal (management) account with a 'root' user. there can only be one per account. create multifactor auth, and IAM user called admin to do stuff in the account.  Then create a completely seperate new aws account for Production with an IAM account called admin. 
 This is simpler with gmail as you can add +AWSAccount1@gmail.com as many times as needed. 
 
+after starting new account go to account dropdown, update alternate contacts, and update IAM access checkbox. 
 
+setup Multi-Factor Authentication (MFA) for the root user - virtual device. 
+
+configure the budget: billing dashboard, billing preferences, check all the boxes, launch cost explorer, then go to budgets, create a monthly cost budget,
+
+create an IAM user called admin.
 */
