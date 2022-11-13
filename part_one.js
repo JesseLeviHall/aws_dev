@@ -46,4 +46,12 @@ configure the budget: billing dashboard, billing preferences, check all the boxe
 
 create an IAM user called admin, with an alias for keeping straight, uncheck password reset, and just management access, attach existing policies: administrator access. save log in url, sign in as this IAM from now on. Set up MFA again for this identity. 
 
+=========Then IAM Access Keys and CLI===============
+IAM users can have access keys, which are like passwords. They are used to asign programmatic requests to aws services. They do not change or update automatically = longterm credentials. IAM can have 0, 1, or 2 access keys. Generally 2 would be for rotating a new one every so often.  There is a key ID and a secret key that you can only view one time. 
+
+then run aws configure --profile iamadmin-general, add credentials, default non output. 
+test the connection by running aws s3 ls --profile iamadmin-general. returns empty string to begin.
+Do this for prod (iamadmin-production) aswell
+
+
 */
