@@ -21,6 +21,8 @@ OSI 7 Layer Model:
 6. Presentation Layer
 7. Application Layer
 
+TCP/IP 4 Layer Model:
+1. Application Layer
 
 
 */
