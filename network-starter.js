@@ -27,5 +27,6 @@ TCP/IP 4 Layer Model:
 3. Internet Layer
 4. Network Access Layer
 
-
+q: what is the difference between a protocol and a port?
+a: a protocol is a set of rules for data transfer, and a port is a specific endpoint for data transfer
 */
