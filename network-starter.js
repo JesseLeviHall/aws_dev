@@ -29,4 +29,7 @@ TCP/IP 4 Layer Model:
 
 q: what is the difference between a protocol and a port?
 a: a protocol is a set of rules for data transfer, and a port is a specific endpoint for data transfer
+
+q: what is the difference between a port and an IP address?
+a: a port is a specific endpoint for data transfer, and an IP address is a unique identifier for a device on a network
 */
