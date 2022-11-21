@@ -28,6 +28,4 @@ TCP/IP 4 Layer Model:
 4. Network Access Layer
 
 
-q: what is a network? 
-a: a group of computers connected together to share resources
 */
