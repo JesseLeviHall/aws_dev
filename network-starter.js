@@ -45,5 +45,11 @@ a: 1. divide the decimal number by 2
 9. the binary number is the binary representation of the decimal number
 
 q: what is binary to decimal conversion?
+a: 1. read the binary number from right to left
+2. multiply each digit by 2 to the power of its position
+3. add all of the products together
+4. the decimal number is the sum of all of the products
+5. the decimal number is the decimal representation of the binary number
+
 
 */
