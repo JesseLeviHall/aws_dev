@@ -51,5 +51,7 @@ a: 1. read the binary number from right to left
 4. the decimal number is the sum of all of the products
 5. the decimal number is the decimal representation of the binary number
 
+q: what is transport session?
+a: a transport session is a connection between two devices that allows for data transfer
 
 */
