@@ -57,4 +57,7 @@ a: a transport session is a connection between two devices that allows for data 
 q: what is a socket?
 a: a socket is a connection endpoint for data transfer. 
 
+q: what is network address translation?
+a: network address translation is a process that translates a private IP address to a public IP address
+
 */
