@@ -54,4 +54,7 @@ a: 1. read the binary number from right to left
 q: what is transport session?
 a: a transport session is a connection between two devices that allows for data transfer
 
+q: what is a socket?
+a: a socket is a connection endpoint for data transfer. 
+
 */
