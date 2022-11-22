@@ -32,4 +32,18 @@ a: a protocol is a set of rules for data transfer, and a port is a specific endp
 
 q: what is the difference between a port and an IP address?
 a: a port is a specific endpoint for data transfer, and an IP address is a unique identifier for a device on a network
+
+q: what is decimal to binary conversion?
+a: 1. divide the decimal number by 2
+2. write down the remainder
+3. divide the quotient by 2
+4. write down the remainder
+5. repeat until the quotient is 0
+6. read the remainders from bottom to top
+7. the binary number is the remainders read from bottom to top
+8. if the binary number is not 8 bits long, add 0s to the front until it is 8 bits long
+9. the binary number is the binary representation of the decimal number
+
+q: what is binary to decimal conversion?
+
 */
