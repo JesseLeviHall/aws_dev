@@ -14,8 +14,9 @@ OSI 7 Layer Model:
     electrical tranmission cable or wire - copper wire. unstructured raw bit stream, no device addressing, collisions occur
 2. Data Link Layer
     MAC address for each peice of hardware is globally unique. frames. controlled access to layer 1. 
-    ethernet, wifi, bluetooth, etc. - structured raw bit stream, device addressing, no collisions. IP addresses. 
-3. Network Layer
+    ethernet, wifi, bluetooth, etc. - structured raw bit stream, device addressing, no collisions. 
+3. Network Layer 
+    IP addresses. IP packets. routing and 
 4. Transport Layer
 5. Session Layer
 6. Presentation Layer
