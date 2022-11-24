@@ -33,6 +33,8 @@ a: a protocol is a set of rules for data transfer, and a port is a specific endp
 q: what is the difference between a port and an IP address?
 a: a port is a specific endpoint for data transfer, and an IP address is a unique identifier for a device on a network
 
+
+============Decimal to binary conversion=========
 q: what is decimal to binary conversion?
 a: 1. divide the decimal number by 2
 2. write down the remainder
@@ -59,5 +61,6 @@ a: a socket is a connection endpoint for data transfer.
 
 q: what is network address translation?
 a: network address translation is a process that translates a private IP address to a public IP address
+
 
 */
