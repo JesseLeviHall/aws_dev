@@ -14,7 +14,7 @@ OSI 7 Layer Model:
     electrical tranmission cable or wire - copper wire. unstructured raw bit stream, no device addressing, collisions occur
 2. Data Link Layer
     MAC address for each peice of hardware is globally unique. frames. controlled access to layer 1. 
-    ethernet, wifi, bluetooth, etc. - structured raw bit stream, device addressing, no collisions
+    ethernet, wifi, bluetooth, etc. - structured raw bit stream, device addressing, no collisions. IP addresses. 
 3. Network Layer
 4. Transport Layer
 5. Session Layer
@@ -47,8 +47,8 @@ a: 1. divide the decimal number by 2
 9. the binary number is the binary representation of the decimal number
 
 ============Binary to decimal conversion=========
-q: what is binary to decimal conversion?
-a: 1. read the binary number from right to left
+what is binary to decimal conversion? each number in the ip address is 8 bits long, so 8 bits = 1 byte
+1. read the binary number from right to left
 2. multiply each digit by 2 to the power of its position
 3. add all of the products together
 4. the decimal number is the sum of all of the products
