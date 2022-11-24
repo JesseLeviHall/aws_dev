@@ -46,6 +46,7 @@ a: 1. divide the decimal number by 2
 8. if the binary number is not 8 bits long, add 0s to the front until it is 8 bits long
 9. the binary number is the binary representation of the decimal number
 
+============Binary to decimal conversion=========
 q: what is binary to decimal conversion?
 a: 1. read the binary number from right to left
 2. multiply each digit by 2 to the power of its position
