@@ -24,6 +24,11 @@ OSI 7 Layer Model:
 6. Presentation Layer
     The presentation layer adds the ability to translate data between different formats. It also adds the ability to encrypt and decrypt data.
 7. Application Layer
+    The application layer adds the ability to communicate with applications. It also adds the ability to manage the application, including the ability to terminate the application.
+
+
+ a ddos attack is a distributed denial of service attack. it is an attack where a large number of computers are used to send a large amount of traffic to a single computer or network. the goal is to make the target computer or network unavailable to its intended users.
+
 
 TCP/IP 4 Layer Model:
 1. Application Layer
