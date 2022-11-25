@@ -18,6 +18,7 @@ OSI 7 Layer Model:
 3. Network Layer 
     The network layer adds the ability for cross-network addressing (IP Addresses). It allows packets to be routed across different layer 2 networks, via L2 Frame encapsulation and forwarding decisions using routes and route tables. Its Layer 3 which allows the internet to function.
 4. Transport Layer
+    The transport layer adds Ports, error correction, retransmission, flow control and a connection orientated architecture.
 5. Session Layer
 6. Presentation Layer
 7. Application Layer
