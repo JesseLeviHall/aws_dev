@@ -20,7 +20,9 @@ OSI 7 Layer Model:
 4. Transport Layer
     The transport layer adds Ports, error correction, retransmission, flow control and a connection orientated architecture.
 5. Session Layer
+    The session layer adds the ability to establish and maintain a connection between two devices. It also adds the ability to manage the connection, including the ability to terminate the connection.
 6. Presentation Layer
+    The presentation layer adds the ability to translate data between different formats. It also adds the ability to encrypt and decrypt data.
 7. Application Layer
 
 TCP/IP 4 Layer Model:
