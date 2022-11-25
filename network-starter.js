@@ -16,7 +16,7 @@ OSI 7 Layer Model:
     MAC address for each peice of hardware is globally unique. frames. controlled access to layer 1. 
     ethernet, wifi, bluetooth, etc. - structured raw bit stream, device addressing, no collisions. 
 3. Network Layer 
-    IP addresses. IP packets. routing and 
+    The network layer adds the ability for cross-network addressing (IP Addresses). It allows packets to be routed across different layer 2 networks, via L2 Frame encapsulation and forwarding decisions using routes and route tables. Its Layer 3 which allows the internet to function.
 4. Transport Layer
 5. Session Layer
 6. Presentation Layer
