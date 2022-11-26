@@ -84,7 +84,9 @@ q: what is a DNS zone?
 a: a DNS zone is a collection of DNS records
 
 q: what is the recovery time objextive (rto)?
-a: the recovery time objective (rto) is the maximum amount of time that a system can be down before it is considered a failure
+a: the recovery time objective (rto) is the maximum amount of time that a system can be down before it is considered a failure. expressed in munutes or hours.
+
+inform much of the design choices relating to backups, restore and resilience within systems.
 
 q: what is the recovery point objective (rpo)?
 a: the recovery point objective (rpo) is the maximum amount of data that can be lost before it is considered a failure
