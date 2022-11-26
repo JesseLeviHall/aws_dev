@@ -26,6 +26,8 @@ OSI 7 Layer Model:
 7. Application Layer
     The application layer adds the ability to communicate with applications. It also adds the ability to manage the application, including the ability to terminate the application.
 
+You need two sets of rules on a network ACL within AWS.  One for the initiating part (laptop to server) and one for the response (server to laptop). the terms ephemeral ports or hight ports refer to the port range that the client picks as the source port. 
+
 
  a ddos attack is a distributed denial of service attack. it is an attack where a large number of computers are used to send a large amount of traffic to a single computer or network. the goal is to make the target computer or network unavailable to its intended users.
 
@@ -72,5 +74,6 @@ a: a socket is a connection endpoint for data transfer.
 q: what is network address translation?
 a: network address translation is a process that translates a private IP address to a public IP address
 
-
+q: what is DNSSEC?
+a: DNSSEC is a security extension to DNS that provides authentication and integrity for DNS data using digital signatures based on public key cryptography. 
 */
