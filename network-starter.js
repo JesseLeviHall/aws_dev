@@ -76,4 +76,16 @@ a: network address translation is a process that translates a private IP address
 
 q: what is DNSSEC?
 a: DNSSEC is a security extension to DNS that provides authentication and integrity for DNS data using digital signatures based on public key cryptography. 
+
+q: what is a DNS record?
+a: a DNS record is a resource record that contains information about a domain name
+
+q: what is a DNS zone?
+a: a DNS zone is a collection of DNS records
+
+q: what is the recovery time objextive (rto)?
+a: the recovery time objective (rto) is the maximum amount of time that a system can be down before it is considered a failure
+
+q: what is the recovery point objective (rpo)?
+a: the recovery point objective (rpo) is the maximum amount of data that can be lost before it is considered a failure
 */
