@@ -90,4 +90,9 @@ inform much of the design choices relating to backups, restore and resilience wi
 
 q: what is the recovery point objective (rpo)?
 a: the recovery point objective (rpo) is the maximum amount of data that can be lost before it is considered a failure
+
+q: what is a subnet?
+a: a subnet is a logical subdivision of an IP network
+a subnet is defined as
+a range of ip addresses in your vpc. You can launch aws resources, such as amazon ec2 instances, into a subnet.
 */
