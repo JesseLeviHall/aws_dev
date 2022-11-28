@@ -41,6 +41,8 @@ infrastructure as a service (IAAS). You have complete control over your instance
 - billed per second
 - can be stopped and started
 - local host or EBS (Elastic Block Store)
-- has state (stopped, running, terminated)
+- has state (stopped, running, terminated) stopped still billed for space. 
+an AMI is defined as 
+a template that contains a software configuration (operating system, application server, and applications) required to launch your instance. You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration. You can use different AMIs to launch instances when you need instances with different configurations.
 
 */
