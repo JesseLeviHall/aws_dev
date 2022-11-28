@@ -43,6 +43,13 @@ infrastructure as a service (IAAS). You have complete control over your instance
 - local host or EBS (Elastic Block Store)
 - has state (stopped, running, terminated) stopped still billed for space. 
 an AMI is defined as 
-a template that contains a software configuration (operating system, application server, and applications) required to launch your instance. You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration. You can use different AMIs to launch instances when you need instances with different configurations.
+a template that contains a software configuration (operating system, application server, and applications) required to launch your instance. You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration. You can use different AMIs to launch instances when you need instances with different configurations. Similar to a server image. it can create an ec2 and and ec2 can create an AMI. 
+AMI can be, private, public, owned, or explicit
+an EBS is defined as
+a virtual hard drive that you can attach to your instance. You can use EBS volumes to store data that persists independently from the life of an instance. You can create and attach EBS volumes when you launch an instance, or you can create and attach them to a running instance at any time. 
+
+to run windows on the remote desktop protocol, it runs through port 3389
+for linux its ssh protocol on port 22
+
 
 */
