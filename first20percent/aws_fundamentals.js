@@ -32,4 +32,15 @@ a vpc that is automatically created for you when you launch your first aws resou
 
 a custom vpc is defined as
 a vpc that you create. You can create a custom vpc with a configuration that meets your specific needs. You can create a custom vpc in any range of ip addresses. You can create a custom vpc with a single subnet or multiple subnets. You can create a custom vpc with a single availability zone or multiple availability zones.
+
+===================EC2==================
+an ec2 instance is defined as
+infrastructure as a service (IAAS). You have complete control over your instances and can run on aws hardware that is suited to your requirements.  
+- Private service by default, uses VPC networking
+- is AZ resiliant (fails if AZ fails)
+- billed per second
+- can be stopped and started
+- local host or EBS (Elastic Block Store)
+- has state (stopped, running, terminated)
+
 */
