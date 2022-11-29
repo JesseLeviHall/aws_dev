@@ -54,5 +54,15 @@ for linux its ssh protocol on port 22
 ====================S3 Basics================
 an s3 bucket is defined as
 a public cloud storage resource available in aws. It is designed to make web-scale computing easier for developers. 
+- public service by default
+- is regionally resilient
+- billed per GB
+- can be stopped and started
+- store videos photos and files
+- has state (active, deleted)
+- can be versioned
+- can be encrypted
+- can be accessed from anywhere via UI,ClI, or API/http
+
 
 */
