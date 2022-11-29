@@ -63,6 +63,8 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - can be versioned
 - can be encrypted
 - can be accessed from anywhere via UI,ClI, or API/http
+- objects stored in buckets
+- objects are stored in key value pairs, key is the name of the object, value is the data and its metadata
 
 
 */
