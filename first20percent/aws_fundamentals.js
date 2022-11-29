@@ -51,5 +51,8 @@ a virtual hard drive that you can attach to your instance. You can use EBS volum
 to run windows on the remote desktop protocol, it runs through port 3389
 for linux its ssh protocol on port 22
 
+====================S3 Basics================
+an s3 bucket is defined as
+a public cloud storage resource available in aws. It is designed to make web-scale computing easier for developers. 
 
 */
