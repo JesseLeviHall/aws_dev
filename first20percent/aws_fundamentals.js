@@ -68,7 +68,9 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - objects are stored in folders called prefixes
 - buckets apply to the laws of the region you initiate and use it
 - the name has to be unique across all of aws
+- the name can be up to 63 characters long all lowercase no underscores. 
 - stucture is flat. everything is root level
 - folders are prefix names eg: /old/koala.jpg is in a folder called old. 
+- per account 100 bucket soft 1000 hard limit
 
 */
