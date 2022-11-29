@@ -64,7 +64,11 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - can be encrypted
 - can be accessed from anywhere via UI,ClI, or API/http
 - objects stored in buckets
-- objects are stored in key value pairs, key is the name of the object, value is the data and its metadata
-
+- objects are stored in key value pairs, key is the name of the object, value is the data and its metadata, can be up to 5tb!
+- objects are stored in folders called prefixes
+- buckets apply to the laws of the region you initiate and use it
+- the name has to be unique across all of aws
+- stucture is flat. everything is root level
+- folders are prefix names eg: /old/koala.jpg is in a folder called old. 
 
 */
