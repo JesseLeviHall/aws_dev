@@ -72,5 +72,5 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - stucture is flat. everything is root level
 - folders are prefix names eg: /old/koala.jpg is in a folder called old. 
 - per account 100 bucket soft 1000 hard limit
-
+- not block storage means you cant mount an s3 to an ec2 instance
 */
