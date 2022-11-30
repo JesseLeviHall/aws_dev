@@ -74,5 +74,6 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - per account 100 bucket soft 1000 hard limit
 - not block storage means you cant mount an s3 to an ec2 instance
 - block storage is basically a virtual hard disk
-- in ec2 EBS is block storage
+- in ec2 EBS is block storage with one user limit, so you can mount it as a drive. 
+- s3 is good for large distribution of data, and is reduces storage cost of ec2 instance
 */
