@@ -76,4 +76,8 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 - block storage is basically a virtual hard disk
 - in ec2 EBS is block storage with one user limit, so you can mount it as a drive. 
 - s3 is good for large distribution of data, and is reduces storage cost of ec2 instance
+
+=======Cloud Formation========
+a cloud formation template is defined as
+a json or yaml file that defines the resources you want to create in aws. You can use a template to create and delete a collection of resources together as a single unit (a stack). You can create a template manually, or you can use a tool to generate a template for you.
 */
