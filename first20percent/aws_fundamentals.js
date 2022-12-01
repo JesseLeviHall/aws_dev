@@ -83,4 +83,7 @@ a json or yaml file that defines the resources you want to create in aws. You ca
 - All templates have mandatory list of resources 
 - the template format version is the version of the template schema, the description follows this imediately 
 - All templates have optional list of parameters
+- the stack is the resources that are created from the template
+- when executing the template the physical instances needed are created eg: ec2 or s3
+Its cloud formations job to keep the physical resources in sync with the template.
 */
