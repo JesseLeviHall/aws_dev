@@ -80,5 +80,6 @@ a public cloud storage resource available in aws. It is designed to make web-sca
 =======Cloud Formation========
 a cloud formation template is defined as
 a json or yaml file that defines the resources you want to create in aws. You can use a template to create and delete a collection of resources together as a single unit (a stack). You can create a template manually, or you can use a tool to generate a template for you.
-- All templates have a list of resources
+- All templates have mandatory list of resources 
+- All templates have optional list of parameters
 */
