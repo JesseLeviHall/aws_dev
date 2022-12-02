@@ -90,4 +90,7 @@ Its cloud formations job to keep the physical resources in sync with the templat
 =======shared responsibility model========
 aws is responsible for the security of the cloud, you are responsible for the security in the cloud eg: regions, availablilty zones, edge locations, vpc's, ec2 instances, s3 buckets, cloud formation templates, and any software that manages those systems. 
 we are responsible for security surrounding customer/user data, and the security of the software that manages the data.
+
+============HA vs FT vs DR==========
+High availability is the ability of a system to continue operating without interruption when one or more of its components fail.
 */
