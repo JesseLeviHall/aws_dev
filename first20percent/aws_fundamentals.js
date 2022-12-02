@@ -88,5 +88,5 @@ a json or yaml file that defines the resources you want to create in aws. You ca
 Its cloud formations job to keep the physical resources in sync with the template.
 
 =======shared responsibility model========
-aws is responsible for the security of the cloud, you are responsible for the security in the cloud.
+aws is responsible for the security of the cloud, you are responsible for the security in the cloud eg: regions, availablilty zones, edge locations, vpc's, ec2 instances, s3 buckets, cloud formation templates, etc.
 */
