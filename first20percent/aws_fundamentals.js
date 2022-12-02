@@ -86,4 +86,7 @@ a json or yaml file that defines the resources you want to create in aws. You ca
 - the stack is the resources that are created from the template
 - when executing the template the physical instances needed are created eg: ec2 or s3
 Its cloud formations job to keep the physical resources in sync with the template.
+
+=======shared responsibility model========
+aws is responsible for the security of the cloud, you are responsible for the security in the cloud.
 */
