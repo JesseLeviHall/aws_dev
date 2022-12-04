@@ -95,4 +95,6 @@ we are responsible for security surrounding customer/user data, and the security
 High availability is the ability of a system to continue operating without interruption when one or more of its components fail.
 
 Fault tolerance is the ability of a system to continue operating in the event of the failure of some of its components.
+
+Disaster recovery is the ability of a system to recover from a disaster.
 */
