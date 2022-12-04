@@ -37,4 +37,6 @@ IAM groups are a collection of IAM users. They are used to manage permissions fo
 there is no built in root group, and no nested groups.
 
 resources can have policies too, which allow access from specific identities, or groups of identities.  Done with reference to the ARN of the resource. The resourse policy can not grant access to a group, only an identity. 
+
+IAM roles are a temporary identity that you can use to grant permissions to AWS resources. they are not IAM users.
 */
