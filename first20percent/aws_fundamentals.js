@@ -93,4 +93,6 @@ we are responsible for security surrounding customer/user data, and the security
 
 ============HA vs FT vs DR==========
 High availability is the ability of a system to continue operating without interruption when one or more of its components fail.
+
+Fault tolerance is the ability of a system to continue operating in the event of the failure of some of its components.
 */
