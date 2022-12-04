@@ -32,5 +32,9 @@ An ARN is an Amazon Resource Name. It is a unique identifier for single AWS reso
 5,000 users per account
 IAM user can be a member of up to 10 groups
 
+IAM groups are a collection of IAM users. They are used to manage permissions for a collection of users. *You cannot log into a group
 
+there is no built in root group, and no nested groups.
+
+resources can have policies too, which allow access from specific identities, or groups of identities.  Done with reference to the ARN of the resource. The resourse policy can not grant access to a group, only an identity. 
 */
