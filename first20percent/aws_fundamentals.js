@@ -92,6 +92,16 @@ Its cloud formations job to keep the physical resources in sync with the templat
 - its is useful to set resource conditions such as env type -prod or -test for developmemnt pipeline.
 - Recources inside a cloud formation template are called logical resources (instance), they have type and property parameters.
 
+For the ec2 template, create a key pair
+Go to cloudformation console, create, upload a template or design new.  Next, name the stack, three parameters need to be right: KeyName, LatestAmIId, SSHandWebLocation. Just set the keyname, other two are default. Next, check capability box acknowledging we are creaiting an IAM role, create.
+
+========CloudWatch========
+CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. CloudWatch alarms send notifications or automatically make changes to the resources you are monitoring based on rules that you define. For example, you can monitor the CPU usage and disk reads and writes of your Amazon EC2 instances and then use this data to determine whether you should launch additional instances to handle increased load. You can use CloudWatch to collect and track metrics, which are the variables you want to measure for your resources and applications.
+
+- get started with a namespace (container) for metrics: AWS/EC2
+- metric is a time ordered set of data points eg: disk I/O CPU USage
+- dimension is a name value pair that is part of the metric identity eg: instance ID, Instance type
+- cloudwatch agent collects and manages operational data for things outside aws
 
 =======shared responsibility model========
 aws is responsible for the security of the cloud, you are responsible for the security in the cloud eg: regions, availablilty zones, edge locations, vpc's, ec2 instances, s3 buckets, cloud formation templates, and any software that manages those systems. 
@@ -125,5 +135,18 @@ eg: 'ssh -i "A4L.pem" ec2-user@ec2-44-206-248-159.compute-1.amazonaws.com'
 - folders are emulated using prefixes
 - empty the bucket then delete
 
+
+===========Rout53===========
+- is a DNS service for aws
+- can be used to route traffic to aws resources
+- host zones are containers for records
+- is a single database with global service
+- PIR control refers to the ability to create private hosted zones that are only visible within a VPC.
+
+- A record is a DNS record that maps a domain name to an IPv4 address, if there are CNAMES pointing to the A record, they will update when the A record is updated. 
+- CNAME records can only point to other records in the same hosted zone.
+- The MX record is used to specify the mail server responsible for accepting email for a domain.
+- TXT recrods are used to provide the ability to associate arbitrary text with a host or other name, often used for things like SPF (sender policy framework) DNS records, DKIM (domain keys identified mail) DNS records, and DMARC (domain-based message authentication, reporting, and conformance) DNS records.
+- TTL is the time to live, the amount of time a DNS record is cached by DNS resolvers before it is looked up again.
 
 */
