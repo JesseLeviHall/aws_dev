@@ -97,4 +97,9 @@ High availability is the ability of a system to continue operating without inter
 Fault tolerance is the ability of a system to continue operating in the event of the failure of some of its components.
 
 Disaster recovery is the ability of a system to recover from a disaster.
+
+============DR vs BC vs DRP=========
+Disaster recovery is the ability of a system to recover from a disaster.
+
+Business continuity is the ability of a system to continue operating in the event of a disaster.
 */
