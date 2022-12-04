@@ -96,5 +96,14 @@ High availability is the ability of a system to continue operating without inter
 
 Fault tolerance is the ability of a system to continue operating in the event of the failure of some of its components.
 
+============New EC2 Instance=========
+- create SSH key pair. If using macOS or Linus choose .pem file. If using windows choose .ppk file.
+- go to launch instance, pick AMI (Amazon Machine Image)
+- select the key pair you just made
+- usually keep the default VPC network settings and subnet availability zone
+- name a security group and ssh access from anywhere
+- launch instance
+- go to instances and click connect (this instance can be accessed from anywhere on public ipv4DNS or public ipv4 address)
 
+============New S3 Bucket=========
 */
