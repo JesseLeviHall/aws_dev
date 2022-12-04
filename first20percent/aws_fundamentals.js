@@ -102,4 +102,6 @@ Disaster recovery is the ability of a system to recover from a disaster.
 Disaster recovery is the ability of a system to recover from a disaster.
 
 Business continuity is the ability of a system to continue operating in the event of a disaster.
+
+Disaster recovery planning is the process of creating a plan to recover from a disaster.
 */
