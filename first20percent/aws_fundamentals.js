@@ -103,7 +103,19 @@ Fault tolerance is the ability of a system to continue operating in the event of
 - usually keep the default VPC network settings and subnet availability zone
 - name a security group and ssh access from anywhere
 - launch instance
-- go to instances and click connect (this instance can be accessed from anywhere on public ipv4DNS or public ipv4 address)
+- go to instances and right click => connect (this instance can be accessed from anywhere on public ipv4DNS or public ipv4 address) select ssh client,
+copy the example terminal ssh command
+eg: 'ssh -i "A4L.pem" ec2-user@ec2-44-206-248-159.compute-1.amazonaws.com' 
+- if permissions are wrong, enter the command to fix permissions on the key pair file so it is not publicly viewable eg: 'chmod 400 A4L.pem'
+-right click and terminate, then security group => actions and delete. 
 
 ============New S3 Bucket=========
+- create bucket
+- name the bucket (must be unique across all of aws)
+- select region
+- select block public access settings
+- create bucket
+- all aws resources have an ARN (Amazon Resource Name) which is a unique identifier for that resource.
+- folders are emulated using prefixes
+- empty the bucket then delete
 */
