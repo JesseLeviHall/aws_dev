@@ -17,4 +17,20 @@ Priority  - explicit deny always overrides an explicit allow. If you have two st
 
 ( Deny, Allow, Deny (implicit) ) - implicit deny is the default. If you don't specify an explicit allow or deny, the default is deny.
 
+Inline policies - are policies that are embedded directly in an IAM identity. Best only used for special cases.
+
+Managed policies - are policies that are created separately from IAM identities and then attached to those identities in bulk. 
+
+IAM users are an identity used for anything requiring long term AWS access: human users, applications, and services.
+
+A prinipal is an entity that can be authenticated and authorized to use AWS resources.
+
+Access keys are used for applications and services to access AWS.
+
+An ARN is an Amazon Resource Name. It is a unique identifier for single AWS resources. They are attached to IAM users, groups, and roles.
+
+5,000 users per account
+IAM user can be a member of up to 10 groups
+
+
 */
