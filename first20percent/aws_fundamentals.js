@@ -86,6 +86,12 @@ a json or yaml file that defines the resources you want to create in aws. You ca
 - the stack is the resources that are created from the template
 - when executing the template the physical instances needed are created eg: ec2 or s3
 Its cloud formations job to keep the physical resources in sync with the template.
+- A trick question is what is the difference between a template and a stack?
+- A template is a file that defines the resources you want to create in aws. A stack is the resources that are created from the template.
+- If you have both a template format version and a description, (which isnt necessary) then the description needs to immediately follow the template format versin in the yaml or json file. 
+- its is useful to set resource conditions such as env type -prod or -test for developmemnt pipeline.
+- Recources inside a cloud formation template are called logical resources (instance), they have type and property parameters.
+
 
 =======shared responsibility model========
 aws is responsible for the security of the cloud, you are responsible for the security in the cloud eg: regions, availablilty zones, edge locations, vpc's, ec2 instances, s3 buckets, cloud formation templates, and any software that manages those systems. 
@@ -118,4 +124,6 @@ eg: 'ssh -i "A4L.pem" ec2-user@ec2-44-206-248-159.compute-1.amazonaws.com'
 - all aws resources have an ARN (Amazon Resource Name) which is a unique identifier for that resource.
 - folders are emulated using prefixes
 - empty the bucket then delete
+
+
 */
