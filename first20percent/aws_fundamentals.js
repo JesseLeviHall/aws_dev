@@ -149,4 +149,45 @@ eg: 'ssh -i "A4L.pem" ec2-user@ec2-44-206-248-159.compute-1.amazonaws.com'
 - TXT recrods are used to provide the ability to associate arbitrary text with a host or other name, often used for things like SPF (sender policy framework) DNS records, DKIM (domain keys identified mail) DNS records, and DMARC (domain-based message authentication, reporting, and conformance) DNS records.
 - TTL is the time to live, the amount of time a DNS record is cached by DNS resolvers before it is looked up again.
 
+
+============Quiz===================
+q: what permisions options does an AMI have?
+a: public, private, shared with specific aws accounts
+
+q: what is true of an AWS public Service?
+a: it is available to all aws customers, in the AWS public zone, and anyone can connect to it.
+
+q: what is true of an aws private service?
+a: it is located in a VPC, accessible from within the VPC it is in or other VPCs and on-premise networks as long as private networking is configured 
+
+q: what is a fault tolerant system?
+a: a system that continues to operate in the event of the failure of some of its components
+
+q: what is a high availability system?
+a: a system that is almost always up and running
+
+q: how many dns root servers exist?
+a: 13
+
+q: who manages DNS root servers?
+a: 12 large organizations
+
+q: who manages the DNS Root Zone?
+a: IANA
+
+q: which DNS Record type is how the root zone delegates control of .org to the .org registry?
+a: NS
+
+q: which type of organisation maintains the zones for a TLD?
+a: registry
+
+q: Which type of organisation has relationships with the .org TLD zone manager allowing domain registration?
+a: registrar
+
+q: How many subnets are in a default VPC?
+a: Equal to the number of availability zones in the region
+
+q: what is the IP CIDR range of a default VPC?
+a: 172.31.0.0/16
+
 */
