@@ -43,6 +43,9 @@ IAM roles are a temporary identity that you can use to grant permissions to AWS 
 New users have no permissions when first created.
 You need to attach custom JSON permissions or a stock policy to them. 
 
+q: what is the difference between an IAM user and an IAM role?
+a: IAM users are for long term access, and IAM roles are for short term access.
+
 
 
 
