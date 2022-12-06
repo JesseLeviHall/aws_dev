@@ -41,4 +41,8 @@ resources can have policies too, which allow access from specific identities, or
 IAM roles are a temporary identity that you can use to grant permissions to AWS resources. they are not IAM users.
 
 New users have no permissions when first created.
+You need to attach custom JSON permissions or a stock policy to them. 
+
+
+
 */
