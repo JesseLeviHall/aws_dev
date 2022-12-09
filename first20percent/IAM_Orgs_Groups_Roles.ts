@@ -46,7 +46,7 @@ You need to attach custom JSON permissions or a stock policy to them.
 q: what is the difference between an IAM user and an IAM role?
 a: IAM users are for long term access, and IAM roles are for short term access.
 
-
+In an organization, you can invite existing accounts or you can create an account in the org. If you create an account in the org a role is automatically created for it. If you invite an external account the role has to be created.
 
 
 */
