@@ -11,4 +11,6 @@ typically access to a bucket from within the account is done via an identity pol
 the policy is attached to the bucket, not the user.
 but you can have a controled access from within your aws accout to a bucket in another account. and the bucket policy also has to allow it. 
 
+block public access (a new feature) added another boundry where settings are at the bucket level, and apply no matter what the bucket policy says, and only apply to anonymous principles permissionls done wrong can result in data breaches
+
 */
