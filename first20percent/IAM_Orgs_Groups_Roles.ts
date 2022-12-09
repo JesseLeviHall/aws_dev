@@ -48,5 +48,11 @@ a: IAM users are for long term access, and IAM roles are for short term access.
 
 In an organization, you can invite existing accounts or you can create an account in the org. If you create an account in the org a role is automatically created for it. If you invite an external account the role has to be created.
 
+In this [DEMO] Lesson we will create an organisation for the Animals4life business:
+The GENERAL account will become the MANAGEMENT account for the organisation
+
+We will invite the PRODUCTION account as a MEMBER account and create the DEVELOPMENT account as a MEMBER account.
+
+Finally - we will create an OrganizationAccountAccessRole in the production account, and use this role to switch between accounts.
 
 */
