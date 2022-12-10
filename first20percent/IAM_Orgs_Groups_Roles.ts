@@ -55,4 +55,14 @@ We will invite the PRODUCTION account as a MEMBER account and create the DEVELOP
 
 Finally - we will create an OrganizationAccountAccessRole in the production account, and use this role to switch between accounts.
 
+An organizational unit is 
+- a container for accounts within an organization. We have an OU development and an OU Production
+
+Service Control Policies are 
+- they allow you to manage which AWS services can be used in your organization.
+- Organizations can allow restrictions to be placed on MEMBER accounts in the form of boundaries.
+
+- SCPs can be applied to the organization, to OU's or to individual accounts.
+
+- Member accounts can be affected, the MANAGEMENT account cannot.
 */
