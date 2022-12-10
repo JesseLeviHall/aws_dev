@@ -89,4 +89,13 @@ we then create a policy and add:
 }
 
 this will deny access to s3 resources for whoever we apply it. We attach it to the PROD OU so only dev can access s3, and detach default full access policy 
+
+
+=================CloudWatch Logs=================
+CloudWatch Logs is a service which can accept logging data, store it and monitor it.
+
+It is often the default place where AWS Services can output their logging too.
+
+CloudWatch Logs is a public service and can also be utilised in an on-premises environment and even from other public cloud platforms.
+
 */
