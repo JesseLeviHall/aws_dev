@@ -69,5 +69,24 @@ Service Control Policies are
 
 - Member accounts can be affected, the MANAGEMENT account cannot. Root users cannot be limited but the account overall can be, which by effect does limit the root account. 
 
-We add two new OU's and move one into each account in the organization, one DEV one PROD.  Then in policies we enable SPC's and add the full access premade. 
+We add two new OU's and move one into each account in the organization, one DEV one PROD.  Then in policies we enable SPC's. 
+
+we then create a policy and add: 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": "s3:*",
+            "Resource": "*"
+        }
+    ]
+}
+
+this will deny access to s3 resources for whoever we apply it. We attach it to the PROD OU so only dev can access s3, and detach default full access policy 
 */
