@@ -6,3 +6,4 @@ ec2instance.yaml
 simpleidentitypermissions
 /sample_practice
 permissionsgroups
+s3_versioning
