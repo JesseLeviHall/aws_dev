@@ -19,4 +19,10 @@ block public access (a new feature) added another boundry where settings are at 
 5. Block public access to buckets and objects granted through any public bucket or access point policies
 
 two approaches, access control from the perspective of the bucket, or from the identies of the accounts. 
+
+static website hosting has a small charge for operations such as requests.  It could be used to provide an out of service back up page for a site that runs on a compute servie if that service was down.
+
+create a bucket with the same name as the domain name, in properties at the bottome enable static hosting. copy the url it gives, go to objects and upload your files. Then grant permisions to anyone with a bucket policy in permissions. Edit a policy to grant read action to all principles at the ARN for hte bucket. 
+
+
 */
