@@ -60,9 +60,10 @@ An organizational unit is
 
 Service Control Policies are 
 - they allow you to manage which AWS services can be used in your organization.
-- Organizations can allow restrictions to be placed on MEMBER accounts in the form of boundaries.
+
+- Organizations can allow restrictions to be placed on MEMBER accounts in the form of boundaries. Deny List Only (not by granted permision)
 
 - SCPs can be applied to the organization, to OU's or to individual accounts.
 
-- Member accounts can be affected, the MANAGEMENT account cannot.
+- Member accounts can be affected, the MANAGEMENT account cannot. Root users cannot be limited but the account overall can be, which by effect does limit the root account. 
 */
