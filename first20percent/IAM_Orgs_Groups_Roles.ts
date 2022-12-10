@@ -98,4 +98,36 @@ It is often the default place where AWS Services can output their logging too.
 
 CloudWatch Logs is a public service and can also be utilised in an on-premises environment and even from other public cloud platforms.
 
+global public
+
+========cloudwatch Trail=========
+CloudTrail is a service that logs API calls made to AWS. It is a global service and can be used to monitor all accounts in an organisation. 
+By default is enabled for 90 days free. trails 90 day history.  to customize after that creat 'trails'
+
+regional - can log region or log globally with 'all regions', not real time. 
+
+In Demo This CloudTrail will be configured for all regions and set to log global services events. We will set the trail to log to an S3 bucket and then enhance it to inject data into CloudWatch Logs.
+
+quiz:
+
+q: what is the difference between a CloudTrail and a CloudWatch Logs?
+a: CloudTrail logs API calls, CloudWatch Logs logs application logs.
+
+q: what are features of IAM Groups?
+a: IAM groups are a collection of IAM users. They are used to manage permissions for a collection of users (eg Admin groupings). *You cannot log into a group. 
+
+q: what two policies are assigned to an IAM Role?
+a: Permissions Policy, Trust Policy
+
+q: what are features of IAM Roles?
+a: Roles can be assumed, cannot be logged into, when assumed then temporary credentials are generated. 
+
+q: what are three features of aws organizations?
+a: consolidated billing, uses of SCP's, organization via OU's
+
+q: is it possible to restrict what the root user can do?
+a: if aws orgazations are used, but not the management account
+
+q: what are valid IAM policy types?
+a: inline, managed, resource.  And customer managed policies
 */
