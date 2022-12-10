@@ -22,7 +22,28 @@ two approaches, access control from the perspective of the bucket, or from the i
 
 static website hosting has a small charge for operations such as requests.  It could be used to provide an out of service back up page for a site that runs on a compute servie if that service was down.
 
-create a bucket with the same name as the domain name, in properties at the bottome enable static hosting. copy the url it gives, go to objects and upload your files. Then grant permisions to anyone with a bucket policy in permissions. Edit a policy to grant read action to all principles at the ARN for hte bucket. 
+================static hosting================
+create a bucket with the same name as the domain name, in properties at the bottome enable static hosting. copy the url it gives, go to objects and upload your files. Then grant permisions to anyone with a bucket policy in permissions. Edit a policy to grant read action to all principles at the ARN for the bucket. Then go to r53 and create a simple record from the wizard, add the first part of the bucket name missing from the domain as the subdomain. Change route trafic to to alias s3 endpoint, select region of the bucket and the bucket. 
+
+=================S3 versioning================
+versioning is a feature that allows you to keep multiple versions of an object in the same bucket. Once it is enabled you cannot undo it
+
+Every object in e3 has an id key, when versioning is disabled, the id value is null. 
+
+When versioning is enabled, and the object is modified, the old object is ketp but a new id is given to a new version of the object. if an object is reqed without saying what version, the current version will be sent, but you can req an old version
+
+
+
+
+
+
+
+=================S3 lifecycle management================
+
+
+
+
+
 
 
 */
