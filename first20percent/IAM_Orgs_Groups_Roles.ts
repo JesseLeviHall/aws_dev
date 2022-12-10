@@ -48,13 +48,15 @@ a: IAM users are for long term access, and IAM roles are for short term access.
 
 In an organization, you can invite existing accounts or you can create an account in the org. If you create an account in the org a role is automatically created for it. If you invite an external account the role has to be created.
 
-In this [DEMO] Lesson we will create an organisation for the Animals4life business:
+In the [DEMO] Lesson we will create an organisation for the Animals4life business:
 The GENERAL account will become the MANAGEMENT account for the organisation
 
 We will invite the PRODUCTION account as a MEMBER account and create the DEVELOPMENT account as a MEMBER account.
 
 Finally - we will create an OrganizationAccountAccessRole in the production account, and use this role to switch between accounts.
 
+
+=============SCPs=================
 An organizational unit is 
 - a container for accounts within an organization. We have an OU development and an OU Production
 
@@ -66,4 +68,6 @@ Service Control Policies are
 - SCPs can be applied to the organization, to OU's or to individual accounts.
 
 - Member accounts can be affected, the MANAGEMENT account cannot. Root users cannot be limited but the account overall can be, which by effect does limit the root account. 
+
+We add two new OU's and move one into each account in the organization, one DEV one PROD.  Then in policies we enable SPC's and add the full access premade. 
 */
