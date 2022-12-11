@@ -70,9 +70,18 @@ aws kms decrypt \
 
 
 =================S3 object encryption============
+Buckets arent encrypted, objects are. Each obejct in a bucket could be using different encryption settings.
 
+default bucket encryption settings:
+- Client-Side Encryption
+- SSE-C 
+  or Server-Side Encryption with Customer-Provided Keys, is a feature in Amazon Web Services (AWS) that allows customers to manage their own encryption keys for data stored in AWS services. This means that customers have full control over the encryption and decryption of their data, rather than relying on AWS to manage the keys. SSE-C is available for several AWS services, including Amazon S3, Amazon EBS, and Amazon Glacier. It can be used to encrypt data at rest, ensuring that it remains secure even if the underlying storage is compromised.
+- SSE-S3 
+  or Server-Side Encryption with Amazon S3-Managed Keys, is a feature in Amazon S3 that automatically encrypts data at rest using keys managed by Amazon S3. This means that the encryption and decryption of data is handled by Amazon S3, and customers do not have to manage their own keys. SSE-S3 is a simple and effective way to protect data stored in Amazon S3, and it is enabled by default for all new Amazon S3 buckets.
+- SSE-KMS
+  or Server-Side Encryption with AWS KMS-Managed Keys, is a feature in Amazon Web Services (AWS) that allows customers to use keys managed by AWS Key Management Service (KMS) to encrypt their data at rest. This means that the encryption and decryption of data is handled by AWS KMS, and customers do not have to manage their own keys. SSE-KMS provides additional benefits over SSE-S3, such as the ability to audit and control access to the keys used for encryption. It is available for several AWS services, including Amazon S3, Amazon EBS, and Amazon Glacier.
 
-
+As part of the lesson we review how SSE-KMS impacts permissions and how it can achieve role separation
 
 
 
