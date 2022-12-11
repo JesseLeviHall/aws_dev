@@ -1,6 +1,9 @@
 /* 
 =============Security S3================
 S3 is private by default, so rather than identity policies, we configure access via bucket policies (resource policies).  Fortunately, the policy can allow access from outside the root account. 
+
+adding things to s3 uses the PUT uperation api 
+
 can grant anonymous access. 
 one policy per bucket. 
 the sid is where you can add a statement ID. it is useful for debugging and troubleshooting.
@@ -78,12 +81,36 @@ default bucket encryption settings:
   or Server-Side Encryption with Customer-Provided Keys, is a feature in Amazon Web Services (AWS) that allows customers to manage their own encryption keys for data stored in AWS services. This means that customers have full control over the encryption and decryption of their data, rather than relying on AWS to manage the keys. SSE-C is available for several AWS services, including Amazon S3, Amazon EBS, and Amazon Glacier. It can be used to encrypt data at rest, ensuring that it remains secure even if the underlying storage is compromised.
 - SSE-S3 
   or Server-Side Encryption with Amazon S3-Managed Keys, is a feature in Amazon S3 that automatically encrypts data at rest using keys managed by Amazon S3. This means that the encryption and decryption of data is handled by Amazon S3, and customers do not have to manage their own keys. SSE-S3 is a simple and effective way to protect data stored in Amazon S3, and it is enabled by default for all new Amazon S3 buckets.
+  ****algorithm: AES-256 ********
 - SSE-KMS
-  or Server-Side Encryption with AWS KMS-Managed Keys, is a feature in Amazon Web Services (AWS) that allows customers to use keys managed by AWS Key Management Service (KMS) to encrypt their data at rest. This means that the encryption and decryption of data is handled by AWS KMS, and customers do not have to manage their own keys. SSE-KMS provides additional benefits over SSE-S3, such as the ability to audit and control access to the keys used for encryption. It is available for several AWS services, including Amazon S3, Amazon EBS, and Amazon Glacier.
+  or Server-Side Encryption with AWS KMS-Managed Keys, is a feature in Amazon Web Services (AWS) that allows customers to use keys managed by AWS Key Management Service (KMS) to encrypt their data at rest. This means that the encryption and decryption of data is handled by AWS KMS, and customers do not have to manage their own keys. SSE-KMS provides additional benefits over SSE-S3, such as the ability to audit and control permissions to access the keys used for encryption. It is available for several AWS services, including Amazon S3, Amazon EBS, and Amazon Glacier. (basically teams and employees to have s3 admin power without being able to decrypt objects)... add inline policy to the iamadmin with this:
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Deny",
+            "Action": "kms:*",
+            "Resource": "*"
+        }
+    ]
+}
+
+role seperation:
+when utilizing sse-kms you need both kms permission and s3 permission to open an object.  Important for business that reqs private storage (medical reqs or something)
+
+
+to set the bucket default we added the policy to the bucket properties. then every upload has this setting. 
 
 As part of the lesson we review how SSE-KMS impacts permissions and how it can achieve role separation
 
+you can add encryption per object:
+Info: PUT operation with header "x-amz-server-side-encryption"
+if you add this header and AES256 you will set SSE-S3
+if you add this header and aws:kms you will set SSE-KMS
 
+
+=================Object Storage Classes================
 
 
 =================S3 lifecycle management================
