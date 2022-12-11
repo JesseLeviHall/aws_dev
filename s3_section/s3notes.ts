@@ -41,8 +41,17 @@ transfer acceleration helps.  bucket name cant have periods, its in properties t
 
 =================KMS Key Management================
 its a regional public zone service and be conneted to from anywere.  Keys never leave KMS. 
-Remember FIPS 140-2 (level 2)
+Remember FIPS 140-2 (level 2) that is a USA security standard. 
+this is in most exams
+
+AWS Key Management Service (AWS KMS) makes it easy for you to create and manage cryptographic keys and control their use across a wide range of AWS services and in your applications. AWS KMS is a secure and resilient service that uses hardware security modules that have been validated under FIPS 140-2, or are in the process of being validated, to protect your keys.
+
+
 Symmetric encryption uses the same key for both encrypting and decrypting data, while asymmetric encryption uses a different key for encrypting and decrypting data. In other words, with symmetric encryption, the sender and receiver of the encrypted data must both have the same key, while with asymmetric encryption, the sender and receiver can each have their own unique keys.
+
+KMS does not do the encryption or decription, you do or the service your using that accesses KMS does. 
+
+KMS Keys do not leave their region. 
 
 
 =================S3 lifecycle management================
