@@ -150,6 +150,43 @@ Lifecycle Configuration can be applied to individual objects or to entire bucket
 something you need to carefully plan beforehand. 
 
 
+=================S3 Replication================
+These options are designed to meet different needs and use cases, such as disaster recovery, data migration, and global distribution of content.
+
+these are the replications options: 
+all objects or a subset
+storage class - default is to maintain
+Ownership - default is source acc
+RTC - Replication time control (eg: 15 minutes for app)
+
+The different types of S3 replication are:
+
+1 S3 Cross-Region Replication (CRR): This is a feature that automatically replicates objects across different regions within the same AWS account. It is useful for disaster recovery and for making data available in multiple regions for lower latency and higher performance.
+
+2 S3 Replication Time Control (RTC): This is an extension of S3 CRR that allows customers to specify a replication schedule for their objects, rather than replicating them in real-time. This can be useful for controlling the timing and impact of replication on network and storage resources.
+
+3 S3 Cross-Account Replication (CAR): This is a feature that allows customers to replicate objects across different AWS accounts. It is useful for sharing data with other organizations, or for migrating data between accounts.
+
+4 S3 Transfer Acceleration: This is a feature that uses Amazon CloudFront edge locations to accelerate the transfer of large files to and from S3. It can improve the performance of replication and data transfer, particularly for users in remote locations or with slow network connections.
+
+5 S3 Same-Region Replication (SRR) : 
+This is a feature that allows customers to replicate objects within the same region. It is useful for creating multiple copies of objects for redundancy, or for creating a backup of objects in a different bucket.
+
+
+****** 
+–Replications are not retroactive and versioning needs to be on
+–One way replication: source to destination
+–works for unencrypted, SSE-S3, SSE-KMS, Not SSE-C because S3 –would not have access to the keys
+-Source owner needs permissions to objects
+-Lifecycle managements will not be replicated, or objects in clacier or deep archive. 
+-Delete markers are not replicated either
+
+Why use replication? 
+-Log Aggregation - SRR
+-PROD and TEST Sync - SRR
+-Resilience with strict sovereignty 
+-Global resilience CRR
+-Latency reduction - CRR
 
 
 */
