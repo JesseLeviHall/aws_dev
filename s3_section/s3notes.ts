@@ -111,12 +111,43 @@ if you add this header and aws:kms you will set SSE-KMS
 
 
 =================Object Storage Classes================
+Amazon S3 Object Storage Classes are different storage tiers for Amazon S3 that offer varying levels of durability, availability, and performance for storing data. The different storage classes are designed to meet different needs and use cases, such as long-term storage, infrequent access, and data backup.
+
+The four storage classes in Amazon S3 are:
+
+1. S3 Standard: This is the default storage class and offers high durability, availability, and performance for frequently accessed data.
+
+2. S3 Intelligent-Tiering: This storage class automatically moves data between different tiers based on usage patterns, providing cost savings for data with unknown or changing access patterns.
+
+3. S3 Standard-Infrequent Access (S3 Standard-IA): This storage class offers lower storage costs for data that is accessed infrequently, but requires rapid access when needed.
+ 
+4. S3 One Zone-Infrequent Access (S3 One Zone-IA): This storage class is similar to S3 Standard-IA, but is stored in a single availability zone and offers lower costs than S3 Standard-IA.
+
+5. S3 Glacier: (instant or flexible) This storage class is designed for long-term data archiving and offers the lowest storage costs in Amazon S3. It is designed to provide secure, durable, and extremely low-cost storage for data that is infrequently accessed and for which retrieval times of 3–5 hours are suitable such as data backups, regulatory archives, and long-term data retention. You pay for the retrievial process, cannot be publicly accessible
+
+Customers can choose the appropriate storage class for their data based on their specific needs and use cases. Amazon S3 also provides tools and features, such as Lifecycle Management, to help customers manage their data across different storage classes. 
+glacier deep archive is data in a frozen state. 
+
+*******
+when objects are stored, a http/1.1 200 OK response is provided by teh s3 API
 
 
 =================S3 lifecycle management================
+Amazon S3 Lifecycle Configuration is a feature that allows customers to automatically manage the lifecycle of their objects stored in Amazon S3. Lifecycle Configuration enables customers to define rules for transitioning objects between different storage classes, and for deleting objects after a specified period of time. This can help customers save on storage costs and ensure that their data is stored in the appropriate storage class for its intended use.
 
+For example, a customer can use Lifecycle Configuration to automatically transition objects from the S3 Standard storage class to the S3 Standard-IA storage class after 30 days, and then to the S3 Glacier storage class after 90 days. This will reduce storage costs for data that is accessed infrequently, while still making it available for retrieval when needed. Customers can also use Lifecycle Configuration to automatically delete objects that are no longer needed, such as data that has reached the end of its retention period.
 
+Lifecycle Configuration can be applied to individual objects or to entire bucket, and can be managed using the AWS Management Console, the AWS CLI, or the S3 API.
 
+- a set of rules
+- rules consist of actions
+- rules are applied in order
+- rules can be applied to a bucket or a prefix or object or groups of
+- transition actions move to a different storage classes
+  -transisions dont happen upward, only down toward deep archive
+- expiration actions delete the object
+
+something you need to carefully plan beforehand. 
 
 
 
