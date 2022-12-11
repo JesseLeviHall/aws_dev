@@ -33,9 +33,16 @@ Every object in e3 has an id key, when versioning is disabled, the id value is n
 When versioning is enabled, and the object is modified, the old object is ketp but a new id is given to a new version of the object. if an object is reqed without saying what version, the current version will be sent, but you can req an old version
 
 
+=================Upcloading================
+Default one stream, which is slow. You gotta shoot for multipart uploads. Min data for multipart is 100mb.
+
+transfer acceleration helps.  bucket name cant have periods, its in properties tab. 
 
 
-
+=================KMS Key Management================
+its a regional public zone service and be conneted to from anywere.  Keys never leave KMS. 
+Remember FIPS 140-2 (level 2)
+Symmetric encryption uses the same key for both encrypting and decrypting data, while asymmetric encryption uses a different key for encrypting and decrypting data. In other words, with symmetric encryption, the sender and receiver of the encrypted data must both have the same key, while with asymmetric encryption, the sender and receiver can each have their own unique keys.
 
 
 =================S3 lifecycle management================
