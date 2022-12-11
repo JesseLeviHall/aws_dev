@@ -188,9 +188,17 @@ Why use replication?
 -Global resilience CRR
 -Latency reduction - CRR
 
-===================presigned urls================
+===================pre-signed urls================
 - You can create a URL for an object you have no access to
 - whe using the URL has the same permissions as the identity that generated it (currently)
 - An access denied error could mean the generating ID never had or doesnt now have access permissions
 - Dont generate with a role - URL stopps working when the temp credentials expire
+
+enter cloudshell under the identity you want to create the url from: ex command:  aws s3 presign s3://animals4lifemedia303300004985/IMG_0808.jpeg --expires-in 180
+or go to the object and object actions drop down, share with pre-signed
+
+=========S3 Select and Glacier Select======
+configure a sql like statement to filter serverside the data you request. 
+
+
 */
