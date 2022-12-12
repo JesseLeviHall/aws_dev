@@ -212,5 +212,27 @@ S3 event notifications are a feature that allows customers to receive notificati
 Compared to EventBridge, unless specific reason not to, use EventBridge. EventBridge is a serverless event bus that makes it easy to connect your applications with data from a variety of sources, including AWS services, third-party APIs, and your own custom applications. EventBridge allows you to create rules that specify which events to route to which target, such as an AWS Lambda function or an Amazon Kinesis stream. This makes it easy to build applications that react to events in real time, without having to manage the infrastructure required to process and route those events. EventBridge can also be used to connect your applications with third-party services and applications, enabling you to easily integrate your systems with other platforms and services.
 
 =================S3 Object Lock================
+can only be enabled on a new bucket with versioning enabled. Only versions are locked. 
+
+S3 Object lock retention period is
+- 1 day to 10 years
+- compliance mode: can not be adjusted deleted or overwritten even by the root user until retention expires. 
+- governance mode: special permission can be granted allowign settings to be adjusted eg: s3:BypassGovernanceRetention permission paired with header 'bypass-governance-retention:true
+
+the effects of these types of locks can overlap
+
+S3 object lock Legal Hold:
+- versioning on or off, 
+- no retention
+- no deletes or changes until removed
+- s3PutObjectLegalHold permission is required to add or remove
+
 Amazon S3 Object Lock is a feature that enables you to store objects in an Amazon S3 bucket in a locked state, which prevents objects from being deleted or overwritten for a specified amount of time. This can be useful in situations where you want to ensure that objects in your bucket are not accidentally deleted or overwritten, such as when storing data for compliance purposes. When an object is locked, it cannot be deleted or overwritten until the lock is removed, either by the user who locked the object or by an authorized user who has permission to remove the lock. This provides an additional layer of protection for your data, helping to ensure that it remains available and unchanged for the duration of the lock period.
+
+=================Quiz================
+q: Which type of encryption is where AWS perform encryption operations but DON'T hold any keys?
+a: known as server-side encryption with customer-provided keys (SSE-C). With SSE-C, you are responsible for managing the encryption keys that are used to encrypt and decrypt the objects in your Amazon S3 bucket. AWS performs the encryption and decryption operations on your behalf, but does not have access to your keys. 
+
+q: What feature is required to allow CRR to function?
+a: versioning This is necessary for CRR to function properly, as it uses versioning to keep track of changes to the objects in the source bucket and replicate those changes to the destination bucket. 
 */
