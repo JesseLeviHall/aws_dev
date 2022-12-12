@@ -200,5 +200,18 @@ or go to the object and object actions drop down, share with pre-signed
 =========S3 Select and Glacier Select======
 configure a sql like statement to filter serverside the data you request. 
 
+=================S3 Access Logs================
+Be aware of S3 access logs. Enable logging on the source bucket.  access logs will be snached by the log delivery group and put in a target bucket. you have to mangage lifecycle of target bucket
 
+=================S3 Requester pays================
+Amazon Web Services (AWS) Requester Pays is a feature that allows the owner of the S3 bucket to transfer the cost of the data transfer to the user who is making the request. This means that the person who is making the request to access the data in the bucket will be charged for the data transfer, rather than the owner of the bucket. This can be useful in situations where the data in the bucket is being accessed by a large number of users, and the owner of the bucket wants to avoid incurring high data transfer costs. To use Requester Pays, the owner of the bucket must enable the feature, and the user making the request must specify that they are willing to pay for the data transfer.
+
+==========event notifications==================
+S3 event notifications are a feature that allows customers to receive notifications when certain events occur in their S3 buckets. These events can be triggered by actions such as object creation, object deletion, and object restoration. Customers can use event notifications to trigger actions in other AWS services, such as Amazon Simple Queue Service (SQS), Amazon Simple Notification Service (SNS), AWS Lambda, and Amazon Kinesis Data Firehose. This can be useful for automating workflows, such as triggering a Lambda function to process an object when it is created in an S3 bucket.
+
+Compared to EventBridge, unless specific reason not to, use EventBridge. EventBridge is a serverless event bus that makes it easy to connect your applications with data from a variety of sources, including AWS services, third-party APIs, and your own custom applications. EventBridge allows you to create rules that specify which events to route to which target, such as an AWS Lambda function or an Amazon Kinesis stream. This makes it easy to build applications that react to events in real time, without having to manage the infrastructure required to process and route those events. EventBridge can also be used to connect your applications with third-party services and applications, enabling you to easily integrate your systems with other platforms and services.
+
+
+=================S3 Object Lock================
+Amazon S3 Object Lock is a feature that enables you to store objects in an Amazon S3 bucket in a locked state, which prevents objects from being deleted or overwritten for a specified amount of time. This can be useful in situations where you want to ensure that objects in your bucket are not accidentally deleted or overwritten, such as when storing data for compliance purposes. When an object is locked, it cannot be deleted or overwritten until the lock is removed, either by the user who locked the object or by an authorized user who has permission to remove the lock. This provides an additional layer of protection for your data, helping to ensure that it remains available and unchanged for the duration of the lock period.
 */
