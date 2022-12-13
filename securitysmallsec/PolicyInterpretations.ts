@@ -48,4 +48,28 @@ SCP = service control policy
 
 ******************
 CloudHSM is required to achieve compliance with certain security standards such as FIPS 140-2 Level 3
+while KMS is L2 Overall.
+
+HSM stands for 
+Hardware Security Module
+these can be provisioned on premises - fully customer managed. 
+
+cloud HSM uses industry standard APIs - PKCS#11, Java Cryptography extensions(JCE) Microsoft CryptoNG(CNG) libraries
+
+they are not highly available they run in one AZ. they can be kept in sync with clusters
+
+KMS can use CloudHSM as a custom key store
+
+by default there is no integration btw HSM and S3-SSE
+but you can use HSM on the client side before uploadign to s3
+
+HSM Can offload the ssl/tls processing for web servers
+
+HSM can enable transparent data encryption TDE for Oracle Databases
+
+HSM can be used to encrypt private keys for an issuing certificate authority (CA)
+
+Basically HSM is good for integrating encryption with things outside of aws products and services
+
+KMS is good for encrypting data within aws products and services
 */
