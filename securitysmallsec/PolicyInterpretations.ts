@@ -71,7 +71,7 @@ HSM can be used to encrypt private keys for an issuing certificate authority (CA
 
 Basically HSM is good for integrating encryption with things outside of aws products and services
 
-KMS is good for encrypting data within aws products and services.
+KMS is good for encrypting data within aws products and services
 
 
 */
