@@ -7,4 +7,6 @@ vpc subnets
 
 vpc routing
 
+internet gateway
+
 */
