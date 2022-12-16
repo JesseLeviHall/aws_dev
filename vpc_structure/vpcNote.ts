@@ -5,4 +5,6 @@ VPC Design:
 
 vpc subnets
 
+vpc routing
+
 */
