@@ -9,4 +9,6 @@ vpc routing
 
 internet gateway
 
+stateful vs stateless firewalls
+
 */
