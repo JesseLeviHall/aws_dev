@@ -1,5 +1,8 @@
 /* 
 This lesson steps through the design choices around VPC design and IP planning.
 
+A VPC design is defined as
+
+
 
 */
