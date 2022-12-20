@@ -13,5 +13,8 @@ a: a nat instance is a virtual machine that you launch into your public subnet. 
 
 
 q: what is a nat gateway?
-a: a nat gateway is a managed service that makes it easy for you to connect to the internet from instances in a private subnet in your vpc. a nat gateway forwards traffic from instances in your private subnet to the internet or other aws services, and then sends the response back to the instances. a nat gateway must have a public ip address, and it must be associated with an elastic ip address. you can launch a nat gateway using the amazon vpc console, the aws cli, or the aws api. you can also launch a nat gateway using a cloudformation template. you can launch a nat gateway using a dedicated ip address. you can also launch a nat gateway using a dedicated host.
+a: a nat gateway is a managed service that makes it easy for you to connect to the internet from instances in a private subnet in your vpc.
+
+q: what is a vpc endpoint?
+a: a vpc endpoint enables you to privately connect your vpc to supported aws services and VPC endpoint services powered by PrivateLink without requiring an internet gateway, nat device, vpn connection, or AWS Direct Connect connection. Instances in your vpc do not require public ip addresses to communicate with resources in the service. Traffic between your vpc and the other service does not leave the Amazon network.
 */
