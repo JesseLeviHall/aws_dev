@@ -10,4 +10,8 @@ a: a dedicated ip address is a static ip address that is associated with your aw
 
 q: what is a nat instance?
 a: a nat instance is a virtual machine that you launch into your public subnet. the nat instance forwards traffic from instances in your private subnet to the internet or other aws services, and then sends the response back to the instances. a nat instance must have a public ip address, and it must be associated with an elastic ip address. you can launch a nat instance using the amazon ec2 console, the aws cli, or the aws api. you can also launch a nat instance using a cloudformation template. you can launch a nat instance using a dedicated ip address. you can also launch a nat instance using a dedicated host.
+
+
+q: what is a nat gateway?
+a: a nat gateway is a managed service that makes it easy for you to connect to the internet from instances in a private subnet in your vpc. a nat gateway forwards traffic from instances in your private subnet to the internet or other aws services, and then sends the response back to the instances. a nat gateway must have a public ip address, and it must be associated with an elastic ip address. you can launch a nat gateway using the amazon vpc console, the aws cli, or the aws api. you can also launch a nat gateway using a cloudformation template. you can launch a nat gateway using a dedicated ip address. you can also launch a nat gateway using a dedicated host.
 */
