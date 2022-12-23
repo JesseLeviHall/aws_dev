@@ -18,5 +18,6 @@ a: a nat gateway is a managed service that makes it easy for you to connect to t
 q: what is a vpc endpoint?
 a: a vpc endpoint enables you to privately connect your vpc to supported aws services and VPC endpoint services powered by PrivateLink without requiring an internet gateway, nat device, vpn connection, or AWS Direct Connect connection. Instances in your vpc do not require public ip addresses to communicate with resources in the service. Traffic between your vpc and the other service does not leave the Amazon network.
 
-aws vpc use same default ip range as azure 
+aws vpc use same default ip range as azure production. 
+aws vpc minimum ip /28 (16IP's) at most /16 (65536 IP's)
 */
