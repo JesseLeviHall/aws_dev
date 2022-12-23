@@ -30,15 +30,38 @@ vpc is a logical construct, not a physical construct.
 ==============VPC subnets=================
 Subnets are the building blocks of a VPC. They are the smallest network unit that can be created in a VPC. 
 
-Subnets are used to divide a VPC into smaller networks. Each subnet must be in a single Availability Zone, meaning they are AZ resilient
+*****Subnets are used to divide a VPC into smaller networks. Each subnet must be in a single Availability Zone, meaning they are AZ resilient. Each AZ can have lots of subnets though.
 
+each subnet gets an IPv4 CIDR by default, has to be within the range allocated to the vpc, cannot overlap with other subnets.
 
+Optional IPv6 CIDR (/64 subset of the  /56 pvc = space for 256 IPs)
 
-
+at default subnets in a vpc can communicate with eachother. 
 
 web tier is a public subnet, app tier is a private subnet, database tier is a private subnet.
 
+Every subnet has 5 reserved IPs:
+-1st IP is the network address +0
+-2nd IP is the default gateway for routing the subnet +1
+-3rd IP is the default gateway for DNS +2
+-4th IP is the reserved for future use IP +3
+-5th IP is the broadcast address (last IP in subnet)
+
+-assign public IP address is a setting that enables auto assignment of public IP addresses to instances launched into the subnet.
+- auto assign IPv6 is also a setting
+-Map public IP on launch is a setting that enables auto assignment of public IP addresses to instances launched into the subnet.
+-configure DHCP is a setting that enables DHCP options for the subnet. DHCP options are the configuration settings for DHCP. 
+DHCP stands for 
+-Dynamic Host Configuration Protocol, It is a protocol used on TCP/IP networks to automatically assign an IP address to a computer from a pool of available addresses.
+
+
+
 ===========setup default VPC===================
+- from vpc dashboard, we create vpc, IPv4 CIDRs 10.16.0.0/16, IPv6 CIDR amazon managed.
+- 1st subnet: from vpc dashboard, we create subnet, select the vpc we created. subnet name sn-reserved-A, us-east-1a, 
+10.16.0.0/20.  Select IpV6 /56 and type 00 for AZ (A).
+- 2nd subnet: click add new subnet at the bottom, add sn-db-A, us-east-1a, 10.16.16.0/20, IpV6 /56 and type 01 for AZ (A) as well.  Do this for app and web. that sets up AZ-1. 
+
 In planning decide early whether to choose default or dedicated tenancy. 
 -Default tenancy is the default, and is the best choice for most workloads.
 -Dedicated tenancy is best for workloads that require dedicated hardware.
