@@ -1,12 +1,12 @@
 /* 
 This lesson steps through the design choices around VPC design and IP planning.
-Nat
+
 
 q: what is a vpc?
 a: a virtual private cloud is a virtual network dedicated to your aws account. it is logically isolated from other virtual networks in the aws cloud. you can launch your aws resources, such as ec2 instances, into your vpc. you can configure your vpc to be a single tier or multi-tier architecture. you can configure your vpc to span multiple availability zones. you can also create a hardware virtual private cloud (hvpc) to connect your on-premises network to your vpc using a dedicated hardware connection.
 
-q: what is a dedicated ip?
-a: a dedicated ip address is a static ip address that is associated with your aws account. you can associate a dedicated ip address with an elastic ip address or an instance in your vpc. you can also associate a dedicated ip address with an instance in your on-premises network using a hardware virtual private cloud (hvpc). dedicated ip addresses are available in the us east (n. virginia), us west (oregon), us west (n. california), eu (ireland), eu (frankfurt), asia pacific (singapore), asia pacific (sydney), asia pacific (tokyo), and south america (sao paulo) regions.
+vpc's are regionally isolated and regionally resilient
+
 
 q: what is a nat instance?
 a: a nat instance is a virtual machine that you launch into your public subnet. the nat instance forwards traffic from instances in your private subnet to the internet or other aws services, and then sends the response back to the instances. a nat instance must have a public ip address, and it must be associated with an elastic ip address. you can launch a nat instance using the amazon ec2 console, the aws cli, or the aws api. you can also launch a nat instance using a cloudformation template. you can launch a nat instance using a dedicated ip address. you can also launch a nat instance using a dedicated host.
@@ -24,4 +24,30 @@ aws Services run from within subnets in the vpc, not from the vpc itself. A subn
 
 starting tiers of a vpc are web, App, database, spare. 
 web tier is public facing, app tier is private facing, database tier is private facing.
+
+vpc is a logical construct, not a physical construct.
+
+==============VPC subnets=================
+Subnets are the building blocks of a VPC. They are the smallest network unit that can be created in a VPC. 
+
+Subnets are used to divide a VPC into smaller networks. Each subnet must be in a single Availability Zone, meaning they are AZ resilient
+
+
+
+
+
+web tier is a public subnet, app tier is a private subnet, database tier is a private subnet.
+
+===========setup default VPC===================
+In planning decide early whether to choose default or dedicated tenancy. 
+-Default tenancy is the default, and is the best choice for most workloads.
+-Dedicated tenancy is best for workloads that require dedicated hardware.
+-Host tenancy is best for workloads that require dedicated hardware and can be interrupted.
+
+-IPv6 private CIDR Blocks are the main method for vpc network. A pool comes standard
+-IPv4 public CIDR Blocks are the main method for vpc network. these are optional configurations
+-DNS privided by r53 and available on the base IP of the vpc + 2
+****** enable DnsHostnames is a setting that enables instances DNS Names
+****** enable DnsSupport is a setting that enables DNS resolution in vpc. if true the DNS r53 option on the base IP +2 is not available. 
+
 */
