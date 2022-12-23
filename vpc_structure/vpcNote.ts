@@ -20,5 +20,5 @@ a: a vpc endpoint enables you to privately connect your vpc to supported aws ser
 
 aws vpc use same default ip range as azure production. 
 aws vpc minimum ip /28 (16IP's) at most, maximum /16 (65536 IP's)
-aws Services run from within subnets in the vpc, not from the vpc itself.
+aws Services run from within subnets in the vpc, not from the vpc itself. A subnet rund in one availability zone, so you have to decide how many az's to set up. 
 */
