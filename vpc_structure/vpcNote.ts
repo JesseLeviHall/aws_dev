@@ -18,9 +18,5 @@ a: a nat gateway is a managed service that makes it easy for you to connect to t
 q: what is a vpc endpoint?
 a: a vpc endpoint enables you to privately connect your vpc to supported aws services and VPC endpoint services powered by PrivateLink without requiring an internet gateway, nat device, vpn connection, or AWS Direct Connect connection. Instances in your vpc do not require public ip addresses to communicate with resources in the service. Traffic between your vpc and the other service does not leave the Amazon network.
 
-q: what is a vpc peering connection?
-a: a vpc peering connection is a networking connection between two vpcs that enables you to route traffic between them privately. instances in either vpc can communicate with each other as if they are within the same network. you can create a vpc peering connection between your own vpcs, or with a vpc in another aws account. you cannot peer with a vpc in a different region.
-
-q: what is a hardware virtual private cloud (hvpc)?
-a: a hardware virtual private cloud (hvpc) is a dedicated network connection between your on-premises network and your vpc. you can use hvpc to extend your existing on-premises network into the aws cloud. you can also use hvpc to establish a private connection between your vpc and another aws account. hvpc is available in the us east (n. virginia), us west (n. california), us west (oregon), eu (ireland), eu (frankfurt), asia pacific (sydney), asia pacific (tokyo), and south america (sao paulo) regions.
+aws vpc use same default ip range as azure 
 */
