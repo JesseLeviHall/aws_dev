@@ -110,7 +110,33 @@ if you dont associate a subnet with a route tabel id defaults to the main route 
 -Security Groups (SGs) are another security feature of AWS VPC ... only unlike NACLs they are attached to AWS resources, not VPC subnets.
 -SGs offer a few advantages vs NACLs in that they can recognize AWS resources and filter based on them, they can reference other SGs and also themselves.
 -But.. SGs are not capable of explicitly blocking traffic - so often require assistance from NACLs.
--They are stateful, meaning that if a response is sent to an instance, the response will go out the same interface that the request came in on automatically
+-They are stateful, meaning that if a response is sent to an instance, the response will go out the same interface that the request came in on automatically.
+-They are region specific.
+-No explicit Deny...only allow or implicit deny. If you arent explicitly allowing traffic you are implicitly denying it. so no blocking bad actors explicitly.
+-They are NOT attached to instances they arttached to elastic network interfaces (ENI's) so they support IP/CIDR and logical resources including itself.
+-Since logical referencing scales, any new instances which use teh web layer SG are allowed to communicate with any instances using the App layer SG without any re configure, and IP's automatic. Allows for auto scaling instances to maintain high availability. 
 
 ===================NAT Gateway=======================
+Network Address Translation - Only required to be able to use IPv4 addresses to be used to connect in an outgoing only way to the AWS public zone and public internet.
+-All IPv6 addresses in AWS are already publicly routable, so you dont require NAT, they connect directly with IGW for bi-directional connectivity. NAT gatways dont work at all with IPv6
+- Set of different processes which can adjust IP packets by changing their source or destination IP addresses.
+- NAT is used to allow a private network to communicate with the internet. The internet Gateway is a static NAT.
+- NAT Gateway is a dynamic NAT. It is a managed service in a VPC that allows instances in a private subnet to connect to the internet or other AWS services, but prevents the internet from initiating a connection with those instances.
+- Gives your private CIDR range OUTGOING internet access ****
+
+-Runs from public subnet
+-Uses elastic IP
+-AZ resilient, to be regionally resilient = NATGW and route table in each AZ
+
+-IP masquerade: a technique used to hide the source IP address of a packet. It is used to hide the source IP address of a packet when it is sent to a network that does not support the source IP address.
+
+2 charging elements: 4cents per hour and 4cents per gig data transfer. 
+
+*****Nat Gateway cannot be used as a Bastion host because it cannot do port-forwarding since you cant connect to its operating system.
+
+NAT instances are a different thing runing in EC2:
+-They are not managed by AWS, but by you, can be used as a bastion host, as you control ACLs or SGs for the subnet or the instance is in. 
+but...
+*****NAT Gateways dont support security groups, you can only use NACLs on nat gateways
+
 */
