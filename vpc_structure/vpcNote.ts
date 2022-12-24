@@ -119,6 +119,7 @@ if you dont associate a subnet with a route tabel id defaults to the main route 
 ===================NAT Gateway=======================
 Network Address Translation - Only required to be able to use IPv4 addresses to be used to connect in an outgoing only way to the AWS public zone and public internet.
 -All IPv6 addresses in AWS are already publicly routable, so you dont require NAT, they connect directly with IGW for bi-directional connectivity. NAT gatways dont work at all with IPv6
+- for Outgoing Only access using IPv6 you set up an ::/0 egress only IGW
 - Set of different processes which can adjust IP packets by changing their source or destination IP addresses.
 - NAT is used to allow a private network to communicate with the internet. The internet Gateway is a static NAT.
 - NAT Gateway is a dynamic NAT. It is a managed service in a VPC that allows instances in a private subnet to connect to the internet or other AWS services, but prevents the internet from initiating a connection with those instances.
@@ -138,5 +139,28 @@ NAT instances are a different thing runing in EC2:
 -They are not managed by AWS, but by you, can be used as a bastion host, as you control ACLs or SGs for the subnet or the instance is in. 
 but...
 *****NAT Gateways dont support security groups, you can only use NACLs on nat gateways
+
+-when we created Nat gaways in demo, creating the tables, edit the tables to route 00.0..0. to NatGW for each tier a,b,c, then explicitly associate the tables with the subnets
+
+-A subnet can have one route table attached
+-A route table can be associated with multiple subnets
+
+
+==============Quiz===============
+q: what are true about both default and custom vpc
+a: regions can only have 1 default vpc and many custom vpcs, custom vpcs allow flixible network configuration, the default vpc has a fixed scheme, some services can behave oddly if the default vpc doesnt exist, default vpcs can be recreated. 
+
+q: what are the valid sizes of a VPC 
+a: max/16 & Min/28
+
+q: what is the min and max size of a vpc subnet?
+a: /28 and /16
+
+a: how many IP addresses are reserved in each vpc?
+a: 5
+
+q: How can an Internet Gateway (IGW) be configured to be highly available
+a: it is HA by default if attached to a vpc
+
 
 */
