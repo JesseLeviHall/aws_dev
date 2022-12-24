@@ -89,6 +89,16 @@ for an ec2 example, a record is created which the IGW maintains - it links the i
 -when you create an ec2 instance, the public IPv4 is not configures in the OS.
 -Bastion hosts and Jumpbox are practiclly the same - and instance inside a public subnet, used to manage incoming connections and facilitate access to internal VPC resources. 
 -When you create a NAT gateway, it is created in a public subnet, and it is used to allow instances in a private subnet to connect to the internet.
-[DEMO] we implement an Internet Gateway, Route Tables and Routes within the Animals4life VPC to support the WEB public subnets. Create IGW, a4l-vpc1-igw name, attach it to a4l vpc. Then create a route table, 
+[DEMO] we implement an Internet Gateway, Route Tables and Routes within the Animals4life VPC to support the WEB public subnets. Create IGW, a4l-vpc1-igw name, attach it to a4l vpc. Then create a route table, edit subnet associattions, select the three web subnets webA b C, edit routes in bottom tabs and add route, for IPv4 add 0.0.0.0/0 (all), add the IGW as the target IP. for IPv6 add ::/0 (all) and the target IGW.
+this creates two default routes that send any unknown traffic to the associated subnets to the ineternet gateway. Then we need to ensure that any resources launched in the web a b or c subnets are allocated with public IPv4 addresses. To do that go to subnets on the left, select web a b c, actions, edit settings, enable uato assign public IPv4.  Now if we go to create an ec2 scroll down to network settings and select the vpc, and the subnet webA and make sure auto assign IPs are enabled, and add a security group and launch. In instances, right click the instance and hit connect.  select it and in the detials panel below
 
+if you dont associate a subnet with a route tabel id defaults to the main route table
+
+****stateful v stateless firewalls: 
+stateless: doesnt distiguish state of connection (inbound v outbound are two seperate unrelated parts)
+
+
+=================NAT Gateway=========================
+
+===================NAT Gateway=======================
 */
