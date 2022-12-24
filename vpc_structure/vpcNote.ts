@@ -95,7 +95,8 @@ this creates two default routes that send any unknown traffic to the associated 
 if you dont associate a subnet with a route tabel id defaults to the main route table
 
 ****stateful v stateless firewalls: 
-stateless: doesnt distiguish state of connection (inbound v outbound are two seperate unrelated parts)
+-stateless: doesnt distiguish state of connection (inbound v outbound are two seperate unrelated parts) requires rules for each thing = more overhead and require a full range of ephemeral ports.
+-stateful: distiguishes state of connection (inbound v outbound are two parts of the same connection) rules will allow or not automatically = less overhead and requires a small range of ephemeral ports.
 
 
 =================NAT Gateway=========================
