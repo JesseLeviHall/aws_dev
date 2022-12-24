@@ -99,7 +99,18 @@ if you dont associate a subnet with a route tabel id defaults to the main route 
 -stateful: distiguishes state of connection (inbound v outbound are two parts of the same connection) rules will allow or not automatically = less overhead and requires a small range of ephemeral ports.
 
 
-=================NAT Gateway=========================
+=================Network Access Control Lists====================
+-ACLs are used to control traffic between VPC subnets and internet gateways, Not controlling data in the same subnet. Every subnet has an ACL, defualt is deny all allow all, effectively doing nothing.
+-two rules:outbound traffic rules and inbound traffic rules = Stateless
+ This gives opportunity to explictly allow or explicitly deny some connections (a unique ability) but gets really complex in a multitier architecture with custom ACL's. Secruity groups can help do this easier. Typically use ACL to deny all, and security groups to allow whitelists
+-A network access control list (ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security groups in order to add an additional layer of security to your VPC. 
+-ACLs are region specific.
+
+=================VPC Security Groups====================
+-Security Groups (SGs) are another security feature of AWS VPC ... only unlike NACLs they are attached to AWS resources, not VPC subnets.
+-SGs offer a few advantages vs NACLs in that they can recognize AWS resources and filter based on them, they can reference other SGs and also themselves.
+-But.. SGs are not capable of explicitly blocking traffic - so often require assistance from NACLs.
+-They are stateful, meaning that if a response is sent to an instance, the response will go out the same interface that the request came in on automatically
 
 ===================NAT Gateway=======================
 */
