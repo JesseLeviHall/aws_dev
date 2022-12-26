@@ -147,15 +147,11 @@ Three types of performance terms:
     - 1GB to 16TB
     - Base price 20% less tha gp2 at base rate
     - Simmilar use cases, (databases) can provide higher performance as hight costs. 
-    
+
 - Provisioned IOPS SSD (IO1 and IO2) - designed for I/O intensive workloads such as large relational or NoSQL databases.
     - IOPS are configurable independent of the size of the volume
     - Designed for super hight performance situations (low latentcy) 4x IOPS per vol vs GP2/3
     - 4GB to 16TB
-    -----------Max performance-----------------
-    - io1: 260,000 IOPS & 7,500MB/s
-    - io2: 160,000 IOPS & 4,750MB/s
-    - io2 BLock Express: 260,000 IOPS & 7500MB/s
   
 - Throughput Optimized HDD (ST1) - big data, data warehouses, log processing. A low-cost HDD designed for frequently accessed, throughput-intensive workloads.
     - faster but not very agile
@@ -166,6 +162,70 @@ Three types of performance terms:
     - 125GB to 16 TB also
 - Magnetic (standard) - lowest cost per GB of all EBS volume types that is bootable.
 
+  -----------Max performance-----------------
+    Per Instance:
+    - io1: 260,000 IOPS & 7,500MB/s
+    - io2: 160,000 IOPS & 4,750MB/s
+    - io2 BLock Express: 260,000 IOPS & 7500MB/s
+    Per Volume: 
+    (GP2 and GP3) : up to 16000 IOPS
+    (IO1/2) : up to 64,000 IOPS per EBS volume with bigger EC2's. 256,000 with IO2 block express)
+
+    (Another option You can take lots of individual EBS volumes and create a RAID0 set, combined up to 260,000 IOPS)
+    ***** 260,000 IOPS is max performance level of any EC2 with EBS**** (more available with instance store)
+
+=============Instance Store Volumes===============
+- Instance store volumes are physically attached to the host computer. thus provide highest performance in AWS, included in the price of the instance. You have to attach them at launch, cannot add them afterward. 
+- Instance store volumes are temporary storage that is erased when the instance is stopped or terminated.
+
+An instance store provides temporary block-level storage for your instance. This storage is located on disks that are physically attached to the host computer. Instance store is ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content, or for data that is replicated across a fleet of instances, such as a load-balanced pool of web servers.
+
+An instance store consists of one or more instance store volumes exposed as block devices. The size of an instance store as well as the number of devices available varies by instance type.
+
+The virtual devices for instance store volumes are ephemeral[0-23]. Instance types that support one instance store volume have ephemeral0. Instance types that support two instance store volumes have ephemeral0 and ephemeral1, and so on.
+
+EX: D3 = 4.6 GB/s throughput
+    I3 = 16 Gb/s of sequential throughput. 
+
+    --------choosing btw EBS and instance store------
+    - EBS:
+        - persistent
+        - backed up
+        - replicated
+        - AZ resilient
+        - shared
+        - encrypted
+        - a volume
+        - a snapshot
+        - a backup
+        - a file system
+        - a mount point
+    - Instance Store:
+        - ephemeral
+        - local to the host
+        - not backed up
+        - not replicated
+        - not AZ resilient
+        - not persistent
+        - not shared
+        - not encrypted
+        - not a volume
+        - not a snapshot
+        - not a backup
+        - not a file system
+        - not a mount point
+
+  - For priority on persistence and resilience, Storage Isolaation from instance lifecycle ....EBS
+  - If you need resilience but the app has built in replication...it depends
+  - If you need super high performance...Instance Store
+  - If you need low cost...Instance Store
+  - If you need to share data between instances...EBS
+  - If you need to share data between AZs...EBS
+   Gerenally Speaking ********************
+   Cheap = ST1 or SC1
+   Throughput ... streaming... ST1
+   Boot...NOT ST1 or SC1
+  
 
 
 
