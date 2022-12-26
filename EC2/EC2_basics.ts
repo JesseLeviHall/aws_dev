@@ -29,7 +29,102 @@ connection caviat: ec2 instance connect wont work if your security group only al
 What you can do is add allow connect from the aws service ip for that region, and then ec2 instance connect will work, this is a good way to give a large group access to an instance connection because 
 you can just add the aws service ip to the security group and then you dont have to worry about updating the security group every time you change your IP.
 Otherwise, use sessions to connect to public or private instances
-================
+
+=================Storage for instances===================
+Block Storage - volume presented to the OS as collection of blocks...no structure provided. mountable, bootable. Hard disks and SSDs. 
+
+File Storage - volume presented to the OS as a file system. mountable, NOT bootable. File systems. (ready made file sys)
+
+Object Storage - volume presented to the OS as a collection of objects. not mountable, not bootable. S3 buckets.
+
+Three types of performance terms:
+- IO (Block) Size - size of data blocks writing to disk
+- IOPS - input/output operations per second
+- throughput - amount of data that can be read or written per second (MB/s)
+
+- ec2 instance store: (fast)
+    - ephemeral storage,
+    - local to the host,
+    - not backed up,
+    - not replicated,
+    - not AZ resilient,
+    - not persistent,
+    - not shared,
+    - not encrypted,
+    - not a volume,
+    - not a snapshot,
+    - not a backup,
+    - not a file system,
+    - not a mount point,
+  
+- Network attached storage:
+    - EBS
+    - EFS
+    - FSx for Windows
+    - FSx for Lustre
+
+- EBS: (slow)
+    - persistent storage,
+    - network attached,
+    - backed up,
+    - replicated,
+    - AZ resilient,
+    - persistent,
+    - shared,
+    - encrypted,
+    - a volume,
+    - a snapshot,
+    - a backup,
+    - a file system,
+    - a mount point,
+
+- EFS: (slow)
+    - persistent storage,
+    - network attached,
+    - backed up,
+    - replicated,
+    - AZ resilient,
+    - persistent,
+    - shared,
+    - encrypted,
+    - a volume,
+    - a snapshot,
+    - a backup,
+    - a file system,
+    - a mount point,
+
+- FSx for Windows: (slow)
+    - persistent storage,
+    - network attached,
+    - backed up,
+    - replicated,
+    - AZ resilient,
+    - persistent,
+    - shared,
+    - encrypted,
+    - a volume,
+    - a snapshot,
+    - a backup,
+    - a file system,
+    - a mount point,
+
+- FSx for Lustre: (slow)
+    - persistent storage,
+    - network attached,
+    - backed up,
+    - replicated,
+    - AZ resilient,
+    - persistent,
+    - shared,
+    - encrypted,
+    - a volume,
+    - a snapshot,
+    - a backup,
+    - a file system,
+    - a mount point,
+
+=================Elastic Block Store===================
+- EBS is a block storage service
 
 
 */
