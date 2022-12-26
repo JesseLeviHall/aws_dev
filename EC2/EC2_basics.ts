@@ -124,7 +124,49 @@ Three types of performance terms:
     - a mount point,
 
 =================Elastic Block Store===================
-- EBS is a block storage service
+- EBS is a block storage service - raw disk allocations (volume) can be encrypted using KMS
+- EBS volumes are AZ resilient - if AZ fails, volume fails
+- attatched to ONE ec2 or other service over a storage network. 
+- Can be detached from on instance and reatached to another = persistent. 
+- EBS volumes are not shared between instances.
+- Snapshot (backup) into S3. Cerate volume from snapshot allows to migrate between AZs
+- usually billed on per Gigabyte basis
+
+-----------------Volume types-----------------
+- General Purpose SSD (GP2) - balances price and performance for a wide variety of workloads.
+    - 1GB to 16TB
+    - An IO Credit is 16KB. IOPS Assume 16KB. 
+    - 1 IOPS is 1 IO in 1 second. 
+    - IO Credit Bucket Capacity 5.4 Million fills at rate of baseline performance, minimum 100 IO credits per second. 
+    - 3 IOPS per GB with a baseline of 100 IOPS and a burst balance of 3000 IOPS.
+    - Basically, have to ensure you arent depleting the bucket in normal operation. 
+    - Good for boot volumes, low-latency interactive apps, dev and test env's. 
+    - currently the default.
+  - (GP3)
+    - starts with 3,000 IOPS & 125 MB/s as standard
+    - 1GB to 16TB
+    - Base price 20% less tha gp2 at base rate
+    - Simmilar use cases, (databases) can provide higher performance as hight costs. 
+    
+- Provisioned IOPS SSD (IO1 and IO2) - designed for I/O intensive workloads such as large relational or NoSQL databases.
+    - IOPS are configurable independent of the size of the volume
+    - Designed for super hight performance situations (low latentcy) 4x IOPS per vol vs GP2/3
+    - 4GB to 16TB
+    -----------Max performance-----------------
+    - io1: 260,000 IOPS & 7,500MB/s
+    - io2: 160,000 IOPS & 4,750MB/s
+    - io2 BLock Express: 260,000 IOPS & 7500MB/s
+  
+- Throughput Optimized HDD (ST1) - big data, data warehouses, log processing. A low-cost HDD designed for frequently accessed, throughput-intensive workloads.
+    - faster but not very agile
+    - sequential access not good at random access. 
+    - 125GB - 16TB, Max 500 IOPS at 1MB blocks
+- Cold HDD (SC1) - lowest cost HDD volume for infrequently accessed workloads.  The lowest-cost HDD design for less frequently accessed workloads.
+    - Max 250 IOPS at 1MB blocks
+    - 125GB to 16 TB also
+- Magnetic (standard) - lowest cost per GB of all EBS volume types that is bootable.
+
+
 
 
 */
