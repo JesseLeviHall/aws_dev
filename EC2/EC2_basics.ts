@@ -24,6 +24,12 @@ Naming example R5dn.8xlarge (this is an instance type) and =
 - 8 = size
 - xlarge = size
 
+===============
+connection caviat: ec2 instance connect wont work if your security group only allows connections from my local IP.
+What you can do is add allow connect from the aws service ip for that region, and then ec2 instance connect will work, this is a good way to give a large group access to an instance connection because 
+you can just add the aws service ip to the security group and then you dont have to worry about updating the security group every time you change your IP.
+Otherwise, use sessions to connect to public or private instances
+================
 
 
 */
