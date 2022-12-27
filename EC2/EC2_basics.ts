@@ -226,7 +226,15 @@ EX: D3 = 4.6 GB/s throughput
    Throughput ... streaming... ST1
    Boot...NOT ST1 or SC1
   
-
+==============SnapShots================
+- Snapshots are point in time copies of volumes, usually stored on S3. 
+- Since EBS volumes are AZ reslilient, snapshots become region resilient. 
+- Snapshots are incremental, only changed blocks are stored. each snapshot is still selfsuficient as a back up though. 
+- Volumes can be recreated from a snapshot, then. this allows for a cross region copy
+- Up to 4 snaps per region
+- FSR allows immediate restore.  Otherwise, snaps restore lazily. 
+-Gigbyte-month billing means:
+    - after initial store, just billed for the space the increments take up on top of the referenced snaps previously
 
 
 */
