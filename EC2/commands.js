@@ -12,7 +12,7 @@ sudo mount /dev/xvdf /ebstest
 cd /ebstest
 sudo nano amazingtestfile.txt
 add a message
-save and exit
+save (ctrl o) and exit (ctrl x)
 ls -la
 
 ## Reboot Instance 1

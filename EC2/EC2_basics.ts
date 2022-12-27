@@ -236,5 +236,21 @@ EX: D3 = 4.6 GB/s throughput
 -Gigbyte-month billing means:
     - after initial store, just billed for the space the increments take up on top of the referenced snaps previously
 
+      [ASSOCIATESHARED] [DEMO] EBS Volumes - PART2
+Create an EBS Volume
+Mount it to an EC2 instance
+Create and Mount a file system
+Generate a test file
+Migrate the volume to another EC2 instance in the same AZ
+verify the file system and file are intact
+Create a EBS Snapshot from the volume
+Create a new EBS Volume in AZ-B
+Verify the filesystem and file are intact
+Copy the snapshot to another region
+Create an EC2 instance with instance store volumes
+Create a filesystem and test file
+Restart instance and verify the file system is intact
+Stop and Start the instance
+Verify the file system is no longer present - new EC2 Host.
 
 */
