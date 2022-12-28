@@ -328,4 +328,7 @@ aws/<alias>
 
 **********AMI's are regional. You have to copy an AMI to another region to use it there, and a copied AMI is a completely different AMI than the original. 
 
+Once you create an AMI and right click select permissions, by default the AMI is private - meaning 
+only the account that created the AMI can use it. If you set the permissions to public, it means any account can use it, and EBS snapshots will then be available to anyone. Better option is to whitelist accounts and orgs that can access the AMI
+
 */ 
