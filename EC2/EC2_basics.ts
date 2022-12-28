@@ -252,5 +252,69 @@ Create a filesystem and test file
 Restart instance and verify the file system is intact
 Stop and Start the instance
 Verify the file system is no longer present - new EC2 Host.
+=================
 
-*/
+Reboot/restarting ec2 is very different from stopping and starting.  stop and start usually changes it ipv4 it is hosted on, so the instance store will be lost. However, rebooting an instance will usully maintain the same ip host, so it might work. 
+
+=====EBS Encryption=============
+- EBS encryption Keys do not persist if the ec2 host IP is changed due to stop/start
+- EBS encryption keys are not shared between AZs
+- the same keys are used for snapshots of the vulumes they were used to encrypt. There is no cost so it kinda should be a default. 
+- Accounts can be set to encrypt by default - default KMS Key
+Otherwise Choose a KMS Key to use for EBS
+- Each Volume uses 1 unique Data Encryption Key
+- Each Snapshot uses 1 unique Data Encryption Key, a new volume from that snapshot will use the same keys.
+- Once a volume is encrypted it cant be returned to unencrypted. 
+- Once a volume is encrypted, it can only be attached to instances that support EBS encryption.
+- EBS encryption is not supported on all instance types.
+- The OS of the ec2 isnt aware of the encryption, it just sees plain text, no performance loss
+
+q: will a vulume from an encrypted snapshot use the same keys?
+a: yes, it will use the same keys.
+
+=============Network Interfaces, Instance IPS, and DNS===========
+****************
+(When you launch a new Amazon Elastic Compute Cloud (Amazon EC2) instance, it is automatically assigned two IP addresses: a private IP address and a public IP address.
+
+The private IP address is a unique IP address that is assigned to the instance within the Amazon Virtual Private Cloud (Amazon VPC) that it belongs to. It is used to communicate with other resources within the VPC, such as other EC2 instances, RDS databases, and VPC resources.
+
+The public IP address is a unique IP address that is assigned to the instance when it is launched. It is used to communicate with the internet and is accessible from the internet. The public IP address can be either an Elastic IP address (EIP) or a public IP address from the Amazon pool of public IP addresses.
+
+If you choose to use an EIP, it will be automatically associated with the instance when it is launched. If you choose to use a public IP address from the Amazon pool of public IP addresses, a new public IP address will be automatically assigned to the instance when it is launched.
+
+You can also use a network interface to assign additional private and public IP addresses to an EC2 instance.)
+
+- Elastic Network Interfaces (ENI) are virtual network cards that can be attached to EC2 instances. Every instance comes with one (primary)
+- ENI can be detached and attached to other instances, within the same AZ but can be in other subnets. 
+- they have a MAC address
+- they have a private IP address, there can be one elastic IP per private IPv4 address. 0 or more IPv6, these are default public only
+- they have a security group attached to the ivterface, so You have to set different Ipv4 via an ENI for different security groups
+- Apart from the primary, ENIs can be detached and moved to other instances.
+- when you allocate an elastic IP, you can associate it with a private ip, either on the primary or on the secondary ENI.  IF you do associate it with the primary ENI public IPv4, that elastic ip becomes the new primary ENI pulblic IP. Then when you remove that elastic ip, the instance will gain a new public IPv4 address, not the old one. 
+
+-Secondary ENI + MAC = Licensing 
+-There are a few reasons why you might want to use multiple network interfaces (NICs) rather than multiple IP addresses on a single network interface:
+1.Network isolation: By using multiple network interfaces, you can isolate different types of traffic onto different interfaces. For example, you can use one interface for public traffic and another interface for private traffic. This can help to improve security and reduce the risk of network-based attacks.
+2.Improved performance: Using multiple network interfaces can improve the performance of your EC2 instance, especially if you are running workloads that require high network throughput. Each interface can operate independently and can be optimized for the specific type of traffic that it handles.
+3.Increased flexibility: Using multiple network interfaces allows you to configure different networking options, such as different security groups, network ACLs, and routing tables, for each interface. This can give you greater flexibility in how you configure and manage your network resources.
+
+( the public IP address is a unique IP address that is assigned to the instance when it is launched. It is used to communicate with the internet and is accessible from the internet. The public IP address can be either an Elastic IP address (EIP) or a public IP address from the Amazon pool of public IP addresses. The public IP address is not directly visible to the OS and is not configured on the network interface of the instance.
+
+Instead, the public IP address is mapped to the private IP address of the instance using Network Address Translation (NAT). This allows the instance to send and receive traffic from the internet using its public IP address, while the OS communicates with the instance using its private IP address.)
+- The OS does NOT see the public IPv4, as far as the OS is concerned, you ALWAYS configure the private IPv4 address on the Interface.  
+- The public IPv4 is NATed to the private IPv4, so the OS can communicate with the public IPv4, but it is not directly visible to the OS.
+- NEVER configure a network interface inside an operating system with a public IPv4 Address inside aws.
+it is not recommended to assign a public IP address to the network interface of an Amazon Elastic Compute Cloud (EC2) instance.
+- It is not recommended to assign a public IP address to the network interface of an EC2 instance because doing so could potentially expose the instance to security risks and increase the risk of network-based attacks. It is generally best practice to use the private IP address for communication within the Amazon Virtual Private Cloud (VPC) and to use the public IP address only for communication with the internet.
+- You can have up to 5 ENIs per instance, and up to 50 ENIs per region.
+- The public DNS which is given to the instance for the public IPv4 address will resolve to the primary PRIVATE IPv4 address from within the VPC. this is done so if you have instance to instance communication using DNS inside the VPC it never leaves the VPC, so no ec2's need to go out the NAT IGW and back again to communicate.  Everywhere else, the public DNS resolves to the public IPv4 IP. 
+
+================AMI======================
+Amazon Machine Images (AMI) 's are the images which can create EC2 instances of a certain configuration.
+
+In addition to using AMI's to launch instances, you can customize an EC2 instance to your bespoke business requirements and then generate a template AMI which can be used to create any number of customized EC2 instances.
+
+
+
+
+*/ 
