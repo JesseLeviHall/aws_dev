@@ -331,4 +331,56 @@ aws/<alias>
 Once you create an AMI and right click select permissions, by default the AMI is private - meaning 
 only the account that created the AMI can use it. If you set the permissions to public, it means any account can use it, and EBS snapshots will then be available to anyone. Better option is to whitelist accounts and orgs that can access the AMI
 
+=============EC2 Purchase Options=============
+(launch types)
+- On Demand - pay for what you use, no long term commitment, no upfront payment, no reserved capacity, no discount. Typical default option. Apps which cant be interrupted, short term or unknown workload 
+
+- Standard Reserved - pay upfront, long term commitment, upfront payment, reserved capacity, discount in exchange for commitment. If reservation locked in an AZ, you only benefit from launching in that AZ. 1 or 3 year terms.... Variant of scheduled reserved, eg: 5 hours everyday, weekly data crunch, monthly alotment of 100 hours to do whatever....Not all ec2 types or regions, 1200 hours per year for 1 year minimum...Variant Capacity reservations mean
+you schedule a reserve for specific instance type in a specific AZ at a certain capacity but cant justify long term purchase. You pay for the capacity regardless if you use it....On Demand capacity reservations dont have minimum 1 or three years, but no cost reduction. 
+
+
+- Spot - bid for capacity, no long term commitment, no upfront payment, no reserved capacity. Cheapest option. Not reliable because aws sells unused ec2 host capacity for up to 90% off. you set a price limit, and if your spot instances exceed that limit they are terminated. Any non time critical bursty capacity stateless workloads. 
+
+- Dedicated Hosts - physical EC2 server dedicated for your use, long term commitment, upfront payment, dedicated capacity, no discount. Launch any instances on the host at no per/sec charge. Typcal reason to use this option is to meet the licensing requirements for software you run on the instances. an example would be: You have a license for a software package that allows you to run it on 5 physical servers.
+
+- Dedicated Instances - EC2 instance on a physical server dedicated for your use, you do not own or share the host aws will promise you do not share hardware...to meet regulations. A middleground where you do not want to share hardware but not manage the host itself. 
+
+******order of priority: 1. aws meet reserved purchases. 2. meet on demand requests. 3. leftovers meet spot purchases. 
+
+******* regional reservations more flexible, zonal reservations a little cheaper, but stuck to one az. 
+
+****** Ec2 Savings Plan:
+- hourly commitment for 1 or 3 year terms. Applies to Fargate and Lambda also, meaning new growing orgs could get better costs than ec2 computing with lambda
+
+===============Instance status checks and auto recovery======
+- EC2 instances have two types of status checks: instance status checks and system status checks.
+- Instance status checks monitor the status of the underlying hardware of the instance. (corrupt files, Kernal OS issues)
+EG: maybe you statically set a public IPv4 address on the internal interface of the OS, which will never work. 
+-System status checks monitor the status of the underlying hardware of the instance and the status of the systems software on the instance. (loss of power)
+
+You can create an Amazon CloudWatch alarm that monitors an Amazon EC2 instance and automatically recovers the instance if it becomes impaired due to an underlying hardware failure or a problem that requires AWS involvement to repair. Terminated instances cannot be recovered. A recovered instance is identical to the original instance, including the instance ID, private IP addresses, Elastic IP addresses, and all instance metadata
+
+Termination protection gaurds from accidental termination but also gives role seperation for permissions to modify ****disableAPItermination setting. EG: lower level devs can terminate, but senior admin only can disable termination protection, 
+
+Horizontal vs Vertical scaling: 
+-Horizontal scaling is the process of adding more instances to your application to handle increased traffic. needs load balancing. Sessions are really important because users maybe use different hardware each time. Off host sessions database is handy eg redis.  No disruption when scaling up, no upper limits, often less expensive, more granular control of resource usage. 
+
+-Vertical scaling is the process of adding more resources to a single instance to handle increased traffic. resize = reboot, $, upper cap. no App modification. 
+
+============Instance MetaData============
+Every instance has the metadata availabale at:
+http://160.254.169.254/latest/meta-data/******* 
+********Commands:
+ curl http://169.254.169.254/latest/meta-data/**********public-ipv4
+  curl http://169.254.169.254/latest/meta-data/public-hostname
+
+wget http://s3.amazonaws.com/ec2metadata/ec2-metadata
+chmod u+x ec2-metadata
+
+ec2-metadata --help
+ec2-metadata -a
+ec2-metadata -z
+ec2-metadata -s
+
+
 */ 
