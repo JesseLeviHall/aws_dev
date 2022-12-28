@@ -150,7 +150,7 @@ Three types of performance terms:
 
 - Provisioned IOPS SSD (IO1 and IO2) - designed for I/O intensive workloads such as large relational or NoSQL databases.
     - IOPS are configurable independent of the size of the volume
-    - Designed for super hight performance situations (low latentcy) 4x IOPS per vol vs GP2/3
+    - Designed for super high performance situations (low latentcy) 4x IOPS per vol vs GP2/3
     - 4GB to 16TB
   
 - Throughput Optimized HDD (ST1) - big data, data warehouses, log processing. A low-cost HDD designed for frequently accessed, throughput-intensive workloads.
@@ -370,17 +370,44 @@ Horizontal vs Vertical scaling:
 ============Instance MetaData============
 Every instance has the metadata availabale at:
 http://160.254.169.254/latest/meta-data/******* 
-********Commands:
- curl http://169.254.169.254/latest/meta-data/**********public-ipv4
-  curl http://169.254.169.254/latest/meta-data/public-hostname
 
+********Commands:
+ get public IPv4:
+ curl http://169.254.169.254/latest/meta-data/public-ipv4
+ curl http://169.254.169.254/latest/meta-data/public-hostname
+
+ifconfig - shows console info
+
+download metadata tool:
 wget http://s3.amazonaws.com/ec2metadata/ec2-metadata
-chmod u+x ec2-metadata
+chmod u+x ec2-metadata - make it executable...
 
 ec2-metadata --help
-ec2-metadata -a
-ec2-metadata -z
-ec2-metadata -s
+ec2-metadata -a : shows AMI Id
+ec2-metadata -z  : shows AZ
+ec2-metadata -s  : shows security groups
+and so on..
 
+q: can an instance be migrated between AZs?
+a: No, but you can use an AMI to provision a clone in another AZ. you need to stop the instance, detach the EBS volume, and then attach it to a new instance in the new AZ.
+
+q: What kind of use-case suits using IO1 & 2 EBS volumes?
+a: IO1 and IO2 volumes are designed for I/O intensive workloads such as large relational or NoSQL databases. designed to provide consistent, low-latency performance at a high level of sustained throughput. 
+
+q: If you need to be able to specify performance requirements (IOPS) independent of volume size which volume type should you choose?
+a: If you need to specify performance requirements (IOPS) independent of volume size, you should choose a Provisioned IOPS (IO1) volume type. Provisioned IOPS (IO1) volumes are designed to deliver predictable, high-performance I/O workloads, and are suitable for use cases such as databases, enterprise applications, and other I/O-intensive workloads.
+
+q: How many instances can a GP2 volume be attached to at the same time?
+a: A General Purpose (GP2) volume can be attached to 1 instance at the same time.
+
+q: Can EBS volumes be attached to instances in ANY AZ?
+a: No only instances in the same AZ as the volume. 
+
+q: What is the maximum size of an EBS volume?: 16TB 
+
+q: What is the maximum size of an EBS snapshot?: 1TB
+
+q: If you have a short term workload which needs the cheapest EC2 pricing but cant tolerate interruption which billing model should you pick
+a: On-Demand billing mode
 
 */ 
