@@ -314,7 +314,18 @@ Amazon Machine Images (AMI) 's are the images which can create EC2 instances of 
 
 In addition to using AMI's to launch instances, you can customize an EC2 instance to your bespoke business requirements and then generate a template AMI which can be used to create any number of customized EC2 instances.
 
+Creating an Image from a stopped Instance:
+(Creates a snapshot of any EBS volumes, copies device id and creates a block device mapping of the storage structure )
+1. Stop the instance
+2. Create an image from the stopped instance
+3. Launch an instance from the image (make sure you set network settings to match the VPC and subnet you want, and enable auto assign IPs)
+4. Start the instance
 
+-KMS Keys are in general regional. So if copying an AMI to another region, you can initiate encryption on an image that wasnt encrypted, with KMS, or if you copy an already encrypted AMI, you need to re-encrypt as part of the transfer. 
 
+AWS default KMS keys always start with 
+aws/<alias>
+
+**********AMI's are regional. You have to copy an AMI to another region to use it there, and a copied AMI is a completely different AMI than the original. 
 
 */ 
