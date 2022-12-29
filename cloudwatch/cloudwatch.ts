@@ -75,7 +75,17 @@ VPC Flow logs can be added at a VPC, Subnet or Interface level.
 
 Flow Logs capture MetaData they DON'T monitor packet contents ... that requires a packet sniffer.
 
-Flow Logs can be stored on S3 or CloudWatch Logs (NOT Realtime**)
+Flow Logs can be stored on S3 or CloudWatch Logs (NOT Realtime**),
+ sequel-like athena querying on read for s3
 
-Can be applied to VPC whole, Subnets, or ENIs directly
+Can be applied to VPC whole, Subnets, or ENIs directly. 
+
+A flow log record is generated, which shows accepted rejected or all metadata.  IF a req is blocked and only one line is in the log it will usually be a security group blocked it. IF you see a record with an accept then a reject and their from the same flow, it usually means a NACL And Secruity Group held it up... Security groups are stateful so they evaluate the req an res. NACLes are stateless so the req and res are two seperate parts, so you might see two log entries with accept one and reject one for the same flow
+
+Some metadata not logged by VPC flow logs are:
+-Source and destination port
+-Ec2 http reqs in the vpc, amazon windows license. 
+
+
+
 */
