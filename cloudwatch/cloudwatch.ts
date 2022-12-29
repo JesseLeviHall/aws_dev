@@ -30,6 +30,52 @@ CloudWatch offers several options for data resolution, including 1 minute, 5 min
 - 1 hour for metrics with a retention period of 455 days or longer
 As data ages, its aggregated and stored for longer with less resolution. 
 
+CloudWatch Logs: 
+ logging data for on-premises and AWS environments including systems and applications
 
+ =======================Ingestion/subscription==============
+Ingestion: Public Service, Srote, Montitor, Access loging data
+  AWS, On-Premises, IoT, or any application especially with CWAgent, VPC Flow Logs, CloutTrail events and API Calls, Elastic Beanstalk, ECS contianer logs, API GW, Lambda, Route53 DNS logs.
 
+Subscription: example: Create a subscription filter on Catagram PROD Log Group, set permissions or filters, then set destinations like kinesis data firehose to s3. This would be near real time and cost effective.   subscription filters can also real-time stream the data to aws managed Lambda function to Elasticsearch or use a custom lamba function to stream logs anywhere in real-time.
+
+Subcription filters can also be used to create Data Aggregations: merging streams with 'kinesis data stream' to one giant bucket. 
+
+Logs: A log event = timestamp + raw message/data
+Log Stream = log events from the same source
+
+You can set log permissions and encrypt with KMS
+
+Metric Filters:  eg: Metric Filter creates a metric for # of failed SSH log in attempts. Metric filters can be used to generate Metrics within Cloudwatch, alarms and eventual events within Eventbridge.
+
+S3 Export of logs is not real time. 
+
+Metric filters can be used to generate Metrics within Cloudwatch, alarms and eventual events within Eventbridge.
+
+Key points:
+-Cloudwatch is the default monitoring service
+-Features Export to S3 but it takes about 12 hrs.
+-Near realtime = Kinesis firehose
+-Realtime = Subscription + Kinesis data stream or Lambda
+-Elasticsearch = AWS managed Lambda
+-Metric Filter = scan log data, generate a cloudwatch metric, set as alarm or initiationpoint for a lambda event architecture. 
+
+============AWS X-ray==========
+ you can understand how your application and its underlying services are performing to identify and troubleshoot the root cause of performance issues and errors. X-ray provides an end-to-end view of requests as they travel through your application, and shows a map of your application that helps you identify bottlenecks and sources of latency. You can use X-ray to analyze both applications that run on AWS and those that run on-premises.
+
+ Distributed (end to end) tracing, sessions data on monolith or microservice. 
+
+ -Upon visiting an app, Trace ID generated, kept in headers through all apps. X-ray collects data blocks (segments) with all the session data collected in a Service Graph (a JSON doc with all the details) then it presents it in a easy to use way called a Service Map.   Subsegments can be used for more details. 
+ requires IAM permissions to config. 
+
+ ===============VPC Flow Logs====================
+ VPC FLow logs is a feature allowing the monitoring of traffic flow to and from interfaces within a VPC
+
+VPC Flow logs can be added at a VPC, Subnet or Interface level.
+
+Flow Logs capture MetaData they DON'T monitor packet contents ... that requires a packet sniffer.
+
+Flow Logs can be stored on S3 or CloudWatch Logs (NOT Realtime**)
+
+Can be applied to VPC whole, Subnets, or ENIs directly
 */
