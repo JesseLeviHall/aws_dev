@@ -87,5 +87,39 @@ Some metadata not logged by VPC flow logs are:
 -Ec2 http reqs in the vpc, amazon windows license. 
 
 
+Which feature of CloudWatch Logs allows you to generate an alarm based on patterns within a Log Group?
+- Metric Filters
+
+the following statement is ALWAYS true for CloudWatch Logs:
+- Permissions AND retention are defined on a Log Group
+
+Which two products can be used together for real time processing of CloudWatch Logs?
+- Kinesis Data Streams + Lambda
+-Subscription + Lambda
+
+Which of the following are valid Alarm states within CloudWatch? (choose all that apply)
+- ALARM
+- INSUFFICIENT_DATA
+- OK
+
+What types of information is logged by VPC flow logs? (Choose all that apply)
+- Packet source and destination IP addresses
+- Source and destination ports
+- Date and Time
+- Allow or Deny
+
+Which AWS product generates logs of API calls made against the account?
+- CloudTrail
+
+Log Groups > Log Streams > Log Events
+
+Which of the following options is the MINIMUM required to log processing_running within an EC2 Instance?
+- CloudWatch Agent Installed with configuration, 
+- EC2 Instance Role with Cloudwatch Permissions
+
+Which of the following options are enabled via installing the CWAgent?
+- Injecting Detaile and Custom metrics from an EC2 instance into cloudwatch
+- Logging system, application and custom logs into Cloudwatch logs.
+
 
 */
