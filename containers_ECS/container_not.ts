@@ -28,12 +28,14 @@ the run in two modes:
 The elastic container registry (ECR) is equiv to docker hub, where you keep your images. 
 
 Container Definitions:
+- Defines the Image and PORT, points to the container in the registry and defines exposed ports. 
 - A container definition is required to run Docker containers in Amazon ECS.
 - A container definition is a JSON document that describes a single container.
 - You must specify at least the image parameter in a container definition.
 
 
 Task Definitions:
+- Security and container(s) resources 
 - A task definition is required to run Docker containers in Amazon ECS.
 - A task definition is a JSON document that describes one or more containers that form your application.
 - You must specify at least one container definition in a task definition.
@@ -54,7 +56,39 @@ Services:
 - You can run multiple tasks on a single service.
 - You can run multiple services on a single cluster.
 - You can run multiple services across multiple clusters.
+- Service Definitions help provide high availability and scalability by replacing failed tasks or distributing load accross multiple copies of the same task. 
 
-Services are used to run tasks in ECS.
+Basically, you deploy a cluster, then deploy tasks and services to the cluster. 
+
+
+========Cluster types: ec2 v Fargate==============
+With EC2 mode you pay for the EC2 instances regardless of container usage
+
+Fargate mode uses shared AWS infrastructure, and ENI's which are injected into your VPC
+
+You pay only for container resources used while they are running.
+
+This lesson steps through the key architectures of both.
+
+start with ECS management components - lay ground works
+________EC2 MODE _____
+An ECS cluster is created within a VPC in your account - this benefits from the multiple AZ's in your VPC 
+
+When you run ECS in EC2 mode, you have full control over the instances that are used to host your containers. You can choose the instance type, network configuration, and other settings for your instances, and you are responsible for managing the instances and the underlying operating system.
+
+EC2 mode is well-suited for applications that require a high degree of customization or that need to be tightly integrated with other AWS services. It is also a good option if you have existing EC2 instances that you want to use to host your containers.
+
+_________FARGATE MODE________
+Fargate mode allows you to run ECS containers without the need to manage the underlying EC2 instances. Fargate takes care of all of the infrastructure management for you, making it easier to get started with ECS and focus on developing and deploying your applications.
+This is running in the Fargate Shared Infrastructure platform. 
+Fargate still deploys a cluster in a VPC on your account in AZ's, but the fargate shared resources get injected into your vpc and is given an Elastic Net Interface (ENI) IP address within the VPC. 
+You can have it create a new VPC or use a custom one you have already designed. 
+
+-If your biz already uses containers, has large workloads and is price contious, ECS EC2 mode maybe a good option(with spot pricing especially). If containerization is not needed, just run an EC2. 
+
+-If your biz is new to containers, and is not price contious, ECS Fargate mode is a good option, because of the reduction in overhead management setting up the ec2 mode system. 
+
+-Small biz / burst workloads, Fargate maybe best option . 
+-Batch or periodic workloads, Fargate. 
 
 */
