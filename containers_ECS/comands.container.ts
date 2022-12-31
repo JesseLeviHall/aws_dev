@@ -19,6 +19,7 @@ docker run -t -i -p 80:80 containerofcats
 # Upload Container to Dockerhub (optional)
 docker login --username=YOUR_USER
 docker images
+//cpy image ID
 docker tag IMAGEID YOUR_USER/containerofcats
 docker push YOUR_USER/containerofcats:latest
  */
