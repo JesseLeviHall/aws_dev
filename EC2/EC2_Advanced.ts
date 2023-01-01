@@ -65,7 +65,7 @@ The AWS CLI uses credentials and configuration settings located in multiple plac
 
 *****If you manually configure any long term credentials for the CLI tools as part of using aws configure, then they will take precidence over an instance profile.  But, you can re-use the instance profile to give instances a BEST practice way of providing them with access to aws products and services. 
 
-==========SSM Parameter Store============
+==========SSM (sys manager) Parameter Store============
 The SSM Parameter store is a service which is part of Systems Manager which allows the storage and retrieval of parameters either
  string, stringlist or secure string.
  
@@ -81,5 +81,11 @@ The service integrates natively with many AWS services - and can be accessed usi
 
 No cost using default settings. 
 
+The permission to interact with encrypted strings comes from KMS wich is seperate from the permission to access perameters in the perameter store. Add --with-decryption to the get perameters command. 
+
+========Install Cloudwatch Agent in EC2=======
+Cloudwatch agent is a software agent that collects metrics and logs from EC2 instances and sends them to Cloudwatch.
+-Adding cloudwatch agent requires Agent Configuration and Permissions. 
+BEST practice for this type of architecture is to create and IAM role with permission to access cloudwatch logs. At scale this can be configured in cloudformation, using the Perameter Store to hold the Agent configurtion perams. 
 
 */
