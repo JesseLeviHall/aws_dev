@@ -88,4 +88,50 @@ Cloudwatch agent is a software agent that collects metrics and logs from EC2 ins
 -Adding cloudwatch agent requires Agent Configuration and Permissions. 
 BEST practice for this type of architecture is to create and IAM role with permission to access cloudwatch logs. At scale this can be configured in cloudformation, using the Perameter Store to hold the Agent configurtion perams. 
 
+===============Placement Groups===========
+Placement groups are a way to group EC2 instances together in a single AZ.
+Placement groups are used to optimize network performance for applications that have strict latency requirements, high network traffic, or both.
+Placement groups are not free, they cost more than a standard EC2 instance.
+
+-Cluster = Pack instances close together
+  have to be launched in to single AZ - So as to use same rack, and even same ec2 host = direct connections = speed 10GB/S 
+  1 AZ can be used by a cluster
+  Offer little to no resilience because - cannot span AZs
+  Can Span VPC Peers but big negative impact
+  requires supported Instance Type, recommend same types for all, and launched all together. 
+
+-Partition = Keep Instances separated
+  designed for infrastructure with more than 7 instances per AZ but still distinct physical resources. Large scale parallel processing systems with HA and resiliency. 
+  You control what instances go to which partition, so you can be sure replicated apps are on distinct resources.
+  typology aware apps with HBase, Cassandra, HDFS
+
+-Spread = groups of instances spread apart
+  designed to give most HA and resiliancy = Distint racks and hosts per instance
+  7 instances per group
+  7 instances per AZ
+  Not supported for dedicated instances or hosts
+
+======enhanced networking and EBS Optimized============
+- Enhanced networking is the AWS implementation of SR-IOV, a standard allowing a physical host network card to present many logical devices which can be directly utilized by instances.
+
+This means lower host CPU usage, better throughput, lower and consistent latency
+Higher packets-per-second PPS
+No Charge - available on most EC2 Types
+
+- EBS Optimized is a feature that allows you to get more IOPS from your EBS volumes.
+  This is done by using a different network interface on the host, and is available on most instance types by default.
+  EBS optimization on instances means dedicated bandwidth for storage networking - separate from data networking.
+  ====================
+
+q: How many AZs can be used by a cluster placement group?
+a: 1
+
+q: How many instances can be within a spread placement group
+a: 7 per AZ
+
+q: What is true of pricing for dedicated hosts?
+a: You pay for the host and there is no charge for EC2 instances running on a dedicated host. 
+
+q: how often does USer-Data get executed?
+a: Once when provisioned, not when stopped then started. 
 */
