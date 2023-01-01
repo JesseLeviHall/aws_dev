@@ -91,4 +91,12 @@ You can have it create a new VPC or use a custom one you have already designed.
 -Small biz / burst workloads, Fargate maybe best option . 
 -Batch or periodic workloads, Fargate. 
 
+-Using default VPC in fargate already configures instances with public IPs, otherwise you need to give a CIDR block and subnet ips. In AWS, CIDR blocks are used to specify the range of IP addresses that are allowed to access a particular resource. For example, you might specify a CIDR block for a VPC to specify the range of IP addresses that are allowed to access resources within the VPC. You can also use CIDR blocks to specify the range of IP addresses that are allowed to access a security group or an Amazon S3 bucket.
+
+First we create a cluster in default VPC, create a task definition, create contianer definition, set it to docker image, give port number and soft memory limit. create it. 
+Then go to clusters, click the cluster, and the task tab, hit run a new task... select the fargate run type and linus operating sys, scroll down and deploy into the default VPC and select two subnets to give capacity, after it is running, click the task link, the public ip will be there. 
+
+==========Kubernetes 101=========
+Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery. Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.
+
 */
