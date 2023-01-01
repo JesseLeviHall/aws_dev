@@ -79,5 +79,7 @@ The service supports encryption which integrates with KMS, versioning and can be
 
 The service integrates natively with many AWS services - and can be accessed using the CLI/APIs from anywhere with access to the AWS Public Spare Endpoints.
 
+No cost using default settings. 
+
 
 */
