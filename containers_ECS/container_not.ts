@@ -99,4 +99,43 @@ Then go to clusters, click the cluster, and the task tab, hit run a new task... 
 ==========Kubernetes 101=========
 Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery. Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.
 
+-Cluster - 
+A cluster is a set of nodes that run containerized applications. A deployment of Kubenetes, management, orchestration.
+
+-Node -
+A node is a worker machine in Kubernetes, previously known as a minion. A node may be a VM or physical machine, depending on the cluster. Each node is managed by the master. A node has the services necessary to run pods and is managed by the master components. The services on a node include the container runtime, kubelet and kube-proxy. See Working with nodes for more details.
+
+-Pods-
+A pod (as in a pod of whales or pea pod) is a group of one or more containers (such as Docker containers), with shared storage/network, and a specification for how to run the containers. A pod's contents are always co-located and co-scheduled, and run in a shared context. A pod models an application-specific "logical host": it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.
+
+-Service-
+A Kubernetes Service that identifies a set of pods using label selectors. Unless mentioned otherwise, Services are assumed to have virtual IPs only routable within the cluster network.
+
+-Job-
+A Job creates one or more Pods and ensures that a specified number of them successfully terminate. As pods successfully complete, the Job tracks the successful completions. When a specified number of successful completions is reached, the task (ie, Job) is complete. Deleting a Job will clean up the Pods it created.
+
+-Ingres-
+An Ingress is a collection of rules that allow inbound connections to reach the cluster services.
+
+-Ingress Controller - 
+An Ingress Controller is responsible for fulfilling the Ingress, usually with a loadbalancer, though it may also configure your edge router or additional frontends to help handle the traffic in an HA manner. EG AWS Load Balance Controller uses ALB/NLB, also Enginx. 
+
+any storage in Kubernetes is ephemeral. 
+
+-Persistant Storage- 
+Persistent storage is a storage volume that is provisioned for a specific purpose. The data in a persistent volume exists independently of the lifecycle of any individual pod that might use it. This data is preserved even if the pod is deleted, the node it runs on is deleted, or the cluster itself is deleted.
+
+==========EKS Elastic Kubernetes Service=========
+EKS is a managed Kubernetes service. It runs the Kubernetes control plane for you across multiple AWS availability zones to eliminate a single point of failure. EKS is certified Kubernetes conformant so you can use existing tooling and plugins from the Kubernetes community. Applications running on EKS are fully compatible with applications running on any standard Kubernetes environment, whether running in on-premises data centers or public clouds. This means that you can easily migrate any standard Kubernetes application to Amazon EKS without any code modification required.
+
+-Outposts, EKS Anywhere, Eks Distro
+-Integrates with aws services: ECR, ELV, IAM, VPC
+-Managed control plane scales and runs on multiple AZs
+-EKS Cluster = EKS control plane and EKS Nodes
+-etcd distributed across multiple AZs
+-Nodes - self managed, managed node groups or fargate pods
+-Node groups - EC2 instances, managed by EKS control plane
+-storage providers - EBS, EFS, FSx Lustre, FSz for NetApp ONTAP
+=============
+
 */
