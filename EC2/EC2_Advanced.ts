@@ -26,6 +26,8 @@ ls -la //show log files
 two files of interest: cloud-init.log and clout-init-output.log
 sudo cat cloud-init-output.log // shows the user data script
 
+Because the user-data is visible - security credentials shouldnt not be included, a best practice option is SSM Parameter Store (below)
+
 ==========EC2 Instance Roles===========
 EC2 Instance Roles are a way to assign permissions to EC2 instances without having to pass credentials to the instance.
 EC2 Instance roles and Instance Profiles are how applications running on an EC2 instance can be given permissions to access AWS resources on your behalf.
@@ -64,7 +66,14 @@ The AWS CLI uses credentials and configuration settings located in multiple plac
 *****If you manually configure any long term credentials for the CLI tools as part of using aws configure, then they will take precidence over an instance profile.  But, you can re-use the instance profile to give instances a BEST practice way of providing them with access to aws products and services. 
 
 ==========SSM Parameter Store============
-The SSM Parameter store is a service which is part of Systems Manager which allows the storage and retrieval of parameters - string, stringlist or secure string.
+The SSM Parameter store is a service which is part of Systems Manager which allows the storage and retrieval of parameters either
+ string, stringlist or secure string.
+ 
+Usecase: License codes, Database Strings, Full Configs and Passwords. 
+
+Supports Hierarchies adn versioning, changes can create events
+
+PlainText and Ciphertext
 
 The service supports encryption which integrates with KMS, versioning and can be secured using IAM.
 
