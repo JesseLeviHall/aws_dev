@@ -40,9 +40,12 @@ The optional Conditions section contains statements that define the circumstance
 - Evaluated to True or False
 - Processed before resources are created
 - IF And Equals Not Or
-
-
-
+==============DependsOn==========================
+With the DependsOn attribute you can specify that the creation of a specific resource follows another. When you add a DependsOn attribute to a resource, that resource is created only after the creation of the resource specified in theDependsOn attribute.
+- CloudFormation does things in parallel, and creates a dependency order. this allows you to explicitly configure parts the dependency order. 
+-EX: creating an elastic IP associated with an ec2 in a subnet in a VPC that you create in the same template, this requires an Internet Gateway attacehd to the VPC. But there would be no dependency in the template to ref. Use DepndsOn to only create elastic IP after Internet Gateway attaches, after the VPC
+======WaitContition, Creation Policy, dfn-signal===========
+CreationPolicy, WaitConditions and cfn-signal can all be used together to prevent the status of a resource from reaching create complete until AWS CloudFormation receives a specified number of success signals or the timeout period is exceeded.The cfn-signal helper script signals AWS CloudFormation to indicate whether Amazon EC2 instances have been successfully created or updated.
 
 
 
