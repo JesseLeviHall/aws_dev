@@ -46,10 +46,23 @@ With the DependsOn attribute you can specify that the creation of a specific res
 -EX: creating an elastic IP associated with an ec2 in a subnet in a VPC that you create in the same template, this requires an Internet Gateway attacehd to the VPC. But there would be no dependency in the template to ref. Use DepndsOn to only create elastic IP after Internet Gateway attaches, after the VPC
 ======WaitContition, Creation Policy, dfn-signal===========
 CreationPolicy, WaitConditions and cfn-signal can all be used together to prevent the status of a resource from reaching create complete until AWS CloudFormation receives a specified number of success signals or the timeout period is exceeded.The cfn-signal helper script signals AWS CloudFormation to indicate whether Amazon EC2 instances have been successfully created or updated.
+- cfn-signal: tell sfn to hold for X number of successes, wait for timeout(12 hour max), if success signals recieved..then create complete or if failure, creation (stack) fails
+-AWS suggest that when creating ec2 or auto-scaling groups you should use creation policies because its tied to the specific resource you are handling.
+- If you have other requirements to signal outside of a specific resource (an external it sys) then you should use a wait condition.
+_A wait condition is a specific logical resource, not something defined in an existing resource
+_A wait condition can depend on other resources and ohter resources can depend on the waitcondition 
+_A wait contition relies on an awaitHandle - another logical resource who's sole job is to create a presigned url which can be used to send signals to. Then we can use !GetAtt WatCondition.Data to query signal responses. 
+==================Nested Stacks=======================
+Nested stacks allow for a hierarchy of related templates to be combined to form a single product
 
+A root stack can contain and create nested stacks .. each of which can be passed parameters and provide back outputs.
 
+Nested stacks should be used when the resources being provisioned share a lifecycle and are related.
 
+-Stack resource limit 500
+-Stacks cant easily reference other stacks, so for complex projects or ones that use more than one stack, there are two popular optios, nested stacks and cross stack references
+- Outputs of the nested stack are returned to the root stack, and then they can be refed ustin stack.outputs.xxxx
+-you can only reference outputs when using nested stacks, not the logical resources. the outputs can be perameters to other stacks. 
 
-
-
+==================Cross Stack References=============
 */
