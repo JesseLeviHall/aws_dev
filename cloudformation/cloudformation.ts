@@ -137,8 +137,9 @@ Custom resources enable you to write custom provisioning logic in templates that
 
 Custom resources let CFN integrate with anything it doesnt yet, or doesnt natively support
 
+q: You're designing a system using CloudFormation which has two distinct parts. Infrastructure (which includes a VPC , subnets, gateways and configuration) and multiple application instances. How should you design this using stack architecture? 
+a: My answer: You should use nested stacks. The infrastructure stack should be a nested stack, and the application stack should be a nested stack. This allows you to deploy the infrastructure stack once, and then deploy the application stack multiple times. Adrian: Use Stack Import/Export (cross stack references)
 
-
-
-
+q: Which feature of CloudFormation allows you to influence the order of resources created by CFN?
+a: DependsOn
 */
