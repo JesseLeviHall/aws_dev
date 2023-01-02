@@ -29,7 +29,7 @@ Fn::Cidr to ref the IP range of a vpc - how many subnets to make from the input 
 
 =====================Mappings================
 The optional Mappings section matches a key to a corresponding set of named values. For example, if you want to set values based on a region such as AMI, you can create a mapping that uses the region name as a key and contains the values you want to specify for each specific region. You use the Fn::FindInMap intrinsic function to retrieve values in a map.
-
+=====================Outputs================
 
 
 
