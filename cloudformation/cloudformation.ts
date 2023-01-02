@@ -83,6 +83,52 @@ Example: one account running a vpc stack in us-east-1, we want it to be a shared
 Cross stack refs are useful when you want to implement service-oriented architectures, providing services from one stack to another.  OR if you have microservies with different lifecycles. 
 
 Basically nested stacks re-use templates, while cross stack re-uses resources. 
+==================Stack Sets=========================
+StackSets are a feature of CloudFormation allowing infrastructure to be deployed and managed across multiple regions and multiple accounts from a single location.
+
+Additionally it adds a dynamic architecture - allowing automatic operations based on accounts being added or removed from the scope of a StackSet.
+
+- StackSets are containers that contain stack instances (references) They are not stacks themselves
+
+-security = either self-managed roles or service-managed roles. 
+Service managed roles are 
+-Service managed roles are when we use CFN in conjunction with aws organizations to automatically manage the roles. Self-managed is managing all the permissions yourself duh. 
+
+In A4L example: An admin account has a CFN template, used in a stackset to create s3 buckets in target accounts in other regions. 
+
+concurrent accouts:
+If you are deploying a stackset which is deploying resources in to say 10 different target accounts, and you define a concurrent account value of 2, then only two accounts can be deployed into at any one time, which means that over 10 accounts you'll be doin five sets of two. (the more concurrent accounts that you set, in theory, the faster the resources will be deployed as part of a stackset)
+
+Failure tolerance: 
+If you are deploying a stackset which is deploying resources in to say 10 different target accounts, and you define a failure tolerance value of 2, then if two accounts fail to deploy, the stackset will still be considered to be deployed successfully.
+
+Retain Stacks: 
+If you are deploying a stackset which is deploying resources in to say 10 different target accounts, and you define a retain stacks value of true, then if you delete the stackset, the stacks that were deployed as part of the stackset will not be deleted.
+============Deletion Policy================
+The DeletionPolicy attribute allows you to specify what happens to a resource when it is deleted from a stack.
+
+With the DeletionPolicy attribute you can preserve or (in some cases) backup a resource when its stack is deleted. You specify a DeletionPolicy attribute for each resource that you want to control. If a resource has no DeletionPolicy attribute, AWS CloudFormation deletes the resource by default.
+...Delete(default), Retain or if supported Snapshot(EVS volume, elasticach, neptune, rds, redshift)
+- Only applies to deletions, not replaces. 
+===========Stack Roles====================
+Stack roles allow an IAM role to be passed into the stack via PassRole
+
+A stack uses this role, rather than the identity interacting with the stack to create, update and delete AWS resources.
+
+It allows role separation and is a powerful security feature, because the identity creating the stack doesnt need resource permissions -  only PassRole permissions. 
+============CFN-INIT=========================
+Runs once as part of bootstrapping via user data
+CloudFormationInit (the tool) and cfn-init(the script) are tools which allow a desired state configuration management system to be implemented within CloudFormation
+
+Use the AWS::CloudFormation::Init type to include metadata on an Amazon EC2 instance for the cfn-init helper script. If your template calls the cfn-init script, the script looks for resource metadata rooted in the AWS::CloudFormation::Init metadata key. cfn-init supports all metadata types for Linux systems & It supports some metadata types for Windows
+- compared to User-Data, User-Data is a HOW procedure, whereas CFN Init is a What (Desired State)
+
+- Essentially you are defining what you want to occur but leaving it up to the system as to how that occurs. This means it can be cross platform, and cross OS
+- cfn-init is idempotent, meaning: 
+    - if you run it twice, it will only run the changes that are required. (if something is already in a certain state, it will leave it in that same state. )
+=============CFN-HUP===================
+The cfn-hup helper is a daemon that detects changes in resource metadata and runs user-specified actions when a change is detected. This allows you to make configuration updates on your running Amazon EC2 instances through the UpdateStack API action.
+-you have to install into ec2 as part of the initial boostrap process. It will detect metadata changes and re-run cfn-init to apply that change.
 
 
 */
