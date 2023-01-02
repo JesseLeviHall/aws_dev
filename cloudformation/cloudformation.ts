@@ -26,11 +26,15 @@ Fn::GetAZs & Fn::Select
 Fn::Join & Fn::Split
 Conditions(Fn::If, And, Equals, Not & Or)
 Fn::Cidr to ref the IP range of a vpc - how many subnets to make from the input vpc range - limited to parent range, cant update CIDR Ranges from template.
-
 =====================Mappings================
 The optional Mappings section matches a key to a corresponding set of named values. For example, if you want to set values based on a region such as AMI, you can create a mapping that uses the region name as a key and contains the values you want to specify for each specific region. You use the Fn::FindInMap intrinsic function to retrieve values in a map.
 =====================Outputs================
-The optional Outputs section declares output values that you can import into other stacks (to create cross-stack references), return in response (to describe stack calls), or view on the AWS CloudFormation console. For example, you can output the S3 bucket name for a stack to make the bucket easier to find.
+The optional Outputs section declares output values that you can import into other stacks (to create cross-stack references), return in response (to describe stack calls), or view on the AWS CloudFormation console. For example, you can output the S3 bucket name for a stack to make the bucket easier to find. 
+- Visible when using CLI and console UI
+- Accessible from a parent stack when using nesting
+- Can be exported allowing cross-stack references
+
+
 
 
 
