@@ -129,6 +129,16 @@ Use the AWS::CloudFormation::Init type to include metadata on an Amazon EC2 inst
 =============CFN-HUP===================
 The cfn-hup helper is a daemon that detects changes in resource metadata and runs user-specified actions when a change is detected. This allows you to make configuration updates on your running Amazon EC2 instances through the UpdateStack API action.
 -you have to install into ec2 as part of the initial boostrap process. It will detect metadata changes and re-run cfn-init to apply that change.
+===================Change Sets===================
+When you need to update a stack, understanding how your changes will affect running resources before you implement them can help you update stacks with confidence. Change sets allow you to preview how proposed changes to a stack might impact your running resources, for example, whether your changes will delete or replace any critical resources, AWS CloudFormation makes the changes to your stack only when you decide to execute the change set, allowing you to decide whether to proceed with your proposed changes or explore other changes by creating another change set.
+-Go to change set tab in stack console
+==================Custom Resources====================
+Custom resources enable you to write custom provisioning logic in templates that AWS CloudFormation runs anytime you create, update (if you changed the custom resource), or delete stacks
+
+Custom resources are a powerful way to extend AWS CloudFormation to support custom use cases. You can use custom resources to create resources that are not yet supported by AWS CloudFormation, or to create resources that require additional logic to be created or updated.
+
+
+
 
 
 */

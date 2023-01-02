@@ -91,3 +91,5 @@ Resources:
           /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackId} --resource Instance --region ${AWS::Region}
 
 # This template defines what should happen when an update occurs(cfn-auto-reloader.conf)which is to re-run launch metadata in cfn-init. This will allow updates to the config metadata.
+
+# To see updates in the console, run sudo tail -f cfn-hup.log before editing stack, and the log will update wiht the changes.
