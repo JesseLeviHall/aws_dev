@@ -64,5 +64,25 @@ Nested stacks should be used when the resources being provisioned share a lifecy
 - Outputs of the nested stack are returned to the root stack, and then they can be refed ustin stack.outputs.xxxx
 -you can only reference outputs when using nested stacks, not the logical resources. the outputs can be perameters to other stacks. 
 
+- Choosing between using a nested stack and cross stack:
+    - If you want to be able to re-use the template to deploy the same architecture more than once, nested stack is better. 
+    - Generally nested stacks are used when everything you create is part of the same solution, lifecycle linked. 
+    - Nested stacks can overcome the 500 resource limit
+    - Nested stacks can be used to create a hierarchy of stacks
+    - Modular templates to reuse code, make installation easier
 ==================Cross Stack References=============
+Cross stack references allow you to reference resources in one stack from another stack.
+
+Outputs in one stack reference logical resources or attributes in that stack
+
+They can be exported, and then using the !ImportValue intrinsic function, referenced from another stack.
+
+Example: one account running a vpc stack in us-east-1, we want it to be a shared services vpc which can be used by other stacks. Make sure anything we want to share is added as an output (Outputs:SHAREDVPCID, Value: !Ref VPC, Export: SHAREDVPCID) Then it can be imported to the new stack. 
+-This only works in the same region. 
+
+Cross stack refs are useful when you want to implement service-oriented architectures, providing services from one stack to another.  OR if you have microservies with different lifecycles. 
+
+Basically nested stacks re-use templates, while cross stack re-uses resources. 
+
+
 */
