@@ -135,7 +135,7 @@ When you need to update a stack, understanding how your changes will affect runn
 ==================Custom Resources====================
 Custom resources enable you to write custom provisioning logic in templates that AWS CloudFormation runs anytime you create, update (if you changed the custom resource), or delete stacks
 
-Custom resources are a powerful way to extend AWS CloudFormation to support custom use cases. You can use custom resources to create resources that are not yet supported by AWS CloudFormation, or to create resources that require additional logic to be created or updated.
+Custom resources let CFN integrate with anything it doesnt yet, or doesnt natively support
 
 
 
