@@ -38,9 +38,10 @@ If your application is hosted in multiple AWS Regions, you can improve performan
 =================Geolocation Routing=================
 Geolocation routing lets you choose the resources that serve your traffic based on the geographic location of your users, meaning the location that DNS queries originate from. You tag the records with the location - generally a country or continent - in USA you can tag the state. This feature lets you choose the relavent records to return based on the req, not necessarily the closest. Good for Language specific apps or load balancing across regions. Priority = subtdivision(State), Country, Continent, default
 =================Geoproximity Routing=================
+Aims to calculate the distance from the user to the record and return the shortest distance. We can adjust how r53 handles the calculation by defining a + or - bias.
 Geoproximity routing lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
 =================Interoperability=================
-
+Route53 provides Registrar and DNS Hosting features and architectures where it is used for BOTH, or only one of those functions - and integrates with other registrars or DNS hosting.
 
 
 
