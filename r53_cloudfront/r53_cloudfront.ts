@@ -40,8 +40,29 @@ Geolocation routing lets you choose the resources that serve your traffic based 
 =================Geoproximity Routing=================
 Aims to calculate the distance from the user to the record and return the shortest distance. We can adjust how r53 handles the calculation by defining a + or - bias.
 Geoproximity routing lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources. You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias. A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.
-=================Interoperability=================
-Route53 provides Registrar and DNS Hosting features and architectures where it is used for BOTH, or only one of those functions - and integrates with other registrars or DNS hosting.
+=================Interoperability=========================
+Route53 provides Registrar and DNS Hosting features and architectures where it is used for BOTH, or only one of those functions - and integrates with other registrars or DNS hosting. Most commonly, Registered domain elsewhere, hosting on aws. 
+==================CloudFront Architecture====================
+CloudFront is a Content Delivery network (CDN) within AWS.
+A CDN is a content delivery network of distributed servers (network) that deliver webpages and other web content to a user based on the geographic locations of the user, the origin of the webpage and a content delivery server.
+Origin - anyting with a publicly routable ipv4 - where your content is served from.
+Distribution - the 'configuration' unit of cloudfront
+Edge Location - the location where content will be cached, this is seperate to an AWS region/availability zone. there are more - over 200
+Regional Edge Cache - larger less frequenly accessed layer over the edge locations below it in the tree. 
+Cache Hit - when the edge location has the requested resource already
+Cache Miss - the resource has to be fetched back to orgin
+
+Cloudfront integrates with aws ACM (certificate manager) to use SSL
+Cloudfront integrates with AWS WAF and SHIELD  (web application firewall) to protect against DDoS attacks
+Is functional only for dowloading traffic, not uploads. 
+==================Distribution V Behaviors================
+A lot of the important configuration is stored in behaviors, which are held within distributions. Behaviors work on pattern(path) matches. The default is (*) and there is always 1 behavior for each distribution.
+the behavior can dictate which origin applies to which path, and protocol policy, http methods, and Restrict Viewer Access to a behavior. If you select restrict access, trusted key groups are the new way trusted signer is legacy. This means you nead signed cookies or signed urls to gain access. 
+Lambda funcitons are at behavior level too
+
+The distribution level sets WAF(product) ACL then associate it with this dist. Here you also configure a CNAME and SSL
+
+
 
 
 
