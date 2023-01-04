@@ -61,12 +61,46 @@ the behavior can dictate which origin applies to which path, and protocol policy
 Lambda funcitons are at behavior level too
 
 The distribution level sets WAF(product) ACL then associate it with this dist. Here you also configure a CNAME and SSL
+=================TTL / Invalidations======================
+TTL - Time to Live - how long a resource is cached for. (defalt 24h,  min, max) it is possilbe to specify per object TTL, but if you dont the default attatched to the behavior applies.  
+Object specific ttls are in the various headers:
+Cache-Control s-maxage(seconds)
+Cache-Control-max-age(seconds), no-cache, no-store, must-revalidate
+Expires(date and time)
 
+For any of these headers, the minimum TTL and max TTL specified are both limiters to the per object set TTL. So values below the minimum TTL of the behavior will mean that the minimum TTL is used rather than the per object setting. likewise a per object setting that is above max, the max TTL setting is used instead. 
 
+Invalidations - when you change a resource, you need to invalidate the cache so that the new resource is served.
+Object Valitity - if you change the object, you need to invalidate the cache
 
+These are settings usable for s3 objects or custom origins. if custom origins, these can be injected by your app or web server. On S3 these are defined in object metadata, which is set via API, command line, or console UI
 
+Cache Invalidations - performed on a distribution, applies to all edge locations, takes a bit of time. Immediately expire any objects regardless of their TTL based on the behavior pattern(path) that you specify. There is a cost to send cache invalidations, it is there for fixing errors basically. Avoidable if using versioned s3. Cloudfront will use the latest object version in a bucket by default
+versioned filenames is different than s3 object versioning. Object versioning allows you to have different data(objects) which use the same name. versioning filenames means no objects have the same name - cached independently.
+=================CloudFront SSL==============================
+Every CF Distribution gets a default domain name (CNAME DNS) something.cloudfront.net and *.cloudfront.net is the ssl default cert
 
+With your own alternate CNAME you have to use a SSL cert that matches the name given to the CF Distribution. Typically this cert is provided by AWS Cert Manager, (ACM) is a regional service so you need add a cert in the same region as the service you use or for a global service like CF, ALWAYS make it us-east-1
 
+A cloudfront connection is of two protocols:
+1. The connection between the user and the edge location (Viewer)
+2. The connection between the edge location and the origin (Origin)
+Both of these connections need valid public certs (and any intermediates in the chain) So, self-sign certs will NOT work with cloudfront
 
-
+Historically every server needed a seperate IP, and then 2003 Server Name Indication (SNI) was added to TLS HTTP protocol, allows a client to add which domain it is trying to access, before HTTP is even involved, so the server can host more than one site with seperate IPs. This comes for free as part of cloudfront in SNI mode. Otherwise a dedicated ip is needed for each edge location. This costs $600/month per distribution
+===================CF Origin Types and Architecture=================
+CloudFront origins store content distributed via edge locations.
+The features available differ based on using S3 origins vs Custom origins.
+S3 origins - can be used for static content, dynamic content, or both.
+AWS media Store Contianer Endpoints
+AWS media package channel endpoints
+Custom origins - can be used for dynamic content, but not static content.    default port is 80 for http, 443 for https. 
+ any questions about custom ports, configuring origin protocol policy, or min ssl protocol versions, its a custom origin. Custom origins also provide custom headers that can ensure the origin is only reachable through cloudfront
+Origin Groups - if you have more than one origin in a region, a group will allow the whole group to be used by a behavior. 
+====================ACM Amazon Cert Manager====================
+digital cert for Either SSL or TLS tunnel for https to movethrough. 
+ACM either generates or imports certs. If generated, they auto renew.
+Not may AWS services integrate with ACM, usually only cloudfront and load balancers. s3 does not use ACM, Not even ec2, because we could always get to them with root access to the OS. 
+Certs cannot leave the region they were generated in. So, a load balancer in a region, needs a cert generated or imported in that same region in ACM
+if its generated in any other region it will not work with cloudfront. 
 */
