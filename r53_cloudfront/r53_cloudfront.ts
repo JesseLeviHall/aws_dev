@@ -71,7 +71,7 @@ Expires(date and time)
 For any of these headers, the minimum TTL and max TTL specified are both limiters to the per object set TTL. So values below the minimum TTL of the behavior will mean that the minimum TTL is used rather than the per object setting. likewise a per object setting that is above max, the max TTL setting is used instead. 
 
 Invalidations - when you change a resource, you need to invalidate the cache so that the new resource is served.
-Object Valitity - if you change the object, you need to invalidate the cache
+Object Valitity - if you change the object, you need to invalidate the cache, but invalidations cost, so make broader invalidations less often. 
 
 These are settings usable for s3 objects or custom origins. if custom origins, these can be injected by your app or web server. On S3 these are defined in object metadata, which is set via API, command line, or console UI
 
@@ -88,7 +88,7 @@ A cloudfront connection is of two protocols:
 Both of these connections need valid public certs (and any intermediates in the chain) So, self-sign certs will NOT work with cloudfront
 
 Historically every server needed a seperate IP, and then 2003 Server Name Indication (SNI) was added to TLS HTTP protocol, allows a client to add which domain it is trying to access, before HTTP is even involved, so the server can host more than one site with seperate IPs. This comes for free as part of cloudfront in SNI mode. Otherwise a dedicated ip is needed for each edge location. This costs $600/month per distribution
-===================CF Origin Types and Architecture=================
+===================CF Origin Types and Architecture========
 CloudFront origins store content distributed via edge locations.
 The features available differ based on using S3 origins vs Custom origins.
 S3 origins - can be used for static content, dynamic content, or both.
@@ -100,7 +100,65 @@ Origin Groups - if you have more than one origin in a region, a group will allow
 ====================ACM Amazon Cert Manager====================
 digital cert for Either SSL or TLS tunnel for https to movethrough. 
 ACM either generates or imports certs. If generated, they auto renew.
-Not may AWS services integrate with ACM, usually only cloudfront and load balancers. s3 does not use ACM, Not even ec2, because we could always get to them with root access to the OS. 
+Not may AWS services integrate with ACM, usually only cloudfront, API Gateways, and load balancers. s3 does not use ACM, Not even ec2, because we could always get to them with root access to the OS. 
 Certs cannot leave the region they were generated in. So, a load balancer in a region, needs a cert generated or imported in that same region in ACM
 if its generated in any other region it will not work with cloudfront. 
+Real-Time logs are available with kenesis when setting up an origin
+==============CF Security OAI & Custom Origins=========
+Security from Origin to Edges 
+ the main ways to secure origins from direct access (bypassing CloudFront):
+
+Origin Access identities (OAI) - for S3 Origins
+  An OAI is a type of identity that can be associated with a CF distribution, so it can assume that id, so it can be included in bucket policies - typically to deny anything that isnt that cloudfront origin id. Generally its easier to manage, to give one OAI to one distribution. 
+  -The new method for this is Origin Access Control(OAC)
+Custom Headers - For Custom Origins
+  Custom headers are a way to add custom headers to the request that CF makes to the origin. This is useful for custom origins, because you can add a header that is unique to CF, and then use that header in your origin to ensure that the request is coming from CF.
+IP Based FW Blocks - For Custom Origins
+  You can use IP based FW rules to block access to your origin from any IP that isnt a CF edge location. This is a bit more complex to manage, but it is possible.
+
+
+==============Lambda@Edge========
+Lambda@Edge allows cloudfront to run lambda function at CloudFront edge locations to modify traffic between the viewer and edge location and edge locations and origins.
+Currently Only supports Node.js and Python
+Only runs in AWS public space (NOT VPC)
+Lambda layers are not supported, and not the usual size limits. 
+Lambda@Edge is not a replacement for CloudFront functions, which are a different product.
+This could be useful for A/B testing - Viewer Request function
+or gradually migrating trafic by percentage to a new origin - origin request function
+or serving different objects based on req devices - origin request
+or serve content based on country - origin request
+=======CF private behaviors signed urls and cookies=======
+architecture of a private CloudFront distribution (or more specifically making 1 or more behaviors of a distribution private).
+Any content distributed in cloudfront is public by default, or private, meaning deny to viewers without signed URLs or cookies. 
+CloudFront keys, and TRUSTED SIGNERS are the legacy way. 
+-Now recommended method is create trusted key groups and assign those as signers. 
+the key groups determine which keys can be used to create signed URLS and cookies. No need to use account root user to manage the keys
+-signed URLs provide access to ONE object, and should be used if the client doesnt support cookies.
+-signed cookies provide access to multiple or all objects, and if you want to maintian structured custom urls, you should be used if the client supports cookies.
+==================CF GeoRestriction==============
+There are two common architectures for restricting access to content via CloudFront.
+
+Cloudfront Geo Restriction - 
+ Whitelist or Blacklist Countries Only 
+
+3rd party geolocation - Whatever customizations you can implement yourself. 
+==================Field-Level Encryption==========
+Field-Level encryption allows CloudFront to encrypt certain sensitive data at the edge using a public key, ensuring its protection through all levels of an application stack. Only the corresponding private key can decrypt the data, meaning you have complete control over who has access.
+-happens seperately from the HTTPS tunnel, in the edge location using a public key to protect data at all levels on travel through the internet. 
+
+q: does cloudfront cache dynamic content?
+a: yes, but it is not recommended. Cloudfront is for static content.
+
+q: To use an ACM cert with CloudFront what region must it be created in?
+a: us-east-1
+
+q: What region must certificates be created in when using ACM?
+a: the region the service which uses them is in
+
+q: You have a TCP based application which is used globally. You want to improve the network performance for global users. Which service might support this requirement?
+a: Global Accelerator
+
+q: what is global accelerator?
+a: a service that improves the performance of your applications for global users. It provides static IP addresses that are anycast from 170+ edge locations. This allows users to access your application by using the nearest edge location.
+
 */
