@@ -41,8 +41,26 @@ Why you Should Not (AWS best practices):
 - AWS DB's generally offer great features and performance that surpass the db you'd put on an ec2
 - No sererless no easy scaling or (elasticity)
 ===================RDS======================
+RDS is a DB server, not a DB.
 RDS isnt a DBAAS, it is more acurately a DBSAAS - Database Server as a service. 
+Provides a choice between MySQL, MariaDB, PostgreSQL, Oracle, Microsoft SQL Server. 
+Amazon aurora is a seperate product altogether. 
+RDS is a managed service, so no access to OS or SSH access unless using RDS Custom
 
+RDS can be accessed from the VPC or any connected private network (VPN or Direct Connect)
+RDS can be accessed from the internet, but this is not recommended.
+
+If you want to split databases between different sets of subnets, you need multible DB subnet groups - best overall flexibility way is one DB subnet group for on RDS deployment
+
+An RDS instance can have mubltiple Databases, and every RDS Instance has its own dedicated storage provided by EBS. This is different than Aurora. 
+
+RDS Costs:
+- RDS instance cost billed per sedonc
+- Multi-AZ or not is a big difference
+- Storage is billed per GB per month, provisioned IOPS cost more
+- Data Transfer cost
+- Backups and snapshot cost per gb per month
+- Licensing commercial DB's
 
 
 
