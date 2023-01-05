@@ -27,6 +27,30 @@ or Online Analytical Processing database (OLAP). OLAP is used for data warehousi
 
 Graph DB's store the actual connection (edges) between things (nodes - key value) along with the data, so the relationship doesnt need to be calculated in each query. Great for storing complex relationships like social media or HR systems. 
 ===================Databases On EC2=================
+Running Databases directly on EC2 is considered bad practice, pretty much always.
+Why you would:
+- OS level access to DB system (questionable)
+- Root access to advanced tune DB configuration (questionable)
+- DB is not offered by AWS (questionable)
+- Specific replication, security and resilience requirements
+Why you Should Not (AWS best practices):
+- The effort and Admin overhead is costly
+- Backup and desaster recomer management is complex and costly
+- EBS or EC2 are only AZ resilient. 
+- EBS is not a DB, and is not optimized for DB workloads
+- AWS DB's generally offer great features and performance that surpass the db you'd put on an ec2
+- No sererless no easy scaling or (elasticity)
+===================RDS======================
+RDS isnt a DBAAS, it is more acurately a DBSAAS - Database Server as a service. 
+
+
+
+
+
+
+
+
+
 
 
 
