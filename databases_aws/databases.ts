@@ -95,9 +95,27 @@ read replicas can have their own read replicas, but then lag is a problem, or ca
 
 In General Snapshots and backups improve RPO but RTO is a problem 
 Read replicas offer near 0 RPO, and very low RTO but good for failure only, not corruption. 
+===========RDS Security======================
+Authorization
 
+Authentication
 
+Encyption in Transit - SSL TSL available for rds, can be mandatory. 
 
+Encyption at Rest
+KMS/EBS based is Handled by HOST/EBS. cannot be removed once added. Storage, Logs, Snapshos and replicas are all encrypted. In addition, MSSQL and Oracle support TDE (transparent data encryption) within the database engine, not aws. Oracle supports integration with CloudHSM - much stronger key controls because it is managed by you with no key exposure to aws. 
+With Oracle keys via Cloud HSM removes aws from chain of trust. TDE is native to db engine so data is encrypted before leaving the instance. 
+KMS provides aws or customer managed CMKs whih are used to generate data encr keys (DEKs) for RDS. 
+
+Normally, logins to RDS instances are outside aws, but you can give IAM user login to db by creatign a local db user account configured to use aws auth token. Policy attached to Users or Roles map that IAM id onto the local rds user. token generated is 15 min valid. This is only AUthentication not authorization for permissions in the db. 
+===============Aurora Architecture======================= 
+Aurora is a AWS designed database engine officially part of RDS but seems like its own product.
+
+Aurora implements a number of radical design changes which offer significant performance and feature improvements over other RDS database engines.
+
+Uses a 'cluster', is a single primary instance + 0 or more replicas. These replicas arent like the rds standby ones because they can be used for reads during normal operation, giving the benefits of RDS multi-AZ and RDS read replicas.
+
+No local storage, uses shared cluster volume.
 
 
 
