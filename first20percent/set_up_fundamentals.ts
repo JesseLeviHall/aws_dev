@@ -45,7 +45,7 @@ create an IAM user called admin, with an alias for keeping straight, uncheck pas
 =========Then IAM Access Keys and CLI===============
 IAM users can have access keys, which are like passwords. They are used to asign programmatic requests to aws services. They do not change or update automatically = longterm credentials. IAM can have 0, 1, or 2 access keys. Generally 2 would be for rotating a new one every so often.  There is a key ID and a secret key that you can only view one time. 
 
-then run aws configure --profile iamadmin-general, add credentials, default non output. 
+then run aws configure --profile iamadmin-general, add credentials, default none output. 
 test the connection by running aws s3 ls --profile iamadmin-general. returns empty string to begin.
 Do this for prod (iamadmin-production) aswell
 
