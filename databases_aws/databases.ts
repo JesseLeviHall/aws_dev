@@ -61,11 +61,40 @@ RDS Costs:
 - Data Transfer cost
 - Backups and snapshot cost per gb per month
 - Licensing commercial DB's
+==============RDS multi-AZ Cluster=================
+Until clusters, you had to set up multi-instances in different AZ's, where the primary was the only connectable db, and was synchronously replicated in a failover architecture and a 1-2 min delay in failure. same region only. system back ups occur from the duplicate replica so no outage on production env while copy to s3
+Multi-AZ is a feature of RDS that provides a warm standby replica in another AZ.
+The cluster has a reader and writer distinction, and writer synchronously updates the readers with transaction logs, readers are viewable for read operations through the read endpoint, and there can only be 2 readers (different AZs). with aurora, you can have more though.  There are instance specific enpoints too, for testing/fault finding. Clusters are faster - gravaton + NVME SSD storage and failover is quicker - 35 secs. writes are commited when one reader has confirmed. 
+=============RDS Backup snapshot restore=================
+RDS is capable of performing Manual Snapshots and Automatic backups. Both go to s3, regionaly resilient
 
+Manual snapshots are performed manually and live past the termination of an RDS instance.  Incremental updates to the s3. they are not deleted when the rds instance is deleted.
 
+Automatic backups can be taken of an RDS instance with a 0 (Disabled) to 35 Day retention.
 
+Automatic backups also use S3 for storing transaction logs every 5 minutes - allowing for point in time recovery or five minute recovery point objective. The snapshot restores the db, and the transaction logs 'replay' to desired point in time. (GOOD RPO) but restores are not fast either way
 
+Automatic backups can store snapshots and transaction logs. this is NOT DEFAULT
+Charges apply for the cross-region data copy and the storage in the destination. 
 
+Snapshots can be restored .. but create a new RDS instance, meaning you have to update database endpoint addresses.
+================RDS Read Replicas===================
+allow for RDS to meet really low recovery time objectives if data is not corrupted, corrupt data will be replicated.
+
+RDS Read Replicas can be added to an RDS Instance - 5 direct per primary instance, each providing an additional instance of read performance
+
+They can be in the same region, or cross-region replicas.
+
+They provide read performance scaling for the instance, but also offer low RTO recovery for any instance failure issues
+
+Read replicas are asynchronous, so they are not a true hot standby.
+
+these are not part of the instance, they have their own enpoints. 
+
+read replicas can have their own read replicas, but then lag is a problem, or can give makeshift cloudfront-like read perfomance improvement if distributed clients. 
+
+In General Snapshots and backups improve RPO but RTO is a problem 
+Read replicas offer near 0 RPO, and very low RTO but good for failure only, not corruption. 
 
 
 
