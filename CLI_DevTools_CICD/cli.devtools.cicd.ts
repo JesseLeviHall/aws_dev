@@ -25,5 +25,18 @@ This is a file that is used by AWS CodeDeploy to deploy your application. It is 
 Code Deploy can deploy out to one or more ec2 instances using a dployment group. Or directly into Elastic Beanstalk or OpsWorks.
 deploying to elastic beanstalk requires an environment name. With OpsWorks you need to specify a stack and a layer. Code Deploy can also deploy to cloudformation to create a new stack or update one or create or update and change set. It can also deploy to ECS (elastic containter) and optionally with blue/green deployment model. Code Deploy also deploys to Service Catalog or Alexa Skills Kit. Also, just to store the built version of repo in s3 bucket. 
 
+CodeCommit: 
+When you create a repo, you can connect using HTTPS / SSH (keyPair)
+with HTTPS: you need to authenticate using a username and password
+Both connections are configured in the IAM (users), select user,  sec credentials tab. 
+
+
+
+
+
+
+
+
+
 
 */
