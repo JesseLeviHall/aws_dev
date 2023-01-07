@@ -63,7 +63,51 @@ It defines ENV variables, inc from parameter store or secrets-manager, and the A
 - build: build commands
 - post_build: push docker image, explicit notifications
 
+CodeDeploy:
+a deployment service that automates application deployments to Amazon EC2 instances, on-premises instances, serverless Lambda functions, or Amazon ECS services.
+- Deploys Code, not resources 
+- Can be used to deploy code, prebuilt apps, web, configuration, EXE files, Packages, Scripts, media and more. 
+- Integrates with other aws services esp AWS Code* Tools
+- To use codedeploy on-premises or on EC2 you have to have an agent installed which communicates with the product and performs deploys when instructed. 
 
+This Tool is based on the appspec.yml or JSON file which defines deployments - config + lifecycle event hooks
+
+- Config: defines Files(EC2/ON-Premise): Which things are installed.
+ Resources(ECS/Lambda):Name, Alias, Current Version and Target Version for Lamda. And task defs or container port details for ECS. 
+ Permissions(EC2/On-Premises): special permission and how they should be applied to the files directories and folders of the Files Section.
+ The things that surround deployment but not the core of deployment itself. 
+- Lifecycle event Hooks: IF you use ec2 or on-premise, 
+  then each of these lifecycle event hooks run one or more scripts. If you use lambda or ecs, then each of these hooks specify lambda functions to run during each stage of the deployment lifecycle. 
+  **********
+  Remeber this: ApplicationStop(prepare for deploy), DownloadBundle(when the codeDeploy agent copies the app to a temp location),BeforeInstall(decrypt files, create backup, other configuration), Install(copy the temp files to the final dest. You cant run any scripts during this setp), AfterInstall(changing file permissions, apply licensing), AppStart(restart the stopped app), ValidateService*(allows codedeploy to determine if the deployment was successful or not, check application logs, perform tests)
+  *ValidateService is only for ECS and Lambda
+  
+ECR Elastic Container Registry
+- A fully managed Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images.
+- Each AWS account has a public and a private registry.
+- Each registry can have many repositories (like GitHub)
+- Each repository can have many images 
+- Each image can have many tags (each must be unique whithin registry)
+
+A public registry gives read only access. read/write requires permission
+  Anyone can pull, but to push you need permissions
+A private registry requires permission for read or read/write
+
+ECR is integrated with IAM, so you can use IAM policies to control access to your repositories and images.
+
+Image scanning Basic or Enhanced
+- Enhanced scans images OS or Packages for vulnerabilities and notify you when new vulnerabilities are found. 
+
+Near realtime metrics to cloudwatch EG: Auth, push, pull
+
+ECR logs all API actions into CloudTrail, and generates events to eventbridge providing event driven workflow involving container images. 
+
+Offers replication accross regions and accross acounts. 
+======================================================
+STAGE 1 : Configure Security & Create a CodeCommit Repo
+STAGE 2 : Configure CodeBuild to clone the repo, create a container image and store on ECR
+STAGE 3 : Configure a CodePipeline with commit and build steps to automate build on commit.
+STAGE 4 : Create an ECS Cluster, TG's , ALB and configure the code pipeline for deployment to ECS Fargate
 
 
 
