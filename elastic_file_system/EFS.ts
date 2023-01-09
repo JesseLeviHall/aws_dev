@@ -85,7 +85,7 @@ Managed - no file server admin
 ============FSx for Lustre=============
 FSx for Lustre is a managed file system which uses the FSx product designed for high performance computing
 
-It delivers extreme performance for scenarios such as Big Data, Machine Learning and Financial Modeling
+It delivers extreme performance for scenarios such as Big Data, Machine Learning and Financial Modeling, SageMaker
 
 relatively niche. 
 
@@ -96,10 +96,12 @@ It is designed to be used with HPC workloads, and is optimized for parallel work
 Can scale to 100s GB/s throughput and sub millisecond latency when accessing storage accross many different clients or instances
 
 Two deployment types:
-PERSISTENT - data is retained after the file system is deleted. Long term self-healing HA, ONE AZ ONLY, better resilience.
+PERSISTENT - data is retained after the file system is deleted. Long term self-healing HA, ONE AZ ONLY, better resilience. 50, 100, or 200MB/s per TiB storage
 
 SCRATCH - Highly optimised for short term. data is deleted after the file system is deleted. No replication
-Not much HA or resilience
+Not much HA or resilience. Base 200MB/s per TiB storage
+
+Both burst up to 1300MB/s per TiB(credit system) earn credits when you use performance below your baseline, use credits when above baseline.
 
 Access over VPN or direct connect from on-premises, from within a VPC and anything connected to VPC via private networking
 
@@ -114,6 +116,12 @@ Data - the actual data in the file system stored on object storage targets (OSTs
 Logs - logs of the file system activity
 Checkpoints - used to recover from failures
 
+One ENI from the VPC to the Lustre file servers and storage volumes.
 
+The larger the file sys, the more servers and disks, and more chance of failure in SCRACH deployments
+
+Persistent gives replication of those resources but only in one AZ
+
+You can back up to s3 with both, manual or auto 0-35 day retention
 
 */
