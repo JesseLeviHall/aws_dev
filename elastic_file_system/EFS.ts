@@ -124,4 +124,6 @@ Persistent gives replication of those resources but only in one AZ
 
 You can back up to s3 with both, manual or auto 0-35 day retention
 
+q: Is EFS a public or private AWS Service
+a: Private
 */
