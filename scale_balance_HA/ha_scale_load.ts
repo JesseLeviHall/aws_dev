@@ -52,13 +52,41 @@ Both are not editable, Launch Templates have versions.
 Launch Templates have newer features including T2/T3 Unlimited CPU options, placemnet groups, Capacity reservations, Elastic Graphics.
 AWS reccomend templates going forward. Configs are used for auto scaling groups, templates do the same but alos let you launch from the console, or CLI, 
 ================Auto Scaling Groups====================
-Auto Scaling Groups provide the HOW to Auto Scaling.
+Auto Scaling Groups provide automatic scaling and self-healing for EC2, defined in one specific version of a launch template or configs(you change the association but its one at a time). Thats how they know what to provision.
 An Auto Scaling group contains a collection of Amazon EC2 instances that are treated as a logical grouping for the purposes of automatic scaling and management. An Auto Scaling group also enables you to use Amazon EC2 Auto Scaling features such as health check replacements and scaling policies. Both maintaining the number of instances in an Auto Scaling group and automatic scaling are the core functionality of the Amazon EC2 Auto Scaling service.
 
+There are three values associated with the scaling group:
+1. The minimum size
+2. The desired capacity
+3. The maximum size
+Often expressed as X, Y, or Z.
+The job of the scaling group is to approach the desired capacity by starting or terminating instances as needed.
+- You can manage this completely manually, but normally scaling policies are used to automate it.
+- The scaling group will never terminate more than 20% of the instances in a single action.
+- Automation can be by schedule(time based), or dynamic
+- Dynamic scaling is based on CloudWatch metrics, such as CPU Utilization, or a custom metric = (simple scaling) or Stepped scaling (Bigger +/- based on difference from normal - act quicker the bigger the difference. Usually prefered to simple) or Target Tracking (set desired aggregate CPU or I/O or req count per target ie 40% and ASG handles the provisioning to keep that metric )
+The cooldown period is in seconds, how long to wait at the end of a scaling action before doing another
+Auto-scaling groups also monitor the health of instances (default ec2 status checks) so if an instance fails, it replaces it to fix most problems isolated to a single instance. 
+AS Groups integrate well with Load Balancers because the LB metrics that measure load on a system can be used to adjust the number of instances. 
+Scaling processes within an Auto Scaling Group: There are a number of dif processes or functions performed by the ASG. These can be set to suspended or resumed. IE: launch and terminate(on or off), addtoloadbalancer(whether new instances are added to LBs), alarmnotification(connected to cloudwatch alarms), AZRebalance(balances evenly accross all AZs), HealthCheck(on or off), ReplaceUnhealthy, ScheduledActions, Standby or InService(a specific instance)
+- ASGs are free you only pay for the resources they create
+- Use cooldowns to avoid rapid scaling and associated costs
+- Can be more cost effective if using more small instances than a few big ones(ajust in smaller steps)
+- ASGs define when and where resources are launched, Templates define the What. 
+=============lifecycle Hooks==============
+Lifecycle hooks enable you to perform custom actions by pausing instances as an Auto Scaling group launches or terminates them. When an instance is paused, it remains in a wait state either until you complete the lifecycle action using the complete-lifecycle-action command or the CompleteLifecycleAction operation, or until the timeout period ends (one hour by default).
+-Custom actions that occur during ASG actions
+-Integrate with EventBridge or SNS Notifications which allow your system to perform event driven processing based on the launch or termination of ec2 instances within an ASG
+Ex: when an instance is being launched in moves from pending to pending wait, to then perform the hook actions you def like ingest and index data. Then it moves to pending proceed and finally InService. A terminate hook is the same in reverse. 
+=================ASG Health Check EC2 V ELB============
+Amazon EC2 Auto Scaling can determine the health status of an instance using one or more of the following:
 
+Status checks provided by Amazon EC2 to identify hardware and software issues that may impair an instance. The default health checks for an Auto Scaling group are EC2 status checks only.
+Health checks provided by Elastic Load Balancing (ELB). These health checks are disabled by default but can be enabled. these make checks more app aware (layer 7)
+Your custom health checks (external system)
+A health Check Grace period default of 300s gives adelay while an instance boostraps before starting checks, so it doesnt continually terminate and restart an instance forever. 
 
-
-
-
+q: What is SSL Offload?
+A: SSL Offload is a process where the SSL encryption is removed from the server and placed on a load balancer. This allows the server to focus on the application and not the encryption. This is a common practice in web applications.
 
 */
