@@ -89,4 +89,7 @@ A health Check Grace period default of 300s gives adelay while an instance boost
 q: What is SSL Offload?
 A: SSL Offload is a process where the SSL encryption is removed from the server and placed on a load balancer. This allows the server to focus on the application and not the encryption. This is a common practice in web applications.
 
+q: Which load balancer is allocated with a static IP
+A: Network Load Balancer
+
 */
