@@ -275,6 +275,7 @@ Two main peices of functionality:
 1. User Pools - user directory for your app - main goal is sign-in and get a json web token. But most aws services dont support jwt, you need actual aws credentials. API Gateway does, and Lambda Custom Authorisers do. User pools also provide a builtin customizable web user interface, security features like multifactor auth, check for compromised credentials, takeover protection and phone and email verification. User pools also allow social sign in from other platforms. 
 2. Identity Pools - federated identities for your app, main point is to allow you to offer access to temporary AWS credentials, which can be used to access aws resources(guest access). Also, to swap external identity for temporary aws credentials, google facebook twitter and SAML and even user pool identities. ID Pools work by assuming an IAM role on behalf of the identity, which generates temporary credentials. 
 
-
+q: Which architecture should be used when one event needs to initiate multiple workflow processes
+a: SNS + SQS Fanout
 
 */
