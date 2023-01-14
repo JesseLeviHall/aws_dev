@@ -208,8 +208,23 @@ Caches can be from 500MB to 237GB default 300 secs, custom from 0 to 3600 second
 ============Kinesis Data Streams================
 Kinesis Data Streams is a fully managed service that can ingest large amounts of data per second, durably store the data, and make the data available for real-time analysis. Kinesis Data Streams can continuously capture and store terabytes of data per hour from hundreds of thousands of sources such as web clickstreams, IoT devices, application logs, social media feeds, and financial transactions. You can use Kinesis Data Streams to process and analyze the data in real time or to buffer and replay the data later for batch processing.
 
+Kinesis is HA and regionally resilient by design, in the public space. Default level of persistence is 24hour rolling window. can be increased to 365 days for more money. However much storage you use in that period is included in the price. 
 
+The stream is the basis entity of kinesis. Streams can scale from low levels of data throughput to near infinite.
 
+Producers send data into a kinesis stream. (ec2, onpremise servers, devices, mobile apps, IoT sensors)
+Consumers read data from a kinesis stream. there can be many consumers per stream (ec2, lambda, on premise servers )
+A stream is defined as: 
+1. Name
+2. Number of shards
+3. Retention period
+
+Shards are the fundamental throughput capacity unit of a stream. Each shard can support up to 1MB/s of data input and 2MB/s of data output. Each shard can support up to 1000 records per second. The more shards the more expensive, and the more performance. 
+
+Data is stored in Kinesis data records max 1MB
+
+Kinesis is great for data analytics and dashboards
+==============Kinesis Data Firehose================
 
 
 
