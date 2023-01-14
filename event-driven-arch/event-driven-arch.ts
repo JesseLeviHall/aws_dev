@@ -225,10 +225,55 @@ Data is stored in Kinesis data records max 1MB
 
 Kinesis is great for data analytics and dashboards
 ==============Kinesis Data Firehose================
+Kinesis Data Firehose is a stream based delivery service capable of delivering high throughput streaming data to supported destinations in near realtime, genreally around 1min as aposed to kenisis which is realtime. 
 
+Its a member of the kinesis family and for the PRO level exam it's critical to have a good understanding of how it functions in isolation and how it integrates with AWS products and services.
 
+The thing Kinesis doesnt provide is a persistent store once the data passes the rolling window. Firehose helps solve this by enabling piping into s3, data lake products, data stores, and analytic services. 
 
+Firehose scales automatically, is serverless and resilient
+It supports data transormation on the fly using Lambda, but this can add latency
 
+You are billed as you go by amount of data passing through.
+
+Valid Destinations: 
+1. S3
+2. Redshift - excludes lambda intermediary(it uses s3)
+3. ElasticSearch
+4. Splunk
+5. Lambda
+6. HTTP endpoint
+
+Data can come directly from producers or from kinesis stream
+==============Kinesis Data Analytics================
+Amazon Kinesis Data Analytics is the easiest way to analyze streaming data, gain actionable insights, and respond to your business and customer needs in real time.
+
+it is part of the kinesis family of products and is capable of operating in realtime on high throughput streaming data.
+
+Real-time data processing using SQL
+
+Input data from kinesis stream or Firehose, or can pull static data in s3. 
+
+Supported destinations are:
+1. Firehose
+2. Redshift
+3. S3
+4. Elastic Search
+5. Splunk
+6. Lambda (realtiem)
+7. Kenisis Streams (realtime)
+
+A usecase is to enrich live gaming data by enriching relevant info about a player in real-time with SQL relations from reference tables in another DB. Or Time-series analytics...elections, realtime dashboards or leaderboards, security and response teams. 
+This is not cheap
+===============Cognito User and ID Pools=============
+A user pool is a user directory in Amazon Cognito. With a user pool, your users can sign in to your web or mobile app through Amazon Cognito. Your users can also sign in through social identity providers like Google, Facebook, Amazon, or Apple, and through SAML identity providers. Whether your users sign in directly or through a third party, all members of the user pool have a directory profile that you can access through a Software Development Kit (SDK).
+
+Amazon Cognito identity pools (federated identities) enable you to create unique identities for your users and federate them with identity providers. With an identity pool, you can obtain temporary, limited-privilege AWS credentials to access other AWS services. 
+
+As a whole cognito provides authentication and authorization and user management for web/mobile apps
+Two main peices of functionality: 
+1. User Pools - user directory for your app - main goal is sign-in and get a json web token. But most aws services dont support jwt, you need actual aws credentials. API Gateway does, and Lambda Custom Authorisers do. User pools also provide a builtin customizable web user interface, security features like multifactor auth, check for compromised credentials, takeover protection and phone and email verification. User pools also allow social sign in from other platforms. 
+2. Identity Pools - federated identities for your app, main point is to allow you to offer access to temporary AWS credentials, which can be used to access aws resources(guest access). Also, to swap external identity for temporary aws credentials, google facebook twitter and SAML and even user pool identities. ID Pools work by assuming an IAM role on behalf of the identity, which generates temporary credentials. 
 
 
 
