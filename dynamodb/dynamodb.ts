@@ -97,6 +97,24 @@ DAX delivers faster reads and reduced costs. Scales up or out (bigger instanc or
 
 Not ideal for apps that require strongly consistent reads
 ==============DDB Global Tables====================
+DynamoDB Global Tables provides multi-master global replication of DynamoDB tables which can be used for performance, HA or DR/BC reasons. No single table is viewed as the master.
+Create tables in various regions then unify them in a global table. 
+IF there's a data conflict the last writer wins.
+Gererally sub-second replication between regions
+Strongly consistent reads are only available in the region it is written to. 
+=================Time-To-Live(TTL)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
