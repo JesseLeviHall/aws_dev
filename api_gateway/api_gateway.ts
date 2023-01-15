@@ -41,8 +41,8 @@ Swagger is a specification for describing RESTful APIs. It is a JSON or YAML fil
 
 You can use API Gateway to import a REST API from an external definition file into API Gateway. Currently, API Gateway supports OpenAPI v2.0 and OpenAPI v3.0 definition files. You can update an API by overwriting it with a new definition, or you can merge a definition with an existing API.
 
+Formally known as Swagger v2:
+OpenAPI (v3) Spec (OAS) is a standard laguange-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection
 
-
-
-
+Format in yml or json. API Gateway is capable of importing this or generating this as an export, if you import a swagger file to use a lambda you have to manually update the resource policy of the lambda unlike creating the api from scratch.
 */
