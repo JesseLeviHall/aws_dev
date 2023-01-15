@@ -7,7 +7,7 @@ resources - created in API configuration, points of functionality
 
 Creating an API Gateway assuming we have users means they request an invoke URL.  This URL contains the api gateway endpoint DNS name, stage, and resource. 
 
-A stage is a ligical configuration within the gatway service that APIs are deployed into in order to, you can do a prod, dev, and test stage of an API, or versions
+A stage is a ligical configuration reference to a lifecycle state of your API within the gatway service that APIs are deployed into. you can do a prod, dev, and test stage of an API, or versions
 
 APIs can only be accessed and changes only take effect when deployed into a stage,
 
@@ -30,5 +30,19 @@ Integration Res => Method res (client)
 
 Mapping template is used for AWS(Lambda) and HTTP NON Proxy integrations. The template modifies or renames params between the method and the integration. Can also modify the body and headers and perform filtering. Uses Velocity Template Language (VTL) and sits between the Client and the integration endpoint translating data both ways. Only used when not using proxying. Example is using API gateway to integrate a SOAP endpoint.
 ----------------Stages and Deployments-----------
+A stage is a named reference to a deployment, which is a snapshot of the API. You use a Stage to manage and optimize a particular deployment. For example, you can configure stage settings to enable caching, customize request throttling, configure logging, define stage variables, or attach a canary release for testing.
+
+Editing changes in an API Gateway are NOT live until you deploy to a stage. Every stage is entirely seperate from the others but they are NOT immutable they can be overwritten or rolled back, unlike Lambda functions.
+
+For versioning the use of stage variable is useful. 
+stage variables ei (env = prod, beta, or dev) for associated stages, then we can check this variable in the resources to reference different lambda aliases rather than pointing at them explicitly.  Common ei dev points to $Latest lambda function, prod to set lambda, beta points to newer function under construction. 
+---------------Swagger and OPENAPI---------------
+Swagger is a specification for describing RESTful APIs. It is a JSON or YAML file that describes the APIs endpoints and operations. It is used to generate documentation, client SDKs, and server stubs for testing.
+
+You can use API Gateway to import a REST API from an external definition file into API Gateway. Currently, API Gateway supports OpenAPI v2.0 and OpenAPI v3.0 definition files. You can update an API by overwriting it with a new definition, or you can merge a definition with an existing API.
+
+
+
+
 
 */
