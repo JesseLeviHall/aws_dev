@@ -66,16 +66,37 @@ GSI - can be created at any time, and can be created on a table with a single ke
 Queries on attributes NOT projected are expensive. 
 AWS recomment GSIs as default and LSIs when only strong constistency is required. remember the term alternative access patterns
 ===============DDB Streams and Triggers===============
+DynamoDB Streams are a 24 hour rolling window of time ordered change logs to ITEMS in a DynamoDB table
 
+Streams have to be enabled on a per table basis, and have 4 view types
 
+KEYS_ONLY - only records PK and optionally SK (we dont see what exactly was changed in that item)
 
+NEW_IMAGE - stores the entire Item after the change(does not show what changed still)
 
+OLD_IMAGE - can use to compare difference to current item in the table now
 
+NEW_AND_OLD_IMAGES - provides before and after change image independent of actual data table. can calculate difference without consulting the actual DB
 
+Streams can be used to trigger Lambda functions, or to send data to Kinesis Firehose or Kinesis Data Streams. DB Changes generate an event which contains the view type data. 
+Lambda can be integrated to provide trigger functionality - invoking when new entries are added on the stream.
+- Also useful for reporting and analytics, aggregations, messaging, or notifications. Cost effective serverless architecture. 
+===============DDB Accelerator (DAX)==================
+DAX is a fully managed, highly available, in-memory cache for DynamoDB. It should be your default choice for any DynamoDB caching related questions. Makes it easy to integrate data caching to your app. 
 
+DAX is not a public space service
+Operates from within a VPC and is designed to be deployed into multiple AZs in that VPC to ensure HA. There is a primary cluster node with read/write and the others are read replicas. 
 
+Item Cache holds results of (Batch)GetItem. The query cache holds data based on query/scan params. 
 
+Dax is accessed much like RDS, every DAX cluster has an endpoint which is used to loadbalance accross the cluster
 
+Write-Through is supported. write to DDB then DAX, all with single APIs 
+
+DAX delivers faster reads and reduced costs. Scales up or out (bigger instanc or more instances)
+
+Not ideal for apps that require strongly consistent reads
+==============DDB Global Tables====================
 
 
 
