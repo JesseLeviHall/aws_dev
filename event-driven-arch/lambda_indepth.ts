@@ -71,9 +71,19 @@ Not using multi-value headers means the ALB sends the last value sent by the cli
 =============Lambda Resource Policies=============
 You can use resource policies to control access to your Lambda functions. A resource policy is an IAM policy that you attach to a Lambda function. You can use a resource policy to grant permissions to other AWS accounts or IAM users to invoke your function. You can also use a resource policy to grant permissions to other AWS accounts or IAM users to access your function's version-specific configuration settings.
 
+Every Lambda function has two forms of security:
+IAM Role - assumed by the function, determines What the function CAN do
+Resource Policy - Determines WHO can do What with the function. 
 
+Cross Account means you need Identity Policy OUT of account a, and Resource policy to allow a in account b. 
 
+When Another service needs to invoke the function it requieres either to assume a role, or the resource policy must explicitly allow it.
 
+Full control via the CLI/API
 
+q: Which of the following controls the permissions a lambda function receives, execution role permission policy or execution role trust policy?
+a: Execution role permission policy
 
+q: Which of the following controls WHAT can invoke a lambda function?
+a: Resource policy
 */
