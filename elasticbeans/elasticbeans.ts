@@ -32,11 +32,27 @@ Beanstalks are made up of 3 components:
     - Each env has its own dns cName, a cname swap can exchange tow env's DNS - blue green deployment
 
 Default practice is to provision DB's outside of Beanstalk
+===================Deployment Policies=================
+AWS Elastic Beanstalk provides several options for how deployments are processed when being deployed into environments, including deployment policies (Types):
+All at once - all instances, brief outage, not great for prod
+Rolling - deploy in baches, health check along the way. loss in capacity as baches are deployed. (two versions running at he same time while deploying)
+Rolling with additional batch - maintain capacity while deploying, additional cost (two versions at once while deploying)
+Immutable - all new instances created with new deployment, then dropped in place of old version. safe, easy to roll back.
+Traffic splitting - same as immutable but split traffic to new deployment so you can A/B test before fully moving to new deployment. Costs more for the additional instances during dep.
+Blue/Green - make a new env then switch dns records.
 
+ options that let you configure batch size and health check behavior during deployments.
 
-
-
-
+If you perform version updates often, you need to set up some lifecycle management in the console to erase old bundles from s3
+================lifecycle and decoupling rds=======
+the process for database decoupling:
+1. Create a new RDS instance
+2. Create a new security group for the RDS instance
+3. Create a new security group for the Elastic Beanstalk environment
+4. Add the RDS security group to the Elastic Beanstalk environment
+5. Update the RDS instance to allow access from the Elastic Beanstalk environment
+6. Update the Elastic Beanstalk environment to use the new RDS instance
+7. Delete the old RDS instance
 
 
 
