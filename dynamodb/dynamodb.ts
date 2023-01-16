@@ -56,7 +56,7 @@ Query is most efficient but only works on one partition key at a time or a range
 DDB has two types of indexes:
 Local Secondary Indexes (LSI) and Global Secondary Indexes (GSI)
 LSI - can only be created at table creation time with 5 maximum per table, and can only be created on a table with a composite key (SK).
-LSI allow for alternative SK's
+LSI allow for alternative SK's and shared capacity with the table
 whereas with GSIs you can use alternative PK and SK.
 For both, when creating them you have the ability to choose which attributes from the base table are projected into them - this can massively impact efficiency. You can choose all, keys_only, or include (specify explicitly)
 In LSI The indexes let us easily limit the data that we retrieve while using the query operation. LSI Indexes are known as sparse indexes - meaning only items from the base table which have a value for the attribute that we define as the new sort key are present in the index. 
@@ -102,19 +102,30 @@ Create tables in various regions then unify them in a global table.
 IF there's a data conflict the last writer wins.
 Gererally sub-second replication between regions
 Strongly consistent reads are only available in the region it is written to. 
-=================Time-To-Live(TTL)
+=================Time-To-Live(TTL)===============
+Amazon DynamoDB Time to Live (TTL) allows you to define a per-item timestamp to determine when an item is no longer needed. Shortly after the date and time of the specified timestamp, DynamoDB deletes the item from your table without consuming any write throughput. TTL is provided at no extra cost as a means to reduce stored data volumes by retaining only the items that remain current for your workload’s needs
 
+Enabled per table basis. One process compates times and moves to expired. Another process later deletes expired items, for free. 
 
+You can configure a stream on the TTL processes to generate events with a 24 hour window
+=====================ELASTICACHE===================
+Elasticache is a managed in-memory cache which provides a managed implementation of the redis or memcached engines.
 
+its useful for read heavy workloads, scaling reads in a cost effective way and allowing for externally hosted user session state (useful for serverless apps). storing external session data allows the app to be built in a stateless way which is beyond HA and now faulttolerant.
 
+Elasticache is a managed service, so you dont have to worry about patching, backups, or scaling.
 
+Elasticache is a shared cache, so you can have multiple clients accessing the same cache.
 
+Elasticache is a distributed cache, so you can have multiple nodes in a cluster, and the cache is distributed across all nodes.
 
+Implementation requires changes to your application code.
 
+Redis supports more advanced types of data than memcached, such as lists, sets, sorted sets, hashes, bit arrays and more. Redis also supports multi-AZ replication which improves read scales and resiliency. memcache does sharding to multiple nodes but not quite the same. 
+Redis also supports back-up and restore, memcache dont. 
+Memcached is multithreaded so it can take better advantage of multi core CPUs whereas redis is transaction based, better consistency requirements.
 
-
-
-
+Instance types and sizes are available in elasticache. 
 
 
 
