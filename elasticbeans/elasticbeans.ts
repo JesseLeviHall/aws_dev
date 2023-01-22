@@ -74,9 +74,6 @@ EB Structure: Application => Environment => Application Version
 q: Which of the following refers to the file you provide Elastic Beanstalk with your application?
 a: Source bundle
 
-q: Which of the following is NOT a valid deployment policy?
-a: Rolling with additional batch
-
 q: What are valid file formats for providing EB with an application?
 a: .zip, .war
 
