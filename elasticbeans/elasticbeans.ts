@@ -4,6 +4,7 @@ Charded only for the resources created by EB have a charge
 Elastic Beanstalk is a Platform as a Service (Paas) environment which can create and manage infrastructure for application code.
 Allows you to focus on code, low infrastructure overhead, it is fully customizable. it uses cloudformation under the hood. Requires the code to integrate with aws stuff. 
 
+
 Beanstalks in different languages are refered to as platforms. There are three types: 
 1. Preconfigured platforms:
     - Node.js
