@@ -51,6 +51,8 @@ the process for database decoupling:
 Take snapshot of RDS, Enable Delete Protection on the RDS instance, create new EB env with same app version, ensure the new env connects to the new DB, then swap the DNS records so the new env points to the decoupled db, then terminate old env which will fail to delete the db, go to cloudformation and manually delete and pick to retain stuck resources (RDS instance).
 To create an rds instance for an EB, you need to point the env propties: RDS_HOSTNAME, 
 RDS_PORT, RDS_USERNAME, RDS_PASSWORD, RDS_DB_NAME to the rds instance.
+
+
 ===============EB Extensions========================
 You can add AWS Elastic Beanstalk configuration files (.ebextensions) to your web application's source code to configure your environment and customize the AWS resources that it contains. Configuration files are YAML- or JSON-formatted documents with a .config file extension that you place in a folder named .ebextensions and deploy in your application source bundle.
 
