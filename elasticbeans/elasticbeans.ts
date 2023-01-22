@@ -77,5 +77,8 @@ a: Source bundle
 q: What are valid file formats for providing EB with an application?
 a: .zip, .war
 
+q: What is the default storage location for EB application source bundles?
+a: S3
+
 
 */
