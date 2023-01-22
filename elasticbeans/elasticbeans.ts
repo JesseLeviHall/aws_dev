@@ -80,5 +80,8 @@ a: .zip, .war
 q: What is the default storage location for EB application source bundles?
 a: S3
 
+q: What is the default storage location for EB application logs?
+a: CloudWatch
+
 
 */
