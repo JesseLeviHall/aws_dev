@@ -43,6 +43,7 @@ Immutable - all new instances created with new deployment, then dropped in place
 Traffic splitting - same as immutable but split traffic to new deployment so you can A/B test before fully moving to new deployment. Costs more for the additional instances during dep.
 Blue/Green - make a new env then switch dns records in CNAME swap or R53
 
+
  options that let you configure batch size and health check behavior during deployments.
 
 If you perform version updates often, you need to set up some lifecycle management in the console to erase old bundles from s3
