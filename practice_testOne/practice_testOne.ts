@@ -8,7 +8,8 @@ a: to ensure that the order of the items is maintained
 q: Which of the following is not a valid DynamoDB data type?
 a: String
 
-
+q: why configure the visibility time-out value of 5 seconds
+a: to ensure that the message is not processed more than once
 
 
 
