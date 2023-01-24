@@ -161,7 +161,5 @@ a: Global Accelerator
 q: what is global accelerator?
 a: a service that improves the performance of your applications for global users. It provides static IP addresses that are anycast from 170+ edge locations. This allows users to access your application by using the nearest edge location.
 
-q: what is the difference between a custom origin and a s3 origin?
-a: custom origins are used for dynamic content, s3 origins are used for static content
 
 */
