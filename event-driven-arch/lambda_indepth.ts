@@ -81,9 +81,13 @@ When Another service needs to invoke the function it requieres either to assume 
 
 Full control via the CLI/API
 
+You can use resource policies to control access to your Lambda functions. A resource policy is an IAM policy that you attach to a Lambda function. You can use a resource policy to grant permissions to other AWS accounts or IAM users to invoke your function. You can also use a resource policy to grant permissions to other AWS accounts or IAM users to access your function's version-specific configuration settings.
+
 q: Which of the following controls the permissions a lambda function receives, execution role permission policy or execution role trust policy?
 a: Execution role permission policy
 
 q: Which of the following controls WHAT can invoke a lambda function?
 a: Resource policy
+
+
 */
