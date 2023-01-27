@@ -8,7 +8,6 @@ Third - ShutDown phase terminates execution env (runtime shutdown, extension shu
 Function initialization code is run once every cold start, during func init stage. Then the handler is run every invocation. 
 
 A good lambda function should assume cold start everytime, but also take advantage of warm starts. 
-
 Provisioned concurrency will warm them up in advance
 
 By default Lambda timeout is 3 seconds. You have to configure it to be more
