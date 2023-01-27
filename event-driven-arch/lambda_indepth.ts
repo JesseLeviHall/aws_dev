@@ -33,7 +33,6 @@ Aliases can be used to manage the deployment of your functions. For example, you
 The default execution role comes with basic permissions enough to log into cloudwatch logs.
 =============Lambda ENV Variables=================
 An environment variable is a pair of strings that are stored in a function's version-specific configuration. The Lambda runtime makes environment variables available to your code and sets additional environment variables that contain information about the function and invocation request.
-
 By default they are associated with $Latest, which remains editable. 
 Associated with a version they become immutable
 Accessible from the execution env. Can be encrypted with KMS.
