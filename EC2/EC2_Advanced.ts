@@ -134,4 +134,7 @@ a: You pay for the host and there is no charge for EC2 instances running on a de
 
 q: how often does USer-Data get executed?
 a: Once when provisioned, not when stopped then started. 
+
+q: What is the difference between a placement group and a cluster?
+a: A placement group is a logical grouping of instances within a single AZ. A cluster is a logical grouping of instances within a single AZ that are designed to provide low network latency, high network throughput, or both.
 */
