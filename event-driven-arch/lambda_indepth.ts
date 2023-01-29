@@ -42,10 +42,6 @@ Lambda integrates with other AWS services to help you monitor and troubleshoot y
 
 stdout or stderr - will print to logs
 
-X-Ray shows the flow or requests through your application 
-Enable Active Tracing on a particular function - In ClI it is update-function-configuration --function-name -my-function --tracing-config Mode=Active
-Permissions are needed via execution role for AWSXRayDaemonWriteAccess managed policy, then you can use XRay SDK in your function.
-The execution env also offers xray related env variables like AWS_XRAY_DAEMON_ADDRESS for connection details including PORT for the XRAY Daemon
 
 
 using Lambda functions from within a VPC and configuring them to use an EFS file system.
