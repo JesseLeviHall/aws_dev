@@ -40,6 +40,7 @@ Accessible from the execution env. Can be encrypted with KMS.
 You can use the AWS SDK, the AWS CLI, or an HTTP API to manage your function's log files. 
 Lambda integrates with other AWS services to help you monitor and troubleshoot your Lambda functions. Lambda automatically monitors Lambda functions on your behalf and reports metrics through Amazon CloudWatch. To help you monitor your code when it runs, Lambda automatically tracks the number of requests, the invocation duration per request, and the number of requests that result in an error - useful for incremental deployment
 
+
 stdout or stderr - will print to logs
 
 X-Ray shows the flow or requests through your application 
