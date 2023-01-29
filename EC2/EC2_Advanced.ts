@@ -140,4 +140,7 @@ a: A placement group is a logical grouping of instances within a single AZ. A cl
 
 q: What is the difference between a placement group and a partition?
 a: A placement group is a logical grouping of instances within a single AZ. A partition is a logical grouping of instances within a single AZ that are designed to provide high availability and fault tolerance.
+
+q: What is the difference between a placement group and a spread?
+a: A placement group is a logical grouping of instances within a single AZ. A spread is a logical grouping of instances across distinct underlying hardware within a single AZ.
 */
