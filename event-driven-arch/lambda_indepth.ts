@@ -47,6 +47,7 @@ Enable Active Tracing on a particular function - In ClI it is update-function-co
 Permissions are needed via execution role for AWSXRayDaemonWriteAccess managed policy, then you can use XRay SDK in your function.
 The execution env also offers xray related env variables like AWS_XRAY_DAEMON_ADDRESS for connection details including PORT for the XRAY Daemon
 
+
 using Lambda functions from within a VPC and configuring them to use an EFS file system.
 ===================Lambda Layers==================
 You can configure your Lambda function to pull in additional code and content in the form of layers. A layer is a .zip file archive that contains libraries, a custom runtime, or other dependencies. With layers, you can use libraries in your function without needing to include them in your deployment package.
