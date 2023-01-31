@@ -87,6 +87,7 @@ Amazon EC2 Auto Scaling can determine the health status of an instance using one
 
 Status checks provided by Amazon EC2 to identify hardware and software issues that may impair an instance. The default health checks for an Auto Scaling group are EC2 status checks only.
 Health checks provided by Elastic Load Balancing (ELB). These health checks are disabled by default but can be enabled. these make checks more app aware (layer 7)
+Custom health checks (external system)
 Your custom health checks (external system)
 A health Check Grace period default of 300s gives adelay while an instance boostraps before starting checks, so it doesnt continually terminate and restart an instance forever. 
 
