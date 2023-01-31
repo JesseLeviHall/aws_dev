@@ -45,6 +45,7 @@ When provisioning a load balancer you have to decide on a few important config i
 - LBs need 8 or more free IP addresses per Subnet they are depoloyed to in order to function(allows for scale) This means a /28 Subnet which provides a total of 16 IP addresses, minus 5 reserved for aws, leaving 11 free per Subnet. AWS suggest usign a /27 or larger Subnet to deploy an ELB.
 
 - Internal LBs allow each tier to scale independently
+- Internal LBs can be used to connect to private computes in other VPCs
 
 - Cross Zone Load Balancing: Each Node in an AZ gets 100%/number of nodes of reqs in that AZ. This is enabled by default. Now, Cross Zone allows distribution accross instances in other AZs as standard as well.
 ==============EC2 Launch Config & Template============
