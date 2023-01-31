@@ -21,6 +21,8 @@ User req => R53 DNS layer => Health Checks => CDN Cloudfront Edge Caches => Ente
 ===============Elastic Load Balancer=================
 (ELB) V1 was introduced in 2009 with the 'now called' Classic Load Balancer. V1 is not really layer 7. 
 
+V2 was introduced in 2016 with the Application Load Balancer and Network Load Balancer.
+
 Two new versions the v2: Application and v2 Network load balancers are now the recommended solutions.
 
 Application Load Balancer: HTTP(s)/WebSocket -
