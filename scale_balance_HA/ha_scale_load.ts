@@ -6,6 +6,7 @@ we can define 3 general types of architectures:
 3. Multi-Region distributed delivery (Netflix) 
 
 In AWS: Global Service Location and Discovery
+- Route 53: DNS
 - AWS Global Accelerator:
 And Contne Delivery Optimisation (CDN)
 And Global health Checks and Failover
