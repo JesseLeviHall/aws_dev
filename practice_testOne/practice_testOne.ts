@@ -69,6 +69,27 @@ Configure the method request in API Gateway to:
 - Use an IAM role
 - Use the 'aws_iam' authorizer
 
+q: a cloudwatch namespace is?
+a: a logical grouping of metrics.
+
+the order of priority for credentials with the AWS CLI is as follows:
+Command line options: If you specify AWS access keys using command line options, the CLI will use those keys.
+
+Environment variables: The AWS CLI will look for environment variables, such as AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, if they are set.
+
+Configuration files: The CLI will check the configuration files in the following order:
+
+~/.aws/credentials
+~/.aws/config
+AWS_SHARED_CREDENTIALS_FILE environment variable
+AWS_CONFIG_FILE environment variable
+Instance profile: If none of the above methods provide the required credentials, the AWS CLI will use the instance profile if it is available.
+
+Note that the AWS CLI will use the first set of credentials it finds, so the order of priority matters.
+
+
+
+
 
 
 
