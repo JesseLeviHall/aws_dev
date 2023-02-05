@@ -33,5 +33,25 @@ The VPC and Application resources hae seperate lifecycles, which means defining 
 
 Serveless App Model (SAM) and E beans use cloudformation under the hood. 
 
+q: what is a CMK in relation to KMS?
+a: a customer managed key, can enc/decrypt data up to 4KB
+
+q: what is a DEK in relation to KMS?
+a: a data encryption key, no size limit on encryption decryption size
+
+q: what is SSE-C?
+a: server side encryption with customer provided key
+
+q: what is SSE-KMS?
+a: server side encryption with KMS managed key
+
+q: what is SSE-S3?
+a: server side encryption with AWS managed key
+
+
+
+
+
+
 
 */
