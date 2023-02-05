@@ -11,6 +11,6 @@ a: String
 q: why configure the visibility time-out value of 5 seconds
 a: to ensure that the message is not processed more than once
 
-
+Large bills for SQS worker pools - increase RecieveMessagesWaitTimeSeconds. Usually large bills are fro inefficient polling. Short polling pulls only the messages on the queue, long polling is more efficient and less API calls. 
 
 */
