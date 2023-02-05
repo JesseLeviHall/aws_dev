@@ -12,6 +12,7 @@ q: why configure the visibility time-out value of 5 seconds
 a: to ensure that the message is not processed more than once
 
 Large bills for SQS worker pools - increase RecieveMessagesWaitTimeSeconds. Usually large bills are fro inefficient polling. Short polling pulls only the messages on the queue, long polling is more efficient and less API calls. 
+- you have to configure the VisibilityTimeout value to be larger than the processing time
 
 If you want to limit access to s3 bucket with signed urls and you use cloudfront, you have to have an OAI (Origin Access Identity) for cloudfront and a bucket policy that only allows that identity. 
 
@@ -48,6 +49,25 @@ a: server side encryption with KMS managed key
 q: what is SSE-S3?
 a: server side encryption with AWS managed key
 
+To build catagram with web identity federation, each user's images will be on s3. Data from one user should be isolated from another. the best architecture of the ansers is: Create a number of shared DDB Tables and a policy which uses variables to allocate specific items in each table to specific social identities. 
+
+IAM can provide authentication for RDS, but not authorisation. 
+
+If an ecom platform has a big uptick that crashes the dropshipper API - A common design pattern is to decouple two parts of a platform usin an SQS queue. A lambda function can run when items are on the queue and communicate with eh dropshipper API, and the lambda function concurrency should be set to something the API is able to handle. 
+
+To use the same lambda funciton for multiple stages of an API Gateway, use stagevariables. 
+
+Cfn-init downloads CFN metadata and configures an instance. 
+Cfn-hup monitors the metadata for changes and can re-run init
+Cfn-signal informs CFN when configuration has completed. 
+
+q: The AWS API 'AssumeRole' is used to give a resource access to upload to an s3. 
+
+Configure the method request in API Gateway to:
+- include search string perameter
+- Require authorization
+- Use an IAM role
+- Use the 'aws_iam' authorizer
 
 
 
