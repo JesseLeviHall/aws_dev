@@ -26,7 +26,9 @@ To pass a query string perameter into api gateway in the url you use Stage Varia
 
 The best practice for Cognito and access to s3 is to apply an Identity Policy to the role defined in Cognito, and use variables to control access. 
 
-Eventually consistent is half teh RCU, and an RCU is 4KB and a WCU is 1KB
+Eventually consistent is half teh RCU, and an RCU is 4KB and a WCU is 1KB. 
+
+Writes arent stronly or eventually consistent, they are just writes. 
 
 Lambda functions should be added to a target group, and the LoadBalancer should point to the target group. 
 
@@ -88,8 +90,9 @@ Instance profile: If none of the above methods provide the required credentials,
 Note that the AWS CLI will use the first set of credentials it finds, so the order of priority matters.
 
 
+If  to store files in S3 .. and they need to be encrypted at   rest. You need a solution which matches the FIPS 140-2 Level 3 framework the rest of your organisation works within. Which solution meets this requirement?
 
-
+the Federal Information Processing Standard (FIPS) 140-2 Level 3 certification requires the use of a hardware security module (HSM) for key management, and AWS Key Management Service (KMS) does not currently meet this requirement. you can use the Amazon CloudHSM service to store and manage your encryption keys in a hardware security module that meets the FIPS 140-2 Level 3 standard. You can use the keys stored in CloudHSM to encrypt and decrypt your data stored in Amazon S3. CloudHSM requires ClientSide Encryption of the s3 (CCE)
 
 
 
