@@ -12,7 +12,11 @@ q: why configure the visibility time-out value of 5 seconds
 a: to ensure that the message is not processed more than once
 
 Large bills for SQS worker pools - increase RecieveMessagesWaitTimeSeconds. Usually large bills are fro inefficient polling. Short polling pulls only the messages on the queue, long polling is more efficient and less API calls. 
-- you have to configure the VisibilityTimeout value to be larger than the processing time
+- you have to configure the VisibilityTimeout value to be larger than the processing time. 
+- Generally you want to switch to long-polling, or Re-provision the instances using an ASG based on queue length. The idea is to use the length of the SQS queue as a metric to determine the number of instances needed to process the messages in the queue. If the queue length grows, indicating an increase in traffic, the ASG can be used to automatically add more instances to the worker tier to keep up with the increased demand. Conversely, if the queue length decreases, indicating a decrease in traffic, the ASG can be used to remove instances and reduce costs.
+
+By re-provisioning instances based on queue length, you can ensure that the worker tier has the appropriate number of instances to handle the workload and optimize costs. This is an example of using AWS services in an auto-scaling architecture, where the number of instances is dynamically adjusted to meet the demands of the workload.
+
 
 If you want to limit access to s3 bucket with signed urls and you use cloudfront, you have to have an OAI (Origin Access Identity) for cloudfront and a bucket policy that only allows that identity. 
 
@@ -93,6 +97,8 @@ Note that the AWS CLI will use the first set of credentials it finds, so the ord
 If  to store files in S3 .. and they need to be encrypted at   rest. You need a solution which matches the FIPS 140-2 Level 3 framework the rest of your organisation works within. Which solution meets this requirement?
 
 the Federal Information Processing Standard (FIPS) 140-2 Level 3 certification requires the use of a hardware security module (HSM) for key management, and AWS Key Management Service (KMS) does not currently meet this requirement. you can use the Amazon CloudHSM service to store and manage your encryption keys in a hardware security module that meets the FIPS 140-2 Level 3 standard. You can use the keys stored in CloudHSM to encrypt and decrypt your data stored in Amazon S3. CloudHSM requires ClientSide Encryption of the s3 (CCE)
+
+For DDB, DAX is a VPC based system so it wouldnt work for serverless architecture. 
 
 
 
