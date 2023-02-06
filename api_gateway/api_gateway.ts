@@ -45,4 +45,5 @@ Formally known as Swagger v2:
 OpenAPI (v3) Spec (OAS) is a standard laguange-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection
 
 Format in yml or json. API Gateway is capable of importing this or generating this as an export, if you import a swagger file to use a lambda you have to manually update the resource policy of the lambda unlike creating the api from scratch.
+
 */
