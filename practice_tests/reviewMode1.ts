@@ -107,6 +107,8 @@ AWS_PROXY is incorrect because this type is primarily used for Lambda proxy inte
 
 HTTP_PROXY is incorrect because this type is only used for HTTP proxy integration where you don’t need to do data mapping for your request and response data.
 
+In Lambda non-proxy (or custom) integration, you can specify how the incoming request data is mapped to the integration request and how the resulting integration response data is mapped to the method response.
+
 In general, when your object size reaches 100 MB, you should consider using multipart uploads instead of uploading the object in a single operation. Using multipart upload provides the following advantages:
 
     – Improved throughput – You can upload parts in parallel to improve throughput.
