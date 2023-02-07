@@ -179,4 +179,8 @@ Hence, the CodeDeployDefault.LambdaCanary10Percent5Minutes option is correct bec
 
 Take note that a User Pool doesn’t have an option to enable unauthenticated identities. Moreover, you won’t be able to provide your users access to upload their media files to S3 using a User Pool.
 
+– Standard resolution, with data having a one-minute granularity
+
+– High resolution, with data at a granularity of one second
+
 */
