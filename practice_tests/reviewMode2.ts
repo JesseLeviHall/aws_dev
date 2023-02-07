@@ -66,8 +66,11 @@ To decouple your database instance from your environment, you can run a database
 
 You can use the UpdateItem operation to implement an atomic counter — a numeric attribute that is incremented, unconditionally, without interfering with other write requests. (All write requests are applied in the order in which they were received). With an atomic counter, the updates are not idempotent. In other words, the numeric value will increment each time you call UpdateItem.
 
+If It is important that the client and backend interact directly with no intervention from API Gateway after the API method is set up, use HTTP_PROXY to pass as is (witout custom mappings). 
 
+You can configure your Lambda function to pull in additional code and content in the form of layers. A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies. With layers, you can use libraries in your function without needing to include them in your deployment package.
 
+A principal (person or application) assumes a role to receive temporary permissions to carry out required tasks and interact with AWS resources. The role can be in your own account or any other AWS account. To assume a role, an application calls the AWS STS AssumeRole API operation and passes the ARN of the role to use.
 
 
 
