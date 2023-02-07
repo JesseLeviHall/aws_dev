@@ -28,14 +28,43 @@ Databases employ locking mechanisms to ensure that data is always updated to the
 
 Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa
 
+CodeDeploy provides two deployment type options:
 
+In-place deployment: The application on each instance in the deployment group is stopped, the latest application revision is installed, and the new version of the application is started and validated. You can use a load balancer so that each instance is deregistered during its deployment and then restored to service after the deployment is complete. Only deployments that use the EC2/On-Premises compute platform can use in-place deployments. AWS Lambda compute platform deployments cannot use an in-place deployment type.
 
+Blue/green deployment: The behavior of your deployment depends on which compute platform you use:
 
+– Blue/green on an EC2/On-Premises compute platform: The instances in a deployment group (the original environment) are replaced by a different set of instances (the replacement environment). If you use an EC2/On-Premises compute platform, be aware that blue/green deployments work with Amazon EC2 instances only.
 
+– Blue/green on an AWS Lambda compute platform: Traffic is shifted from your current serverless environment to one with your updated Lambda function versions. You can specify Lambda functions that perform validation tests and choose the way in which the traffic shift occurs. All AWS Lambda compute platform deployments are blue/green deployments. For this reason, you do not need to specify a deployment type.
 
+– Blue/green on an Amazon ECS compute platform: Traffic is shifted from the task set with the original version of a containerized application in an Amazon ECS service to a replacement task set in the same service. The protocol and port of a specified load balancer listener are used to reroute production traffic. During deployment, a test listener can be used to serve traffic to the replacement task set while validation tests are run.
 
+To get the number of strong and eventual consistent read requests that your table can accommodate per second, you simply have to do the following steps:
 
+Step #1 Multiply the value of the provisioned RCU by 4 KB
 
+= 10 RCU x 4 KB
+
+= 40
+
+Step #2 To get the number of strong consistency requests, just divide the result of step 1 by 4 KB
+
+= 40 / 4 KB
+
+= 10 strongly consistent read requests
+
+Step #3 To get the number of eventual consistency requests, just divide the result of step 1 by 2 KB
+
+=40 / 2 KB
+
+= 20 eventually consistent read requests
+
+When you create a global secondary index on a provisioned mode table, you must specify read and write capacity units for the expected workload on that index. The provisioned throughput settings of a global secondary index are separate from those of its base table.
+
+To decouple your database instance from your environment, you can run a database instance in Amazon RDS and configure your application to connect to it on launch. This enables you to connect multiple environments to a database, terminate an environment without affecting the database, and perform seamless updates with blue-green deployments.  Elastic Beanstalk will be unable to delete the environment’s security group because the database’s security group is dependent on it.  Before terminating the old Elastic Beanstalk environment, remove its security group rule first before proceeding
+
+You can use the UpdateItem operation to implement an atomic counter — a numeric attribute that is incremented, unconditionally, without interfering with other write requests. (All write requests are applied in the order in which they were received). With an atomic counter, the updates are not idempotent. In other words, the numeric value will increment each time you call UpdateItem.
 
 
 
