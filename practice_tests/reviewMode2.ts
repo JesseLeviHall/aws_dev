@@ -99,6 +99,30 @@ When you attach a policy to a user or group of users, it allows or denies the us
 
 The AWS X-Ray daemon is a software application that listens for traffic on UDP port 2000. For ECS containerized apps, the correct steps to properly instrument the application is to create a Docker image that runs the X-Ray daemon, upload it to a Docker image repository, and then deploy it to your Amazon ECS cluster. In addition, you also have to configure the port mappings and network mode settings in your task definition file to allow traffic on UDP port 2000.
 
+If you create a Lambda function to process events from event sources that aren’t poll-based (for example, Lambda can process every event from other sources, like Amazon S3 or API Gateway), each published event is a unit of work, in parallel, up to your account limits. Therefore, the number of invocations these event sources make influences the concurrency.
+
+If you set the concurrent execution limit for a function, the value is deducted from the unreserved concurrency pool. For example, if your account’s concurrent execution limit is 1000 and you have 10 functions, you can specify a limit on one function at 200 and another function at 100. The remaining 700 will be shared among the other 8 functions.
+
+AWS Lambda will keep the unreserved concurrency pool at a minimum of 100 concurrent executions, so that functions that do not have specific limits set can still process requests. So, in practice, if your total account limit is 1000, you are limited to allocating 900 to individual functions.
+
+By default, an AWS account’s concurrent execution limit is 1000 which will be shared by all Lambda functions. In this scenario, it is highly likely that the first function has more provisioned concurrency than the other one. It is possible that the concurrency execution limit of the first function is set to a significantly high value (e.g. 900) and the second function is set to use the unreserved account concurrency which may only contain the last 100 units out of the AWS account’s concurrent execution limit of 1000.
+Hence, the correct solutions in this scenario are:
+– Set the concurrency execution limit of both functions to 450
+– Decrease the concurrency execution limit of the first function.
+
+You can grant your IAM users permission to switch to roles within your AWS account or to roles defined in other AWS accounts that you own. In this way, you don’t need to create individual IAM users in each account and the users don’t have to sign out of one account and sign into another in order to access resources that are in different AWS accounts.
+Hence, the most efficient answer in this scenario is to: Grant the developer cross-account access to the resources of Accounts B and C.
+
+If the consumer of the data stream is configured to process the data every other day. Since the default data retention of the Kinesis data stream is only 24 hours, the data from the day before is already lost prior to the scheduled processing. Hence, the root cause of the problem in this scenario is that by default, the data records are only accessible for 24 hours from the time they are added to a Kinesis stream.
+
+
+
+
+
+
+
+
+
 
 
 
