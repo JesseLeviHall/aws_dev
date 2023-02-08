@@ -97,7 +97,7 @@ x-amz-server-side-encryption-customer-key-MD5 – This header provides the base6
 
 When you attach a policy to a user or group of users, it allows or denies the users permission to perform the specified tasks on the specified resources. Likewise, Amazon ECS container instances make calls to the Amazon ECS and Amazon EC2 APIs on your behalf, so they need to authenticate with your credentials. This authentication is accomplished by creating an IAM role for your container instances and associating that role with your container instances when you launch them. Hence, the most suitable solution in this scenario is: Create 4 different IAM Roles with the required permissions and attach them to each of the 4 ECS tasks.
 
-
+The AWS X-Ray daemon is a software application that listens for traffic on UDP port 2000. For ECS containerized apps, the correct steps to properly instrument the application is to create a Docker image that runs the X-Ray daemon, upload it to a Docker image repository, and then deploy it to your Amazon ECS cluster. In addition, you also have to configure the port mappings and network mode settings in your task definition file to allow traffic on UDP port 2000.
 
 
 
