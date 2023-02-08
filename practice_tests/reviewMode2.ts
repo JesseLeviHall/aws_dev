@@ -115,7 +115,8 @@ Hence, the most efficient answer in this scenario is to: Grant the developer cro
 
 If the consumer of the data stream is configured to process the data every other day. Since the default data retention of the Kinesis data stream is only 24 hours, the data from the day before is already lost prior to the scheduled processing. Hence, the root cause of the problem in this scenario is that by default, the data records are only accessible for 24 hours from the time they are added to a Kinesis stream.
 
-
+If a load balancer or other intermediary forwards a request to your application, X-Ray takes the client IP from the X-Forwarded-For header in the request instead of from the source IP in the IP packet. The client IP that is recorded for a forwarded request can be forged, so it should not be trusted.
+Hence, the correct answer in this scenario is that, AWS X-Ray will fetch the client IP address from the X-Forwarded-For header of the request.
 
 
 
