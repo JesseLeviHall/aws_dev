@@ -72,6 +72,39 @@ You can configure your Lambda function to pull in additional code and content in
 
 A principal (person or application) assumes a role to receive temporary permissions to carry out required tasks and interact with AWS resources. The role can be in your own account or any other AWS account. To assume a role, an application calls the AWS STS AssumeRole API operation and passes the ARN of the role to use.
 
+The GetSessionToken API returns a set of temporary credentials for an AWS account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use GetSessionToken if you want to use MFA to protect programmatic calls to specific AWS API operations like Amazon EC2 StopInstances. 
+
+Below are the optional subsegment fields:
+namespace – aws for AWS SDK calls; remote for other downstream calls.
+http – http object with information about an outgoing HTTP call.
+aws – aws object with information about the downstream AWS resource that your application called.
+error, throttle, fault, and cause – error fields that indicate an error occurred and that include information about the exception that caused the error.
+annotations – annotations object with key-value pairs that you want X-Ray to index for search.
+metadata – metadata object with any additional data that you want to store in the segment.
+subsegments – array of subsegment objects.
+precursor_ids – array of subsegment IDs that identify subsegments with the same parent that was completed prior to this subsegment.
+You can use the “metadata” field in the segment section to add custom data for your tracing. If you want to trace all the AWS SDK calls of your application, then you can add a subsegment and set the “namespace” field to “AWS”. Alternatively, you can set the “namespace” value to “remote” if you want to trace other downstream calls.
+Hence, the valid considerations in this scenario are:
+– Set the namespace subsegment field to aws for AWS SDK calls and remote for other downstream calls.
+– Set the metadata object with any additional custom data that you want to store in the segment.
+
+Using server-side encryption with customer-provided encryption keys (SSE-C) allows you to set your own encryption keys.  It is important to note that Amazon S3 does not store the encryption key you provide. Instead, it is stored in a randomly salted HMAC value of the encryption key in order to validate future requests. The salted HMAC value cannot be used to derive the value of the encryption key or to decrypt the contents of the encrypted object. That means, if you lose the encryption key, you lose the object.
+When you retrieve an object, you must provide the same encryption key as part of your request. Amazon S3 first verifies that the encryption key you provided matches, and then decrypts the object before returning the object data to you.
+When using server-side encryption with customer-provided encryption keys (SSE-C), you must provide encryption key information using the following request headers:
+x-amz-server-side-encryption-customer-algorithm – This header specifies the encryption algorithm. The header value must be “AES256”.
+x-amz-server-side-encryption-customer-key – This header provides the 256-bit, base64-encoded encryption key for Amazon S3 to use to encrypt or decrypt your data.
+x-amz-server-side-encryption-customer-key-MD5 – This header provides the base64-encoded 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
