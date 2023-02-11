@@ -29,7 +29,6 @@ Databases employ locking mechanisms to ensure that data is always updated to the
 Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa
 
 CodeDeploy provides two deployment type options:
-
 In-place deployment: The application on each instance in the deployment group is stopped, the latest application revision is installed, and the new version of the application is started and validated. You can use a load balancer so that each instance is deregistered during its deployment and then restored to service after the deployment is complete. Only deployments that use the EC2/On-Premises compute platform can use in-place deployments. AWS Lambda compute platform deployments cannot use an in-place deployment type.
 
 Blue/green deployment: The behavior of your deployment depends on which compute platform you use:
