@@ -135,7 +135,7 @@ Partition key and sort key – Referred to as a composite primary key, this type
 There are two types of Lambda authorizers:
  – A token-based Lambda authorizer (also called a TOKEN authorizer) receives the caller’s identity in a bearer token, such as a JSON Web Token (JWT) or an OAuth token.
  – A request parameter-based Lambda authorizer (also called a REQUEST authorizer) receives the caller’s identity in a combination of headers, query string parameters, stageVariables, and $context variables.
-
+It is possible to use an AWS Lambda function from an AWS account that is different from the one in which you created your Lambda authorizer function by using a Cross-Account Lambda Authorizer. But Cross-Account Lambda Authorizer is incorrect because this just enables you to use an AWS Lambda function from a different AWS account as your API authorizer function. Moreover, this is not a valid Lambda authorizer type.
 
 
 
