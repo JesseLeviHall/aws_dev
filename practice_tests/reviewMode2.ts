@@ -6,8 +6,6 @@ You can define periodic tasks in a file named cron.yaml in your source bundle to
 
 Hence, using the cron.yaml is the correct configuration file to be used in this scenario.
 
-
-
 Dockerrun.aws.json is incorrect because this configuration file is primarily used in multicontainer Docker environments that are hosted in Elastic Beanstalk. This can be used alone or combined with source code and content in a source bundle to create an environment on a Docker platform.
 
 env.yaml is incorrect because this is primarily used to configure the environment name, solution stack, and environment links to use when creating your environment in Elastic Beanstalk.
