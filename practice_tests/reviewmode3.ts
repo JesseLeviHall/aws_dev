@@ -44,7 +44,9 @@ There are three options for retrieving data archived to AWS Glacier with varying
 
 CacheMissCount tracks the number of requests served from the backend in a given period, when API caching is enabled. On the other hand, CacheHitCount track the number of requests served from the API cache in a given period.
 
-
+To configure deduplication, you must do one of the following:
+– Enable content-based deduplication. This instructs Amazon SQS to use a SHA-256 hash to generate the message deduplication ID using the body of the message – but not the attributes of the message.
+– Explicitly provide the message deduplication ID (or view the sequence number) for the message.
 
 
 
