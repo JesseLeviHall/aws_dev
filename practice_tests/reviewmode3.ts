@@ -35,5 +35,39 @@ One recommended best practice is to use IAM roles when delegating permissions to
 In this scenario, we can expose the API endpoint to other stacks by adding the Export property in the Outputs section. In the example below, we use ‘SimpleAPI’ as the name of the value to be exported:
 To reference the endpoint’s value in other templates, simply use the Fn::ImportValue function and specify SimpleAPI as its parameter.
 
+in the given scenario, you can use Lambda@Edge to allow your Lambda functions to customize the content that CloudFront delivers and to execute the authentication process in AWS locations closer to the users. In addition, you can set up an origin failover by creating an origin group with two origins with one as the primary origin and the other as the second origin, which CloudFront automatically switches to when the primary origin fails. This will alleviate the occasional HTTP 504 errors that users are experiencing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 */
