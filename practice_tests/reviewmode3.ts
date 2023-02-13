@@ -30,7 +30,9 @@ To decrypt data locally:
 
 Another best practice they recommend is to delete root user access keys. You use an access key (an access key ID and secret access key) to make programmatic requests to AWS. However, the access key for your AWS account root user gives full access to all your resources for all AWS services, including your billing information. You cannot reduce the permissions associated with your AWS account root user access key. This is a common security concern that should be handled appropriately.
 You should not use the root account for managing any resource. Create an IAM user with the necessary permissions instead to perform these tasks.
-One recommended best practice is to use IAM roles when delegating permissions to users.
+One recommended best practice is to use IAM roles when delegating permissions to users. 
+– Grant only the permissions required by the resource to perform a task
+– Delete root user access keys
 
 In this scenario, we can expose the API endpoint to other stacks by adding the Export property in the Outputs section. In the example below, we use ‘SimpleAPI’ as the name of the value to be exported:
 To reference the endpoint’s value in other templates, simply use the Fn::ImportValue function and specify SimpleAPI as its parameter.
@@ -38,7 +40,7 @@ To reference the endpoint’s value in other templates, simply use the Fn::Impor
 in the given scenario, you can use Lambda@Edge to allow your Lambda functions to customize the content that CloudFront delivers and to execute the authentication process in AWS locations closer to the users. In addition, you can set up an origin failover by creating an origin group with two origins with one as the primary origin and the other as the second origin, which CloudFront automatically switches to when the primary origin fails. This will alleviate the occasional HTTP 504 errors that users are experiencing.
 
 There are three options for retrieving data archived to AWS Glacier with varying access times and cost:
-– Standard retrievals allow you to access any of your archives within several hours. Standard retrievals typically complete within 3–5 hours. This is the default option.
+– Standard retrievals allow you to access any of your archives within several hours. Standard retrievals typically complete within 3–5 hours. This is the default option.  the correct answer is to use Standard Retrieval, 
 – Bulk retrievals are Glacier’s lowest-cost retrieval option, which you can use to retrieve large amounts, even petabytes, of data inexpensively in a day. Bulk retrievals typically complete within 5–12 hours.
 – Expedited retrievals allow you to quickly access your data when occasional urgent requests for a subset of archives are required. Expedited retrievals are typically made available within 1–5 minutes.
 
@@ -102,7 +104,6 @@ create a new layer which contains the Custom Runtime for C++ and then launch a L
 Consider a producer that experiences a network-related timeout after it makes a call to PutRecord, but before it can receive an acknowledgement from Amazon Kinesis Data Streams. The producer cannot be sure if the record was delivered to Kinesis Data Streams. Assuming that every record is important to the application, the producer would have been written to retry the call with the same data. If both PutRecord calls on that same data were successfully committed to Kinesis Data Streams, then there will be two Kinesis Data Streams records. Although the two records have identical data, they also have unique sequence numbers. Applications that need strict guarantees should embed a primary key within the record to remove duplicates later when processing.
 
 Parameters stored in Systems Manager are mutable. Any time you use a template containing Systems Manager parameters to create/update your stacks, CloudFormation uses the values for these Systems Manager parameters at the time of the create/update operation. So, as parameters are updated in Systems Manager, you can have the new value of the parameter take effect by just executing a stack update operation. The Parameters section in the output for Describe API will show an additional ‘ResolvedValue’ field that contains the resolved value of the Systems Manager parameter that was used for the last stack operation.
-
 Hence, the correct answer is to set up CloudFormation with Systems Manager Parameter Store to retrieve the latest AMI IDs for your template and whenever you decide to update the EC2 instances, call the update-stack API in CloudFormation in your CloudFormation template. 
 
 If an EBS volume is the root device of an instance, you must stop the instance before you can detach the volume.
