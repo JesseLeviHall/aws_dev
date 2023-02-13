@@ -48,32 +48,105 @@ To configure deduplication, you must do one of the following:
 – Enable content-based deduplication. This instructs Amazon SQS to use a SHA-256 hash to generate the message deduplication ID using the body of the message – but not the attributes of the message.
 – Explicitly provide the message deduplication ID (or view the sequence number) for the message.
 
+To speed up queries on non-key attributes, you can create a global secondary index. A global secondary index contains a selection of attributes from the base table, but they are organized by a primary key that is different from that of the table. 
+Local secondary is used for queries which use the same partition key value and in addition, you can’t add this index to an already existing table. A local secondary index has the same partition key as the base table, but has a different sort key. It is “local” in the sense that every partition of a local secondary index is scoped to a base table partition that has the same partition key value.
+
+If you got your certificate from a third-party CA, import the certificate into ACM or upload it to the IAM certificate store.
+
+For Lambda functions that process Kinesis or DynamoDB streams, the number of shards is the unit of concurrency. If your stream has 100 active shards, there will be at most 100 Lambda function invocations running concurrently. This is because Lambda processes each shard’s events in sequence
+Remember that the Kinesis and Lambda integration is using a poll-based (not push based) event source, which means that the number of shards is the unit of concurrency for the function.
+
+Dynamo DB adaptive capacity can’t solve larger issues with your table or partition design. To avoid hot partitions and throttling, optimize your table and partition structure.
+consider one or more of the following solutions:
+– Increase the amount of read or write capacity for your table to anticipate short-term spikes or bursts in read or write operations. If you decide later you don’t need the additional capacity, decrease it. Take note that Before deciding on how much to increase read or write capacity, consider the best practices in designing your partition keys.
+– Implement error retries and exponential backoff. This technique uses progressively longer waits between retries for consecutive error responses to help improve an application’s reliability. If you’re using an AWS SDK, this logic is built‑in. If you’re using another SDK, consider implementing it manually.
+– Distribute your read operations and write operations as evenly as possible across your table. A “hot” partition can degrade the overall performance of your table.
+– Implement a caching solution, such as DynamoDB Accelerator (DAX) or Amazon ElastiCache. DAX is a DynamoDB-compatible caching service that offers fast in‑memory performance for your application. If your workload is mostly read access to static data, query results can often be served more quickly from a well‑designed cache than from a database.
+
+One read request unit represents one strongly consistent read request, or two eventually consistent read requests, for an item up to 4 KB in size. Transactional read requests require 2 read request units to perform one read for items up to 4 KB.
+To get the number of RCU required to handle 150 eventually consistent read requests with an average item size of 3.5 KB, you simply have to do the following steps:
+
+Step #1 Get the Average Item Size by rounding up to 4 KB
+
+= 3.5 KB = 4 KB (rounded up)
+
+Step #2 Get the RCU per Item by dividing the Average Item Size by 8 KB
+
+= 4 KB / 8 KB
+
+= 0.5 
+
+Step #3 Multiply the RCU per item to the number of items to be written per second
+
+= 150 x 0.5 
+
+= 75 eventually consistent read requests
+
+Hence, the correct answer is 75.
 
 
+Cross-region replication (CRR) enables automatic, asynchronous copying of objects across buckets in different AWS Regions.
+– The source and destination buckets must have versioning enabled.
+– The source and destination buckets must be in different AWS Regions.
+– Amazon S3 must have permissions to replicate objects from that source bucket to the destination bucket on your behalf.
 
+The Lambda proxy integration type (AWS_PROXY) lets an API method be integrated with the Lambda function invocation action with a flexible, versatile, and streamlined integration setup. This integration relies on direct interactions between the client and the integrated Lambda function. With this type of integration, also known as the Lambda proxy integration, you do not set the integration request or the integration response. API Gateway passes the incoming request from the client as the input to the backend Lambda function.
+For an AWS service action, you have the AWS integration of the non-proxy type only. 
 
+AWS CloudTrail increases visibility of AWS Management Console actions and API calls. You can identify which users and accounts called AWS, the source IP address from which the calls were made, and when the calls occurred. Hence, this is the correct service to use in this scenario.
 
+Cluster queries are expressions that enable you to group objects. For example, you can group container instances by attributes such as Availability Zone, instance type, or custom metadata. You can add custom metadata to your container instances, known as attributes. Each attribute has a name and an optional string value. You can use the built-in attributes provided by Amazon ECS or define custom attributes.
 
+create a new layer which contains the Custom Runtime for C++ and then launch a Lambda function which uses that runtime.
 
+Consider a producer that experiences a network-related timeout after it makes a call to PutRecord, but before it can receive an acknowledgement from Amazon Kinesis Data Streams. The producer cannot be sure if the record was delivered to Kinesis Data Streams. Assuming that every record is important to the application, the producer would have been written to retry the call with the same data. If both PutRecord calls on that same data were successfully committed to Kinesis Data Streams, then there will be two Kinesis Data Streams records. Although the two records have identical data, they also have unique sequence numbers. Applications that need strict guarantees should embed a primary key within the record to remove duplicates later when processing.
 
+Parameters stored in Systems Manager are mutable. Any time you use a template containing Systems Manager parameters to create/update your stacks, CloudFormation uses the values for these Systems Manager parameters at the time of the create/update operation. So, as parameters are updated in Systems Manager, you can have the new value of the parameter take effect by just executing a stack update operation. The Parameters section in the output for Describe API will show an additional ‘ResolvedValue’ field that contains the resolved value of the Systems Manager parameter that was used for the last stack operation.
 
+Hence, the correct answer is to set up CloudFormation with Systems Manager Parameter Store to retrieve the latest AMI IDs for your template and whenever you decide to update the EC2 instances, call the update-stack API in CloudFormation in your CloudFormation template. 
 
+If an EBS volume is the root device of an instance, you must stop the instance before you can detach the volume.
 
+For serverless applications (also referred to as Lambda-based applications), the Transform section specifies the version of the AWS Serverless Application Model (AWS SAM) to use.
 
+CloudWatch does not monitor the memory, swap, and disk space utilization of your instances. If you need to track these metrics, you can install a CloudWatch agent in your EC2 instances.
 
+Amazon Cognito automatically tracks the association between identity and devices. Using the push synchronization, or push sync, feature, you can ensure that every instance of a given identity is notified when identity data changes. Push sync ensures that, whenever the sync store data changes for a particular identity, all devices associated with that identity receive a silent push notification informing them of the change.
 
+Then to determine the write capacity unite per item, you need to divide the item size of the operation by 1 KB. Once you got the value, you just simply have to multiply it with the number of write request per second (1 x 100) hence, the WCU that you should provision is 100.
 
+With HTTPS connections and Git credentials, you generate a static user name and password in IAM. You then use these credentials with Git and any third-party tool that supports Git user name and password authentication. This method is supported by most IDEs and development tools. It is the simplest and easiest connection method to use with CodeCommit.
+With SSH connections, you create public and private key files on your local machine that Git and CodeCommit use for SSH authentication. You associate the public key with your IAM user, and you store the private key on your local machine.
+Hence, you have to generate HTTPS Git credentials and generate new SSH keys and associate the public SSH key to each of your developer’s IAM user to properly grant your developers with CodeCommit access.
 
+To perform a multipart upload with encryption using an AWS Key Management Service (AWS KMS) customer master key (CMK), the requester must have permission to the kms:Decrypt and kms:GenerateDataKey* actions on the key. These permissions are required because Amazon S3 must decrypt and read data from the encrypted file parts before it completes the multipart upload.
+Hence, the correct answers in this scenario are:
+– The AWS CLI S3 commands perform a multipart upload when the file is large.
+– The developer does not have the kms:Decrypt permission
 
+Below are some of the CORSRule elements:
+MaxAgeSeconds  – Specifies the amount of time in seconds (in this example, 3000) that the browser caches an Amazon S3 response to a preflight OPTIONS request for the specified resource. By caching the response, the browser does not have to send preflight requests to Amazon S3 if the original request will be repeated.
 
+ExposeHeader  – Identifies the response headers (in this example, x-amz-server-side-encryption, x-amz-request-id, and x-amz-id-2) that customers are able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
 
+Hence, the correct answers in this scenario are:
+– It allows a user to view, add, remove or update objects inside the S3 bucket from the domain tutorialsdojo.com
+– This will cause the browser to cache an Amazon S3 response of a preflight OPTIONS request for 1 hour
 
+Elastic Beanstalk is ideal if you want to leverage the benefits of containers but just want the simplicity of deploying applications from development to production by uploading a container image. You can work with Amazon ECS directly if you want more fine-grained control for custom application architectures.
 
+Hence, the correct answer in this scenario is ECS.
 
+Elastic Beanstalk is incorrect because although it can be used to host Docker applications, it is more ideal to be used if you want the simplicity of deploying applications from development to production by uploading a container image. It does not provide fine-grained control for custom application architectures unlike ECS.
 
+AWS Lambda directs events that cannot be processed to the specified Amazon SNS topic or Amazon SQS queue. Functions that don’t specify a DLQ will discard events after they have exhausted their retries.
 
+Hence, the correct answer is to specify the Amazon Resource Name of the SQS Queue in the Lambda function’s DeadLetterConfig parameter.
 
-
+ Your sign-in page URL has the following format, by default:
+https://Your_AWS_Account_ID.signin.aws.amazon.com/console/
+If you create an AWS account alias for your AWS account ID, your sign-in page URL looks like the following example.
+https://Your_Alias.signin.aws.amazon.com/console/
 
 
 */

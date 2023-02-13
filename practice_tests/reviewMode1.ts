@@ -181,9 +181,9 @@ All-at-once: All traffic is shifted from the original Lambda function to the upd
 Hence, the CodeDeployDefault.LambdaCanary10Percent5Minutes option is correct because 10 percent of your customer traffic is immediately shifted to your new version. After 5 minutes, all traffic is shifted to the new version. This means that the entire deployment time will only take 5 minutes
 
 Take note that a User Pool doesn’t have an option to enable unauthenticated identities. Moreover, you won’t be able to provide your users access to upload their media files to S3 using a User Pool.
-
 – Standard resolution, with data having a one-minute granularity
-
 – High resolution, with data at a granularity of one second
+
+
 
 */
