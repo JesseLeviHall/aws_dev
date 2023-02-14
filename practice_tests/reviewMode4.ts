@@ -13,9 +13,12 @@ Amazon Guard​Duty is incorrect because this is just a threat detection service
 AWS Firewall Manager is incorrect because this just simplifies your AWS WAF and AWS Shield Advanced administration and maintenance tasks across multiple accounts and resources.
 Network Access Control List is incorrect because this is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets.
 
+Including the core logic in the Lambda handler is incorrect because you have to separate the Lambda handler (entry point) from your core logic instead.
 
-
-
+cfn-init: Use to retrieve and interpret resource metadata, install packages, create files, and start services.
+cfn-signal: Use to signal with a CreationPolicy or WaitCondition, so you can synchronize other resources in the stack when the prerequisite resource or application is ready.
+cfn-get-metadata: Use to retrieve metadata for a resource or path to a specific key.
+cfn-hup: Use to check for updates to metadata and execute custom hooks when changes are detected.
 
 
 
