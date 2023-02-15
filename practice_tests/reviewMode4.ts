@@ -77,9 +77,10 @@ Using Signals is incorrect because it just enables you to inject information int
 Using Timers is incorrect because it just enables you to notify your decider when a certain amount of time has elapsed and does not meet the requirement in this scenario.
 Likewise, using Tags is incorrect because it just enables you to filter the listing of the executions when you use the visibility operations, which once again does not meet the requirement in this scenario.
 
+You can send trace data to X-Ray in the form of segment documents.
 Using AWS X-Ray SDK to upload a trace segment by executing PutTraceSegments API is incorrect because you should upload the segment documents with subsegments instead. A trace segment is just a JSON representation of a request that your application serves.
 
- To upload data to X-Ray, the X-Ray daemon requires IAM permissions in the AWSXRayDaemonWriteAccess managed policy. These permissions are included in the Elastic Beanstalk instance profile.
+To upload data to X-Ray, the X-Ray daemon requires IAM permissions in the AWSXRayDaemonWriteAccess managed policy. These permissions are included in the Elastic Beanstalk instance profile.
 
 The AWS X-Ray daemon is a software application that listens for traffic on UDP port 2000, gathers raw segment data, and relays it to the AWS X-Ray API.
 Hence, the most suitable way to instrument your application is to use a user data script to install the X-Ray daemon.
