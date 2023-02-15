@@ -90,5 +90,10 @@ consider when using a global secondary index:
  – Queries or scans on this index consume capacity units from the index, not from the base table.
  – Queries on this index support eventual consistency only.
 
+The AWSLambdaDynamoDBExecutionRole managed policy already includes these permissions.
+Hence, the correct answers are:
+– Create an event source mapping in Lambda to send records from your stream to a Lambda function.
+– Select AWSLambdaDynamoDBExecutionRole managed policy as the function’s execution role.
+
 
 */
