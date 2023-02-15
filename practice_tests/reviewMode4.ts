@@ -45,6 +45,7 @@ You might use manual approvals for these reasons:
 – You want someone to review new or updated text before it is published to a company website.
 When you create a topic, it is recommended that you give it a name that will identify its purpose, in formats such as tutorialsdojoManualApprovalPHL-us-east-2-approval.
 Hence, the correct answer is to Implement a manual approval actions configuration in CodePipeline. Send the approval request to an SNS Topic. 
+SQS is wrong because it doesn’t have an integration with manual approval actions. Use SNS instead to send the approval action emails to the recipient who will either approve or deny the action.
 
 the valid considerations in improving the performance of Lambda functions are:
 – An increase in memory size triggers an equivalent increase in CPU available to your function.
