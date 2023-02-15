@@ -86,4 +86,9 @@ Hence, the most suitable way to instrument your application is to use a user dat
 
 To enable transparent data encryption for an RDS SQL Server DB instance, specify the TDE option in an RDS option group that is associated with that DB instance.
 
+consider when using a global secondary index:
+ – Queries or scans on this index consume capacity units from the index, not from the base table.
+ – Queries on this index support eventual consistency only.
+
+
 */
