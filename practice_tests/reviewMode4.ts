@@ -20,6 +20,70 @@ cfn-signal: Use to signal with a CreationPolicy or WaitCondition, so you can syn
 cfn-get-metadata: Use to retrieve metadata for a resource or path to a specific key.
 cfn-hup: Use to check for updates to metadata and execute custom hooks when changes are detected.
 
+If your identity store is not compatible with SAML 2.0, then you can build a custom identity broker application to perform a similar function. The broker application authenticates users, requests temporary credentials for users from AWS, and then provides them to the user to access AWS resources. To get temporary security credentials, the identity broker application calls either AssumeRole or GetFederationToken to obtain temporary security credentials, depending on how you want to manage the policies for users
 
+1 RCU can do 1 strongly consistent read or 2 eventually consistent reads for an item up to 4KB.
+To get the RCU with strongly consistent reads, do the following steps:
+Step #1 Divide the average item size by 4 KB. Round up the result
+Average Item Size = 17 KB
+= 17KB/4KB
+= 4.25 ≈ 5
+Step #2 Multiply the number of reads per second by the resulting value from Step 1. (Divide the product by 2 for eventually consistent reads)
+= 320 reads per second x 5
+= 1,600 strongly consistent read requests
+Hence, the correct answer is to set the provisioned RCU to 1600
+
+Enhanced Monitoring metrics are useful when you want to see how different processes or threads on a DB instance use the CPU.
+Hence, the correct answer is to use Enhanced Monitoring in RDS.
+
+Random places tasks on instances at random yet still honors the other constraints that you specified, implicitly or explicitly. Specifically, it still makes sure that tasks are scheduled on instances with enough resources to run them.
+Hence, the correct answer is to use a random task placement strategy for this scenario.
+
+You might use manual approvals for these reasons:
+– You want someone to perform a code review or change management review before a revision is allowed into the next stage of a pipeline.
+– You want someone to perform manual quality assurance testing on the latest version of an application, or to confirm the integrity of a build artifact, before it is released.
+– You want someone to review new or updated text before it is published to a company website.
+When you create a topic, it is recommended that you give it a name that will identify its purpose, in formats such as tutorialsdojoManualApprovalPHL-us-east-2-approval.
+Hence, the correct answer is to Implement a manual approval actions configuration in CodePipeline. Send the approval request to an SNS Topic. 
+
+the valid considerations in improving the performance of Lambda functions are:
+– An increase in memory size triggers an equivalent increase in CPU available to your function.
+– The concurrent execution limit is enforced against the sum of the concurrent executions of all functions.
+
+AWS Step Functions provides serverless orchestration for modern applications. Orchestration centrally manages a workflow by breaking it into multiple steps, adding flow logic, and tracking the inputs and outputs between the steps. 
+
+Basic – Data is available automatically in 5-minute periods at no charge.
+Detailed – Data is available in 1-minute periods for an additional cost. To get this level of data, you must specifically enable it for the instance. For the instances where you’ve enabled detailed monitoring, you can also get aggregated data across groups of similar instances.
+
+After you develop and test your serverless application locally, you can deploy your application by using the sam package and sam deploy commands.
+
+It is recommended that you use the following pattern to encrypt data locally in your application:
+1. Use the GenerateDataKey operation to get a data encryption key.
+2. Use the plaintext data key (returned in the Plaintext field of the response) to encrypt data locally, then erase the plaintext data key from memory.
+3. Store the encrypted data key (returned in the CiphertextBlob field of the response) alongside the locally encrypted data.
+Hence, the valid steps in this scenario are the following:
+– Use the GenerateDataKey operation to get a data encryption key then use the plaintext data key in the response to encrypt data locally.
+– Erase the plaintext data key from memory and store the encrypted data key alongside the locally encrypted data.
+
+Imagine that you have an IAM user for working in the development environment and you occasionally need to work with the production environment at the command line with the AWS CLI. You already have an access key credential set available to you. This can be the access key pair that is assigned to your standard IAM user. Or, if you signed in as a federated user, it can be the access key pair for the role that was initially assigned to you. If your current permissions grant you the ability to assume a specific IAM role, then you can identify that role in a “profile” in the AWS CLI configuration files. That command is then run with the permissions of the specified IAM role, not the original identity.
+Note that when you specify that profile in an AWS CLI command, you are using the new role. In this situation, you cannot make use of your original permissions in the development account at the same time. The reason is that only one set of permissions can be in effect at a time.
+Hence, the correct answer is to create a new profile for the role in the AWS CLI configuration file then append the --profile parameter, along with the new profile name, whenever you run the CLI command.
+
+With adaptive authentication, you can configure your user pool to require second-factor authentication in response to an increased risk level.
+Hence, the correct answer in this scenario is to integrate multi-factor authentication (MFA) to a user pool in Cognito to protect the identity of your users.
+
+You can use markers to record events in the workflow execution history for application specific purposes. Markers are useful when you want to record custom information to help implement decider logic. For example, you could use a marker to count the number of loops in a recursive workflow.
+Using Signals is incorrect because it just enables you to inject information into a running workflow execution. Take note that in this scenario, you are required to record information in the workflow history of a workflow execution.
+Using Timers is incorrect because it just enables you to notify your decider when a certain amount of time has elapsed and does not meet the requirement in this scenario.
+Likewise, using Tags is incorrect because it just enables you to filter the listing of the executions when you use the visibility operations, which once again does not meet the requirement in this scenario.
+
+Using AWS X-Ray SDK to upload a trace segment by executing PutTraceSegments API is incorrect because you should upload the segment documents with subsegments instead. A trace segment is just a JSON representation of a request that your application serves.
+
+ To upload data to X-Ray, the X-Ray daemon requires IAM permissions in the AWSXRayDaemonWriteAccess managed policy. These permissions are included in the Elastic Beanstalk instance profile.
+
+The AWS X-Ray daemon is a software application that listens for traffic on UDP port 2000, gathers raw segment data, and relays it to the AWS X-Ray API.
+Hence, the most suitable way to instrument your application is to use a user data script to install the X-Ray daemon.
+
+To enable transparent data encryption for an RDS SQL Server DB instance, specify the TDE option in an RDS option group that is associated with that DB instance.
 
 */
