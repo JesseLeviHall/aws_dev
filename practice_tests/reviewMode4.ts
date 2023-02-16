@@ -97,5 +97,27 @@ Hence, the correct answers are:
 – Create an event source mapping in Lambda to send records from your stream to a Lambda function.
 – Select AWSLambdaDynamoDBExecutionRole managed policy as the function’s execution role.
 
+ In the scenario, the DynamoDB table is expected to perform 10 writes per second of a 2KB item. Multiplying 10 by 2 gives 20 WCU.
+1 RCU can do 1 strongly consistent read or 2 eventually consistent reads for an item up to 4KB.
+To get the RCU with eventually consistent reads, do the following steps:
+Step #1 Divide the average item size by 4 KB. Round up the result
+Average Item Size = 2 KB
+= 2KB/4KB
+= 0.5 ≈ 1
+Step #2 Multiply the number of reads per second by the resulting value from Step 1. Divide the product by 2 for eventually consistent reads.
+= 20 reads per second x 1
+= 20 RCU
+Since the type of read being asked is eventually consistent, we get half of 20, which is 10.
+= 20/2 = 10 RCU
+Hence, the correct answer is to provision 10 RCU and 20 WCU
+
+You cant allocate below 100 concurency executions in lambda but the 100 is still available in the unreserved pool. 
+
+in the X-Ray console, you might get more results than the console can display. You can narrow the results to just the traces that you want to find by using a filter expression. Running the GetTraceSummaries operation retrieves IDs and annotations for traces available for a specified time frame using an optional filter.
+Hence, using filter expressions via the X-Ray console and fetching the trace IDs and annotations using the GetTraceSummaries API are the correct answers in this scenario.
+
+To avoid potential throttling, the provisioned write capacity for a global secondary index should be equal or greater than the write capacity of the base table since new updates will write to both the base table and global secondary index.
+Hence, the correct answer in this scenario is to ensure that the global secondary index’s provisioned WCU is equal or greater than the WCU of the base table.
+Ensuring that the global secondary index’s provisioned RCU is equal or greater than the RCU of the base table is incorrect because you have to set the WCU and not the RCU.
 
 */
