@@ -16,7 +16,8 @@ Large bills for SQS worker pools - increase RecieveMessagesWaitTimeSeconds. Usua
 - Generally you want to switch to long-polling, or Re-provision the instances using an ASG based on queue length. The idea is to use the length of the SQS queue as a metric to determine the number of instances needed to process the messages in the queue. If the queue length grows, indicating an increase in traffic, the ASG can be used to automatically add more instances to the worker tier to keep up with the increased demand. Conversely, if the queue length decreases, indicating a decrease in traffic, the ASG can be used to remove instances and reduce costs.
 
 
-By re-provisioning instances based on queue length, you can ensure that the worker tier has the appropriate number of instances to handle the workload and optimize costs. This is an example of using AWS services in an auto-scaling architecture, where the number of instances is dynamically adjusted to meet the demands of the workload.
+By re-provisioning 
+instances based on queue length, you can ensure that the worker tier has the appropriate number of instances to handle the workload and optimize costs. This is an example of using AWS services in an auto-scaling architecture, where the number of instances is dynamically adjusted to meet the demands of the workload.
 
 
 
