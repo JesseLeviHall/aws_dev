@@ -18,6 +18,7 @@ Large bills for SQS worker pools - increase RecieveMessagesWaitTimeSeconds. Usua
 By re-provisioning instances based on queue length, you can ensure that the worker tier has the appropriate number of instances to handle the workload and optimize costs. This is an example of using AWS services in an auto-scaling architecture, where the number of instances is dynamically adjusted to meet the demands of the workload.
 
 
+
 If you want to limit access to s3 bucket with signed urls and you use cloudfront, you have to have an OAI (Origin Access Identity) for cloudfront and a bucket policy that only allows that identity. 
 
 WAF is desinged to 
