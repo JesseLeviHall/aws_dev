@@ -63,7 +63,9 @@ Out of all the types of State, only the Task State and the Parallel State can be
 
 Task and Parallel states can have a field named Retry, whose value must be an array of objects known as retriers. An individual retrier represents a certain number of retries, usually at increasing time intervals.  you can use the Catch and Retry fields inside the state machine definition to capture an exception error and attempt to recover from it by automatically retrying the state.
 
+You use the IAM Condition element to implement a fine-grained access control policy. By adding a Condition element to a permissions policy, you can allow or deny access to items and attributes in DynamoDB tables and indexes, based upon your particular business requirements.
 
+In the given scenario, we are only required to restrict access to specific items in the table based on User Id which is the partition key. We can achieve this by inserting a dynamodb:LeadingKeys condition key to the IAM policy associated with the Identity provider’s role.
 
 
 
