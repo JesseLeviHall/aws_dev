@@ -18,6 +18,11 @@ The workflow is initiated by passing an input of values “yes” or “no”. O
 On the right side, we can see that all data that passes through the nodes (input, error, output) are aggregated in a single step output.
 This can be done by including a Catch field in the state machine definition to capture the error in a state and the ResultPath to include each node’s input with its output.
 
+It’s important to note that basically everything that you’re doing outside of the handler function will block its execution. When it comes to thinking about pre handler code dependencies that you want to use, remember that less is more. The more targeted you are at the resource that you include, the better the overall performance your function will have during its execution.
+You also have the option to tweak the power of the resources that run your function by increasing the memory allocated to your function to optimize its overall performance
+Hence, the correct answers are:
+– Reduce the deployment package’s size by including only the needed modules from the AWS SDK for Java.
+– Increase the memory allocation setting for the Lambda function.
 
 
 */
