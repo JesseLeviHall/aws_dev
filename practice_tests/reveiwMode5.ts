@@ -24,5 +24,18 @@ Hence, the correct answers are:
 – Reduce the deployment package’s size by including only the needed modules from the AWS SDK for Java.
 – Increase the memory allocation setting for the Lambda function.
 
+A task definition is required to run Docker containers in Amazon ECS. The following are some of the parameters you can specify in a task definition:
+– The Docker image to use with each container in your task
+– How much CPU and memory to use with each task or each container within a task
+– The launch type to use, which determines the infrastructure on which your tasks are hosted
+– The Docker networking mode to use for the containers in your task
+– The logging configuration to use for your tasks
+– Whether the task should continue to run if the container finishes or fails
+– The command the container should run when it is started
+– Any data volumes that should be used with the containers in the task
+– The IAM role that your tasks should use
+
+
+
 
 */
