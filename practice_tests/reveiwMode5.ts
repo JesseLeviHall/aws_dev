@@ -67,7 +67,7 @@ You use the IAM Condition element to implement a fine-grained access control pol
 
 In the given scenario, we are only required to restrict access to specific items in the table based on User Id which is the partition key. We can achieve this by inserting a dynamodb:LeadingKeys condition key to the IAM policy associated with the Identity provider’s role.
 
-
+The --dry-run parameter checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRun-Operation. Otherwise, it is UnauthorizedOperation. With the IAM policy simulator, you can test and troubleshoot identity-based policies, IAM permissions boundaries, Organizations service control policies (SCPs), and resource-based policies.
 
 
 
