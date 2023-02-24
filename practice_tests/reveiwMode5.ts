@@ -34,6 +34,47 @@ A task definition is required to run Docker containers in Amazon ECS. The follow
 – The command the container should run when it is started
 – Any data volumes that should be used with the containers in the task
 – The IAM role that your tasks should use
+Before you can run Docker containers on Amazon ECS, you must create a task definition. You can define multiple containers and data volumes in a single task definition.
+
+ Enable DynamoDB Streams to stream all the changes from the Customer service table and trigger a Lambda function to update the Payment service table.
+
+Here are the SAM CLI commands needed to deploy serverless applications:
+sam init – Initializes a serverless application with an AWS SAM template. The template provides a folder structure for your Lambda functions and is connected to an event source such as APIs, S3 buckets, or DynamoDB tables. This application includes everything you need to get started and to eventually extend it into a production-scale application.
+sam build – The sam build command builds any dependencies that your application has, and copies your application source code to folders under .aws-sam/build to be zipped and uploaded to Lambda.
+sam deploy – performs the functionality of sam package. You can use the sam deploy command to directly package and deploy your application.
+the correct answer is: Build the SAM template in the local machine and call the sam deploy command to package and deploy the SAM template from an S3 bucket.
+
+The AWS STS DecodeAuthorizationMessage API decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request.
+
+Hence, the correct answers are:
+– On the production account, create an IAM role and specify the development account as a trusted entity.
+– Set the policy that will grant access to S3 for the IAM role created in the production account
+– Log in to the development account and create a policy that will use STS to assume the IAM role in the production account. Attach the policy to corresponding IAM users.
+
+States can perform a variety of functions in your state machine:
+Task State – Do some work in your state machine
+Choice State – Make a choice between branches of execution
+Fail or Succeed State – Stop execution with failure or success
+Pass State – Simply pass its input to its output or inject some fixed data, without performing work.
+Wait State – Provide a delay for a certain amount of time or until a specified time/date.
+Parallel State – Begin parallel branches of execution.
+Map State – Dynamically iterate steps.
+Out of all the types of State, only the Task State and the Parallel State can be used to run processes in the state machine. In the given scenario, the application logic inside the Lambda function process data synchronously. In this case, Task State should be used.
+
+Task and Parallel states can have a field named Retry, whose value must be an array of objects known as retriers. An individual retrier represents a certain number of retries, usually at increasing time intervals.  you can use the Catch and Retry fields inside the state machine definition to capture an exception error and attempt to recover from it by automatically retrying the state.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
