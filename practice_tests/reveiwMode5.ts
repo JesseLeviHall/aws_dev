@@ -109,6 +109,8 @@ If you intend to use HTTPS with the credential helper that is included in the AW
 Since the scenario requires the developer to authenticate with CodeCommit using his access key credentials, he should set up a Git credential helper.
 Hence, the correct answer is: Configure the Git credential helper with the AWS credential profile.
 
+To solve the given problem, we can set up a Schedule event source that will invoke the Lambda function responsible for sending a newsletter every 7 days.
+Hence, the correct answer is: Configure a scheduled CloudWatch Events rule that triggers every week to invoke the Lambda function.
 
 
 */
