@@ -95,5 +95,11 @@ The PassRole permission helps you make sure that a user doesn’t pass a role to
 
 TransactWriteItems is a synchronous and idempotent write operation that groups up to 25 write actions in a single all-or-nothing operation.
 
+When Lambda runs your function, it passes a context object to the handler. This object provides methods and properties that provide information about the invocation, function, and execution environment. One of the properties that you can get from the context object is the log_stream_name which gives the log location of a function instance.
+Hence, the correct answer is: Extract the log stream name from the Context object of the handler function.
+
+
+
+
 
 */
