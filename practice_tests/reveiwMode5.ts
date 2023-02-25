@@ -101,5 +101,14 @@ Hence, the correct answer is: Extract the log stream name from the Context objec
 You can use the AWS Management Console, or the AWS CLI or API, to specify customization settings for the built-in app UI experience. You can upload a custom logo image to be displayed in the app. You can also choose many CSS customizations.
 
 
+You can authenticate with CodeCommit (HTTPS) in two ways:
+1. Set-up a Git credential helper using your access key credentials specified in your AWS credential profile.
+2. Generate HTTPS Git credentials for AWS CodeCommit. Specify the credentials in the Git Credential Manager.
+The Git credential helper requires an AWS credential profile, which stores a copy of an IAM user’s AWS access key ID and AWS secret access key (along with a default AWS Region name and default output format). The Git credential helper uses this information to automatically authenticate with CodeCommit so you don’t need to enter this information every time you use Git to interact with CodeCommit.
+If you intend to use HTTPS with the credential helper that is included in the AWS CLI instead of configuring Git credentials for CodeCommit, on the Configuring extra options page, make sure the Enable Git Credential Manager option is cleared. The Git Credential Manager is only compatible with CodeCommit if IAM users configure Git credentials.
+Since the scenario requires the developer to authenticate with CodeCommit using his access key credentials, he should set up a Git credential helper.
+Hence, the correct answer is: Configure the Git credential helper with the AWS credential profile.
+
+
 
 */
