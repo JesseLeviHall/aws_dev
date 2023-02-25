@@ -98,7 +98,7 @@ TransactWriteItems is a synchronous and idempotent write operation that groups u
 When Lambda runs your function, it passes a context object to the handler. This object provides methods and properties that provide information about the invocation, function, and execution environment. One of the properties that you can get from the context object is the log_stream_name which gives the log location of a function instance.
 Hence, the correct answer is: Extract the log stream name from the Context object of the handler function.
 
-
+You can use the AWS Management Console, or the AWS CLI or API, to specify customization settings for the built-in app UI experience. You can upload a custom logo image to be displayed in the app. You can also choose many CSS customizations.
 
 
 
