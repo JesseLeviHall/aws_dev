@@ -133,6 +133,19 @@ For general use, the aws configure command is the fastest way to set up your AWS
 Access keys consist of an access key ID and secret access keys are used to sign programmatic requests that you make to AWS.
 Hence, the correct answer is: The AWS Region name used to configure the AWS CLI does not match the region where the instance lives.
 
+The IAM service supports only one type of resource-based policy called a role trust policy, which is attached to an IAM role. An IAM role is both an identity and a resource that supports resource-based policies. For that reason, you must attach both a trust policy and an identity-based policy to an IAM role. Trust policies define which principal entities (accounts, users, roles, and federated users) can assume the role.
+In a trust policy, the Principal attribute defines the AWS services or users that can assume the IAM role. Here’s an example trust policy for a role designed for an Amazon EC2 instance to assume. You can see that the principal provided is the ec2.amazonaws.com
+Hence, the correct answer is: Add the EC2 service under the Principal field of the Trust policy.
+
+
+
+
+
+
+
+
+
+
 
 
 */
