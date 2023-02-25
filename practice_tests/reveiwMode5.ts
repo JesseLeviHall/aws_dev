@@ -112,5 +112,15 @@ Hence, the correct answer is: Configure the Git credential helper with the AWS c
 To solve the given problem, we can set up a Schedule event source that will invoke the Lambda function responsible for sending a newsletter every 7 days.
 Hence, the correct answer is: Configure a scheduled CloudWatch Events rule that triggers every week to invoke the Lambda function.
 
+AWS Security Token Service (AWS STS) is a web service that enables you to request temporary, limited-privilege credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users).
+Below is the summary of the available STS API:
+AssumeRole –  is useful for allowing existing IAM users to access AWS resources that they don’t already have access to. For example, the user might need access to resources in another AWS account. It is also useful as a means to temporarily gain privileged access—for example, to provide multi-factor authentication (MFA). You must call this API using existing IAM user credentials.
+AssumeRoleWithWebIdentity – returns a set of temporary security credentials for federated users who are authenticated through a public identity provider. Examples of public identity providers include Login with Amazon, Facebook, Google, or any OpenID Connect (OIDC)-compatible identity provider.
+AssumeRoleWithSAML –  returns a set of temporary security credentials for federated users who are authenticated by your organization’s existing identity system. The users must also use SAML 2.0 (Security Assertion Markup Language) to pass authentication and authorization information to AWS. This API operation is useful in organizations that have integrated their identity systems (such as Windows Active Directory or OpenLDAP) with software that can produce SAML assertions.
+GetFederationToken – returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network. You must call the GetFederationToken operation using the long-term security credentials of an IAM user.
+GetSessionToken – returns a set of temporary security credentials to an existing IAM user. This is useful for providing enhanced security, such as allowing AWS requests only when MFA is enabled for the IAM user. Because the credentials are temporary, they provide enhanced security when you have an IAM user who accesses your resources through a less secure environment.
+All of the options given provide temporary credentials to make API calls against AWS resources, but GetSessionToken is the only API that supports MFA. Hence, the correct answer is GetSessionToken.
+
+
 
 */
