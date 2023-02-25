@@ -86,13 +86,14 @@ Hence, the correct answers are:
 – Re-enabling disabled keys
 – Creation of symmetric and asymmetric keys
 
+With versioning, you don’t have to wait for an object to expire before CloudFront begins to serve a new version of it, and you don’t have to pay for object invalidation.
+Hence, the correct answer is: Update the images by using versioned file names.
 
+the correct answer is: Inside the .ebextensions folder.
 
+The PassRole permission helps you make sure that a user doesn’t pass a role to an EC2 instance where the role has more permissions than you want the user to have. For example, Alice might be allowed to perform only EC2 and S3 actions. If Alice could pass a role to the EC2 instance that allows additional actions, she could log into the instance, get temporary security credentials via the role she passed, and make calls to AWS that you don’t intend.
 
-
-
-
-
+TransactWriteItems is a synchronous and idempotent write operation that groups up to 25 write actions in a single all-or-nothing operation.
 
 
 */
