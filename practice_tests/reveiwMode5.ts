@@ -121,6 +121,13 @@ GetFederationToken – returns a set of temporary security credentials (consisti
 GetSessionToken – returns a set of temporary security credentials to an existing IAM user. This is useful for providing enhanced security, such as allowing AWS requests only when MFA is enabled for the IAM user. Because the credentials are temporary, they provide enhanced security when you have an IAM user who accesses your resources through a less secure environment.
 All of the options given provide temporary credentials to make API calls against AWS resources, but GetSessionToken is the only API that supports MFA. Hence, the correct answer is GetSessionToken.
 
+The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to model and provision your cloud application resources using familiar programming languages. The AWS CDK has first-class support for TypeScript, JavaScript, Python, Java, and C#. The AWS CDK can also update your deployed resources after you modify your app using the appropriate CDK commands. You can think of the CDK as a cloud infrastructure “compiler”. It provides a set of high-level class libraries, called Constructs, that abstract AWS cloud resources and encapsulate AWS best practices. 
+
+
+
+
+
+
 
 
 */
