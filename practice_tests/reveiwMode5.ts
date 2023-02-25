@@ -123,10 +123,15 @@ All of the options given provide temporary credentials to make API calls against
 
 The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to model and provision your cloud application resources using familiar programming languages. The AWS CDK has first-class support for TypeScript, JavaScript, Python, Java, and C#. The AWS CDK can also update your deployed resources after you modify your app using the appropriate CDK commands. You can think of the CDK as a cloud infrastructure “compiler”. It provides a set of high-level class libraries, called Constructs, that abstract AWS cloud resources and encapsulate AWS best practices. 
 
+AWS Lambda natively supports Java, Go, PowerShell, Node.js, C#, Python, and Ruby code,
 
-
-
-
+For general use, the aws configure command is the fastest way to set up your AWS CLI installation. When you enter this command, the AWS CLI prompts you for four pieces of information:
+– Access Key ID
+– Secret Access Key
+– AWS Region
+– Output format
+Access keys consist of an access key ID and secret access keys are used to sign programmatic requests that you make to AWS.
+Hence, the correct answer is: The AWS Region name used to configure the AWS CLI does not match the region where the instance lives.
 
 
 
