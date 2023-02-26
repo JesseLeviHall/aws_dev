@@ -163,10 +163,42 @@ Hence, the correct answer is: Configure the user data at the creation of the EC2
 the correct answer is:
 Copy the AMI of the instance from the us-east-1 region to the us-east-2, ap-northeast-1, and ap-southeast-1 region. Then, add a Mappings section wherein you will define the different Image Id for the three regions. Use the region name as the key in mapping to its correct Image Id. Lastly, use the Fn::FindInMap function to retrieve the desired Image Id from the region key.
 
-
 Hence, the correct answers are:
 – Include Cache-Control: max-age=0 HTTP header on the API request. 
 – Grant permission to the client to invalidate caching when there’s a request using the IAM execution role.
+
+If you terminate a container instance in the RUNNING state, that container instance is automatically removed or deregistered from the cluster. However, if you terminate a container instance in the STOPPED state, that container instance isn’t automatically removed from the cluster.
+To deregister your container instance from the cluster, you should deregister it after terminating it in the STOPPED state by using the Amazon ECS Console or AWS Command Line Interface. The deregistered container instance will no longer appear as a resource in your Amazon ECS cluster.
+Hence, the correct answer is: When a container instance is terminated in the stopped state, the container instance is not automatically deregistered from the cluster.
+
+The AWS CLI credentials and configuration settings take precedence in the following order:
+1. Command line options – Overrides settings in any other location. You can specify --region, --output, and --profile as parameters on the command line.
+2. Environment variables – You can store values in your system’s environment variables.
+3. CLI credentials file – The credentials and config file are updated when you run the command aws configure. The credentials file is located at ~/.aws/credentials on Linux or macOS, or at C:\Users\USERNAME\.aws\credentials on Windows. This file can contain the credential details for the default profile and any named profiles.
+4. CLI configuration file – The credentials and config file are updated when you run the command aws configure. The config file is located at ~/.aws/config on Linux or macOS, or at C:\Users\USERNAME\.aws\config on Windows. This file contains the configuration settings for the default profile and any named profiles.
+5. Container credentials – You can associate an IAM role with each of your Amazon Elastic Container Service (Amazon ECS) task definitions. Temporary credentials for that role are then available to that task’s containers.
+6. Instance profile credentials – You can associate an IAM role with each of your Amazon Elastic Compute Cloud (Amazon EC2) instances. Temporary credentials for that role are then available to code running in the instance. The credentials are delivered through the Amazon EC2 metadata service.
+The EC2 instance can perform any S3 operations since the CLI credentials file takes precedence over Instance profile credentials.
+Hence, the correct answer is: The instance can perform all S3 operations on any S3 bucket.
+
+Amazon Cognito supports developer authenticated identities, in addition to web identity federation through Facebook (Identity Pools), Google (Identity Pools), Login with Amazon (Identity Pools), and Sign in with Apple (Identity Pools). With developer authenticated identities, you can register and authenticate users via your own existing authentication process, while still using Amazon Cognito to synchronize user data and access AWS resources. Using developer authenticated identities involves interaction between the end-user device, your backend for authentication, and Amazon Cognito. With developer authenticated identities, a new API, GetOpenIdTokenForDeveloperIdentity, was introduced. This API call replaces the use of GetId and GetOpenIdToken (APIs needed in the basic authflow) from the device and should be called from your backend as part of your own authentication API. 
+
+Hence, the correct answer is: Use developer-authenticated identities in Amazon Cognito to generate unique identifiers for the users.
+
+You can use AWS CodeBuild with a proxy server to regulate HTTP and HTTPS traffic to and from the Internet. To run CodeBuild with a proxy server, you install a proxy server in a public subnet and CodeBuild in a private subnet in a VPC.
+Below are possible causes of error when running CodeBuild with a proxy server:
+ssl-bump is not configured properly.
+Your organization’s security policy does not allow you to use ssl-bump.
+Your buildspec.yml file does not have proxy settings specified using a proxy element.
+If you do not use ssl-bump for an explicit proxy server, add a proxy configuration to your buildspec.yml using a proxy element.
+version: 0.2
+proxy:
+upload-artifacts: yes
+logs: yes
+Hence, the correct answer is: Modify the proxy element of the buildspec.yml file on the source code root directory.
+
+
+
 
 
 
