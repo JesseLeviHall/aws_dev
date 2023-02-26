@@ -151,6 +151,23 @@ Container instances—Amazon EC2 instances running Multicontainer Docker in an E
 A segment can break down the data about the work done into subsegments. Subsegments provide more granular timing information and details about downstream calls that your application made to fulfill the original request. A subsegment can contain additional details about a call to an AWS service, an external HTTP API, or an SQL database. You can define arbitrary subsegments to instrument specific functions or lines of code in your application.
 the correct answer is: Using AWS X-Ray, define an arbitrary subsegment inside the code to instrument the function.
 
+Among the given options, creating a KMS key with automatic annual key rotation is the most convenient way of encrypting data at rest.
+Hence, the correct answer is: Use a customer managed KMS key and enable automatic annual key rotation.
+
+Hence, the correct answer is: Use asynchronous Event Lambda invocations. Configure the function to process the files in parallel.
+
+Application Load Balancers provide two advanced options that you may want to configure when you use ALBs with AWS Lambda: support for multi-value headers and health check configurations. 
+
+Hence, the correct answer is: Configure the user data at the creation of the EC2 instance to run a script that will install and create the Apache webserver after the instance starts.
+
+the correct answer is:
+Copy the AMI of the instance from the us-east-1 region to the us-east-2, ap-northeast-1, and ap-southeast-1 region. Then, add a Mappings section wherein you will define the different Image Id for the three regions. Use the region name as the key in mapping to its correct Image Id. Lastly, use the Fn::FindInMap function to retrieve the desired Image Id from the region key.
+
+
+Hence, the correct answers are:
+– Include Cache-Control: max-age=0 HTTP header on the API request. 
+– Grant permission to the client to invalidate caching when there’s a request using the IAM execution role.
+
 
 
 */
