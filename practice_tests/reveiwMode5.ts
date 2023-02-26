@@ -137,14 +137,19 @@ The IAM service supports only one type of resource-based policy called a role tr
 In a trust policy, the Principal attribute defines the AWS services or users that can assume the IAM role. Here’s an example trust policy for a role designed for an Amazon EC2 instance to assume. You can see that the principal provided is the ec2.amazonaws.com
 Hence, the correct answer is: Add the EC2 service under the Principal field of the Trust policy.
 
+Even though DynamoDB distributes a large table’s data across multiple physical partitions, a Scan operation can only read one partition at a time. For this reason, the throughput of a Scan is constrained by the maximum throughput of a single partition.
 
+To address these issues, the Scan operation can logically divide a table or secondary index into multiple segments, with multiple application workers scanning the segments in parallel.
 
+To make the most of your table’s provisioned throughput, you’ll want to use the Parallel Scan API operation so that your scan is distributed across your table’s partitions. But be careful that your scan doesn’t consume your table’s provisioned throughput and cause the critical parts of your application to be throttled. To avoid throttling, you need to rate-limit your client application.
 
+Hence, the correct answer is: Perform a rate-limited parallel scan operation.
+Hence, the correct answer is: Amazon Cognito Identity Pools and User Pools.
 
+Container instances—Amazon EC2 instances running Multicontainer Docker in an Elastic Beanstalk environment—require a configuration file named Dockerrun.aws.json
 
-
-
-
+A segment can break down the data about the work done into subsegments. Subsegments provide more granular timing information and details about downstream calls that your application made to fulfill the original request. A subsegment can contain additional details about a call to an AWS service, an external HTTP API, or an SQL database. You can define arbitrary subsegments to instrument specific functions or lines of code in your application.
+the correct answer is: Using AWS X-Ray, define an arbitrary subsegment inside the code to instrument the function.
 
 
 
