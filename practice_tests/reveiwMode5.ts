@@ -198,8 +198,4 @@ logs: yes
 Hence, the correct answer is: Modify the proxy element of the buildspec.yml file on the source code root directory.
 
 
-
-
-
-
 */
