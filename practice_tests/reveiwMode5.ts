@@ -186,6 +186,7 @@ Amazon Cognito supports developer authenticated identities, in addition to web i
 Hence, the correct answer is: Use developer-authenticated identities in Amazon Cognito to generate unique identifiers for the users.
 
 You can use AWS CodeBuild with a proxy server to regulate HTTP and HTTPS traffic to and from the Internet. To run CodeBuild with a proxy server, you install a proxy server in a public subnet and CodeBuild in a private subnet in a VPC.
+
 Below are possible causes of error when running CodeBuild with a proxy server:
 ssl-bump is not configured properly.
 Your organization’s security policy does not allow you to use ssl-bump.
