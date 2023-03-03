@@ -184,7 +184,7 @@ Take note that a User Pool doesn’t have an option to enable unauthenticated id
 – Standard resolution, with data having a one-minute granularity
 – High resolution, with data at a granularity of one second
 
-s3 doesnt do post
+s3 doesnt do post only put
 
 
 
