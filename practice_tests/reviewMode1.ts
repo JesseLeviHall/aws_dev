@@ -186,6 +186,7 @@ Take note that a User Pool doesn’t have an option to enable unauthenticated id
 
 s3 doesnt do post, only putObject
 
+federated logins are
 
 
 */
