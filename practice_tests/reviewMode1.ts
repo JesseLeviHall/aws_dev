@@ -187,6 +187,9 @@ Take note that a User Pool doesn’t have an option to enable unauthenticated id
 s3 doesnt do post only put
 
 q: what is needed in the header to tell s3 to used kms?
+a: 
+x-amz-server-side-encryption: aws:kms
+
 
 
 */
