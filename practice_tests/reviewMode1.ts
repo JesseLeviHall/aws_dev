@@ -193,6 +193,9 @@ x-amz-server-side-encryption: aws:kms
 q: in what situation does an s3 bucket name need to be DNS compatible without any periods?
 a: when using a bucket as a website endpoint
 
+q: what is the difference between a bucket policy and an access policy?
+a: bucket policy is at the bucket level, access policy is at the object level
+
 
 
 */
