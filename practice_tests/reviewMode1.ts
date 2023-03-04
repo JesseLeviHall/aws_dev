@@ -194,7 +194,8 @@ q: in what situation does an s3 bucket name need to be DNS compatible without an
 a: when using a bucket as a website endpoint
 
 q: what is the difference between a bucket policy and an access policy?
-a: bucket policy is at the bucket level, access policy is at the object level
+a: bucket policy is at the bucket level, access policy is at the object level. 
+
 
 
 
