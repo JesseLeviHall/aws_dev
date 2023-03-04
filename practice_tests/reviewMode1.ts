@@ -190,6 +190,9 @@ q: what is needed in the header to tell s3 to used kms?
 a: 
 x-amz-server-side-encryption: aws:kms
 
+q: in what situation does an s3 bucket name need to be DNS compatible without any periods?
+a: when using a bucket as a website endpoint
+
 
 
 */
