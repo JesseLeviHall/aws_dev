@@ -197,6 +197,6 @@ q: what is the difference between a bucket policy and an access policy?
 a: bucket policy is at the bucket level, access policy is at the object level. 
 
 
-
+to get only the portion that care for. The Non-Proxy integration is a bit more complex to implement and requires you to have knowledge of the Apached Velocity Template Language (VTL), which is the engine that API Gateway uses for mapping templates.
 
 */
