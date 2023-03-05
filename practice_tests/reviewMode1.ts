@@ -204,4 +204,7 @@ Keep in mind that mapping templates only work for non-proxy integrations.
 Caching often leads to data inconsistency, which is a problem commonly faced. When content is cached, API Gateway does not update the cache entries until the Time-To-Live (TTL) expires. As a result, any changes made to the database will not immediately reflect on the client-side, leading to a disparity between the actual content and what is displayed on the application. However, you can take steps to mitigate this issue by sending an invalidation request to your API endpoint. This will prompt API Gateway to refresh its cache instead of waiting for the TTL to expire.
 To invalidate a cache entry, simply include the Cache-Control header in a request with a max-age of 0, as shown in the example below that uses the Fetch API in Javascript.
 
+
+You might want to implement a Lambda Function Authorizer to enforce custom authorization logic, such as those that employ bearer token authentication strategies (OAuth) or something that uses request parameters to determine the caller's identity. Since this is a custom method, you have to write the logic that carries out the authorization process. As a result, this takes more development effort on your end compared to using the Cognito User Pool.
+
 */
