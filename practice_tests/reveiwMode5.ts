@@ -204,4 +204,6 @@ An IAM identity cannot perform AWS actions without an IAM Policy attached to it 
 
 Inline Policy - a policy that is embedded in an IAM Identity. Unlike AWS Managed Policies and Customer-managed Policies, an inline policy does not have its own ARN; thus, it can’t be referenced by other IAM identities. It is scoped to a specific IAM user or role.
 
+The Statement block is where you add the permissions you need for accessing various AWS services. A policy can have single or multiple statements where each statement is enclosed within a bracket.
+
 */
