@@ -209,5 +209,6 @@ The Statement block is where you add the permissions you need for accessing vari
 AWS Security Token Service (AWS STS) is a global web service that allows you to generate temporary access for IAM users or federated users to gain access to your AWS resources. These temporary credentials are session-based, meaning they’re for short-term use only; once expired, they can no longer be used to access your AWS resources.
 AWS STS can’t be accessed on the AWS console; it is only accessible through API. All STS requests go to a single endpoint at https://sts.amazonaws.com/, and logs are then recorded to AWS CloudTrail.
 
+AssumeRole API operation lets an IAM user assume an IAM role belonging to your account or to an external one (cross-account access). Once the request is successful, AWS generates and returns temporary credentials consisting of an access key ID, a secret access key, and a security token. These credentials can then be used by the IAM user to make requests to AWS services.
 
 */
