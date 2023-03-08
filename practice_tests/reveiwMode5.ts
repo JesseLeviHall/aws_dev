@@ -206,4 +206,8 @@ Inline Policy - a policy that is embedded in an IAM Identity. Unlike AWS Managed
 
 The Statement block is where you add the permissions you need for accessing various AWS services. A policy can have single or multiple statements where each statement is enclosed within a bracket.
 
+AWS Security Token Service (AWS STS) is a global web service that allows you to generate temporary access for IAM users or federated users to gain access to your AWS resources. These temporary credentials are session-based, meaning they’re for short-term use only; once expired, they can no longer be used to access your AWS resources.
+
+
+
 */
