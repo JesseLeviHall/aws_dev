@@ -15,4 +15,11 @@ Create a new lambda version every time a new code release needs testing
 ( Lambda function versions are designed to manage deployment of functions. They can be used for code changes, without affecting the stable production version of the code.)
 create two lambda aliases, name one prod and one dev, point prod alias to prad ARN, point the dev alias to the $LATEST version. (By creating separate aliases for Production and Development, systems can initiate the correct alias as needed. A Lambda function alias can be used to point to a specific Lambda function version. Using the functionality to update an alias and its linked version, the development team can update the required version as needed. The $LATEST version is the newest published version.)
 
+A developer built an application that stores data in an Amazon RDS Multi-AZ DB instance. The database performs reads and writes constantly and is responding slowly. The intensive read requests are received unpredictably several times each hour. The application cannot tolerate reading stale data. The developer must increase the retrieval speed for the intensive read requests.
+
+Which strategy will meet these requirements?
+Use an ElastiCache cluster with a writethrough stragtegy. config the app to direct the intensive read ops to elasticache. An ElastiCache cluster with a write-through strategy will allow for the read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
+
+
+
 */
