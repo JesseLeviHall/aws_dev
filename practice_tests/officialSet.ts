@@ -44,4 +44,17 @@ Which combination of steps will meet the requirement to encrypt specific data it
 Generate symmetric encryption keys with aws kms. (When you configure the DynamoDB Encryption Client to use AWS KMS, the DynamoDB Encryption Client uses a KMS key that is always encrypted when the key is used outside of AWS KMS. This cryptographic materials provider returns a unique encryption key and a signing key for every table item. This method of encryption uses a symmetric KMS key.)
 Use generated keys with the DDB encryption Client. (The DynamoDB Encryption Client provides end-to-end protection for your data in transit and at rest. You can encrypt selected items or attribute values in a table.)
 
+A company hosts its web application backend on Amazon Elastic Container Service (Amazon ECS). The application's Amazon ECS tasks run behind an Application Load Balancer (ALB). The application supports three environments: production, testing, and development. The application uses the ALB to route traffic to the correct environment.
+
+The company has configured three listener rules for the ALB to forward traffic to a different target group based on the port number (Port 80 for production target group, Port 8080 for testing target group, and Port 8081 for development target group).
+
+The company decides to migrate the application backend to a serverless architecture by using an Amazon API Gateway API backed by AWS Lambda functions. The company plans to use the URI path pattern to access the desired environment instead of the port number. The company has created the Lambda functions for the application backend. Each Lambda function has three aliases (production, testing, and development).
+
+Which option includes the next steps the company must take to complete the process?
+
+Create an API Gateway API, config the route to proxy integrateion, target the lamda function ARN with the expression ${stageVariables.LambdaAlias}. modify the lambda resource-based policy by adding hte permission lambda:InvodeFunction. Create prod, test, and dev stages, add the LamdaAlias stage variable to the corresponding stage. 
+
+To add "stageVariable" to the Lambda ARN, you should use the following format: ${stageVariable.stageVariableName}.
+
+To add "stageVariable" to the Lambda ARN, you do not use the Lambda alias name. You should use the following format: ${stageVariable.stageVariableName}.
 */
