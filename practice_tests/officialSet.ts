@@ -33,5 +33,15 @@ An error occurred (InvalidAccessKeyId)
 Which action will resolve this error?
 Replace the IAM user name and password with an access key id and secret access key. (AWS software development kits (SDKs) require an access key ID and a secret access key to make programmatic calls to AWS. An IAM user name and password are used for AWS Management Console access.)
 
+A developer uses the AWS SDK for C++ to retrieve data from an Amazon DynamoDB table. The data is sometimes retrieved using a known key, and sometimes the key is not known, resulting in multiple items being returned. The developer wants to ensure the code returns only one item when retrieving data without keys.
+
+Which DynamoDB setting will meet these requirements?
+Set the scan limit parameter to 1. (Set the limit parameter to 1 to set the maximum number of items that need to be retrieved with a DynamoDB scan operation.)
+
+A company is developing a Python application that submits data to an Amazon DynamoDB table. The company requires client-side encryption of specific data items and end-to-end protection for the encrypted data in transit and at rest.
+
+Which combination of steps will meet the requirement to encrypt specific data items? (Select TWO.)
+Generate symmetric encryption keys with aws kms. (When you configure the DynamoDB Encryption Client to use AWS KMS, the DynamoDB Encryption Client uses a KMS key that is always encrypted when the key is used outside of AWS KMS. This cryptographic materials provider returns a unique encryption key and a signing key for every table item. This method of encryption uses a symmetric KMS key.)
+Use generated keys with the DDB encryption Client. (The DynamoDB Encryption Client provides end-to-end protection for your data in transit and at rest. You can encrypt selected items or attribute values in a table.)
 
 */
