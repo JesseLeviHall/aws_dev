@@ -57,4 +57,7 @@ Create an API Gateway API, config the route to proxy integrateion, target the la
 To add "stageVariable" to the Lambda ARN, you should use the following format: ${stageVariable.stageVariableName}.
 
 To add "stageVariable" to the Lambda ARN, you do not use the Lambda alias name. You should use the following format: ${stageVariable.stageVariableName}.
+==================
+When you configure the DynamoDB Encryption Client to use AWS KMS, the DynamoDB Encryption Client uses a KMS key that is always encrypted when the key is used outside of AWS KMS. This cryptographic materials provider returns a unique encryption key and a signing key for every table item. This method of encryption would require a symmetric KMS key, not an asymmetric key.
+
 */
