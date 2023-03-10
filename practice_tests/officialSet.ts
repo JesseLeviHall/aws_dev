@@ -20,6 +20,18 @@ A developer built an application that stores data in an Amazon RDS Multi-AZ DB i
 Which strategy will meet these requirements?
 Use an ElastiCache cluster with a writethrough stragtegy. config the app to direct the intensive read ops to elasticache. An ElastiCache cluster with a write-through strategy will allow for the read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
 
+An ecommerce company deploys more than 20 services behind Amazon API Gateway. The interaction between services is complex. Each service can potentially call several others, making performance issues and errors difficult to identify. Some individual API calls have experienced slow response times. The development team needs to quickly identify the underlying causes of the slowdowns.
+
+Which approach would MOST quickly identify the underlying cause of performance issues?
+configure and use x-ray to fine the service invocations with slow response times. use cloudwatch metrics and logs to examine these services to discover their perfomance issues. ( Unlike metrics or logs, X-Ray can help users quickly identify services by their relative response times. X-Ray can identify a poorly performing service from within a web of interacting services. Once identified, CloudWatch provides the context, including the logs and metrics necessary to study specific issues.)
+
+
+A developer tests code running on the developer's laptop. The code is using the AWS SDK for Python (Boto3) to access AWS services. The .aws/credentials file is set up with the user's IAM user name and password. The developer runs the code and receives this error message:
+
+An error occurred (InvalidAccessKeyId)
+
+Which action will resolve this error?
+Replace the IAM user name and password with an access key id and secret access key. (AWS software development kits (SDKs) require an access key ID and a secret access key to make programmatic calls to AWS. An IAM user name and password are used for AWS Management Console access.)
 
 
 */
