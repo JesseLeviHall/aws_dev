@@ -149,5 +149,16 @@ https://Your_AWS_Account_ID.signin.aws.amazon.com/console/
 If you create an AWS account alias for your AWS account ID, your sign-in page URL looks like the following example.
 https://Your_Alias.signin.aws.amazon.com/console/
 
+===================round two================
+
+Cluster queries are expressions that enable you to group objects. For example, you can group container instances by attributes such as Availability Zone, instance type, or custom metadata. You can add custom metadata to your container instances, known as attributes.
+the correct ECS feature which provides you with expressions that you can use to group container instances by a specific attribute is Cluster Query Language.
+
+
+
+
+
+
+
 
 */
