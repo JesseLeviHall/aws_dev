@@ -75,7 +75,7 @@ NEW_AND_OLD_IMAGES is incorrect because although it writes the new values of the
 
 to only allow authorized clients to invalidate an API Gateway cache entry when submitting API requests, you can just tick the Require Authorization checkbox in the Cache Settings of your API via the console and instruct the client to send a request which contains the Cache-Control: max-age=0 header. 
 
- Redis can provide a much more durable and powerful cache layer to the prototype distributed system, however, you should take note of one keyword in the requirement: multithreaded. In terms of commands execution, Redis is mostly a single-threaded server
+Redis can provide a much more durable and powerful cache layer to the prototype distributed system, however, you should take note of one keyword in the requirement: multithreaded. In terms of commands execution, Redis is mostly a single-threaded server
 
 To define a nested application in your serverless application, use the AWS::Serverless::Application resource type.
 
@@ -204,7 +204,19 @@ Keep in mind that mapping templates only work for non-proxy integrations.
 Caching often leads to data inconsistency, which is a problem commonly faced. When content is cached, API Gateway does not update the cache entries until the Time-To-Live (TTL) expires. As a result, any changes made to the database will not immediately reflect on the client-side, leading to a disparity between the actual content and what is displayed on the application. However, you can take steps to mitigate this issue by sending an invalidation request to your API endpoint. This will prompt API Gateway to refresh its cache instead of waiting for the TTL to expire.
 To invalidate a cache entry, simply include the Cache-Control header in a request with a max-age of 0, as shown in the example below that uses the Fetch API in Javascript.
 
-
 You might want to implement a Lambda Function Authorizer to enforce custom authorization logic, such as those that employ bearer token authentication strategies (OAuth) or something that uses request parameters to determine the caller's identity. Since this is a custom method, you have to write the logic that carries out the authorization process. As a result, this takes more development effort on your end compared to using the Cognito User Pool.
+
+ suffering from cache churn?
+
+================================retry======
+
+User Pool doesn’t have an option to enable unauthenticated identities. Moreover, you won’t be able to provide your users access to upload their media files to S3 using a User Pool.
+
+long polling doesn’t return a response until a message arrives in the message queue or the long poll times out.
+
+environment variables will only be used by an individual Lambda function, and cannot be shared.
+
+
+
 
 */
