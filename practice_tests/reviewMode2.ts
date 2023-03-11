@@ -139,7 +139,23 @@ It is possible to use an AWS Lambda function from an AWS account that is differe
 
 The Kinesis Adapter is the recommended way to consume streams from DynamoDB for real-time processing.
 
+================retry===============
+Amazon Cognito identity pools enable you to create unique identities and assign permissions for users. Your identity pool can include:
+– Users in an Amazon Cognito user pool
+– Users who authenticate with external identity providers such as Facebook, Google, or a SAML-based identity provider
+– Users authenticated via your own existing authentication process
 
+Use the GetTraceSummaries API to get the list of trace IDs of the application and then retrieve the list of traces using BatchGetTraces API.
+
+A developer is creating a real-time auction app for second-hand cars using Kinesis Data Streams to ingest bids. The auction rules are as follows:
+
+A bid must be processed only once
+
+An EC2 instance consumer must process bids in the same order they were received.
+
+Which solution will meet the requirement?
+PutRecords does not guarantee the ordering of records, so
+Embed a unique ID in each bid record. Use Kinesis PutRecord API to write bids. Assign a timestamp-based value for the SequenceNumberForOrdering parameter.
 
 
 */
