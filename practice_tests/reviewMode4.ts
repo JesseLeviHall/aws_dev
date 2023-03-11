@@ -120,4 +120,17 @@ To avoid potential throttling, the provisioned write capacity for a global secon
 Hence, the correct answer in this scenario is to ensure that the global secondary index’s provisioned WCU is equal or greater than the WCU of the base table.
 Ensuring that the global secondary index’s provisioned RCU is equal or greater than the RCU of the base table is incorrect because you have to set the WCU and not the RCU.
 
+
+==============round 2===================
+
+The Lambda custom integration is a type of integration that lets an API expose AWS service actions. In AWS integration, you must configure both the integration request and integration response and set up necessary data mappings from the method request to the integration request, and from the integration response to the method response. To configure your API Gateway with this type of configuration, you have to set the resource with an AWS integration type.
+
+Hence, Lambda custom integration is correct as it matches the description depicted in the scenario.
+
+
+AWS AppSync simplifies application development by letting you create a flexible API to securely access, manipulate, and combine data from one or more data sources. AppSync is a managed service that uses GraphQL to make it easy for applications to get exactly the data they need.
+
+With AppSync, you can build scalable applications, including those requiring real-time updates, on a range of data sources such as NoSQL data stores, relational databases, HTTP APIs, and your custom data sources with AWS Lambda. For mobile and web apps, AppSync additionally provides local data access when devices go offline, and data synchronization with customizable conflict resolution, when they are back online.
+
+
 */
