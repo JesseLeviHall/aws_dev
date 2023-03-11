@@ -154,11 +154,26 @@ https://Your_Alias.signin.aws.amazon.com/console/
 Cluster queries are expressions that enable you to group objects. For example, you can group container instances by attributes such as Availability Zone, instance type, or custom metadata. You can add custom metadata to your container instances, known as attributes.
 the correct ECS feature which provides you with expressions that you can use to group container instances by a specific attribute is Cluster Query Language.
 
+ 4 shards : 8 instances ratio is incorrect because launching more instances than the number of open shards will not improve the processing of the stream as it is only useful for failure standby purposes.
 
+take note that CloudWatch does not monitor the memory, swap, and disk space utilization of your instances. If you need to track these metrics, you can install a CloudWatch agent in your EC2 instances.
 
+the developer must perform end-to-end (E2E) testing using Cypress.
+Which combination of actions should the developer take? (Select Two)
+Connect the Github repository to AWS Amplify Hosting
+Update the amplify.yml file with appropriate configuration settings for Cypress.
+AWS Amplify is a set of purpose-built tools and features that enables frontend web and mobile developers to quickly and easily build full-stack applications on AWS.
+Amplify provides two services:
+-Amplify Hosting – provides a git-based workflow for hosting full-stack serverless web apps with continuous deployment.
+-Amplify Studio – a visual development environment that simplifies the creation of scalable, full-stack web and mobile apps. Use can use Amplify Studio to build your frontend UI with a set of ready-to-use UI components, create an app backend with AWS resources, and then connect the two together.
+Amplify Hosting provides deep integration with Cypress for End-to-End (E2E) testing, allowing developers to generate a UI report for their tests. To add Cypress tests to your application, you can update the build settings in the amplify.yml configuration file, which will enable Amplify to run the tests during the build process.
 
+Transactions provide atomicity, consistency, isolation, and durability (ACID) in DynamoDB
 
+To decrypt data locally:
+1. Use the Decrypt operation to decrypt the encrypted data key. The operation returns a plaintext copy of the data key.
+2. Use the plaintext data key to decrypt data locally, then erase the plaintext data key from memory.
 
-
+Any mention of real-time, go with kinesis. 
 
 */
