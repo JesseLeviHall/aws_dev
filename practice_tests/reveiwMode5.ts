@@ -228,9 +228,13 @@ KMS allows you to temporarily disable keys and re-enable them.
 
 In DyamoDB you can control access to individual data items and attributes in a table by writing an IAM permissions policy that specifies conditions in the condition element, attach to IAM users groups or roles. Optionaly you can use web id federation to control access by using a 'dynamodb:LeadingKeys' condition key to the IAM policy associated with the identity providers role. 
 
+When a container instance in a ECS Cluster is terminated in the stopped state, it is not automatically deregistered from the cluster. If you terminate in the Running state, it is automatically removed or deregistered from the cluster. 
 
+The STS GetSessionToken api would be used for MFA. 
 
+To verify IAM access to list all ec2 instances that belong to the development env in an account: use IAM policy simulator to validate permission and describe-instances with --dry-run. 
 
+To improve DynamoDB scan operations, perform a rate-limited parallel scan operation. a parallel scan alone might consume all of your tables throughput. 
 
 
 
