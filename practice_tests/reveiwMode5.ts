@@ -222,8 +222,7 @@ It equates a teams CI software to compile source code and test changes before de
 
 With developer authenticated identities you can register an auth users via your own existing process while still using Amazon Cognito to sync user data (GetOpenIdTokenForDeveloperIdentity).
 
-
-
+KMS allows you to temporarily disable keys and re-enable them. 
 
 
 
