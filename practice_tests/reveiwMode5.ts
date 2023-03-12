@@ -236,6 +236,7 @@ To verify IAM access to list all ec2 instances that belong to the development en
 
 To improve DynamoDB scan operations, perform a rate-limited parallel scan operation. a parallel scan alone might consume all of your tables throughput. 
 
+Lambda https endpoint urls provide the simplest way to publicly reach and invoke a function, there are two auth types: AWS_IAM and NONE.  With NONE you can still write custom auth logic based on the headers of the req. 
 
 
 
