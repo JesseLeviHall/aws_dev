@@ -214,4 +214,32 @@ AssumeRole API operation lets an IAM user assume an IAM role belonging to your a
 The AssumeRoleWithWebIdentity API operation returns temporary security credentials for federated users who are authenticated through a public identity provider (e.g., Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible identity provider). The temporary credentials can then be used by your application to establish a session with AWS. Just like the AssumeRole API, trusted entities who will be assuming the role must be specified. This time, instead of IAM users, it’ll be an identity provider.
 AssumeRoleWithWebIdentity does not require IAM Identities credentials, making it suitable for mobile applications that require access to AWS. The AssumeRoleWithWebIdentity is one of the APIs that Amazon Cognito uses under the hood to facilitate the exchange of token and credentials on your behalf. Because Amazon Cognito abstracts the hassles associated with user authentication, it is recommended that you use Amazon Cognito when providing AWS access to application users. However, you may just use AssumeRoleWithWebIdentity as a standalone operation.
 
+=====================round two===========
+
+Enable the Git credential helper wiht the aws credential profile if you intend to authenticate with CodeCommit using access key credentials. 
+
+It equates a teams CI software to compile source code and test changes before deploying to CodeBuild. 
+
+With developer authenticated identities you can register an auth users via your own existing process while still using Amazon Cognito to sync user data (GetOpenIdTokenForDeveloperIdentity).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */

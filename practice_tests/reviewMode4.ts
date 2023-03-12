@@ -132,5 +132,31 @@ AWS AppSync simplifies application development by letting you create a flexible 
 
 With AppSync, you can build scalable applications, including those requiring real-time updates, on a range of data sources such as NoSQL data stores, relational databases, HTTP APIs, and your custom data sources with AWS Lambda. For mobile and web apps, AppSync additionally provides local data access when devices go offline, and data synchronization with customizable conflict resolution, when they are back online.
 
+You can narrow the results to just the traces that you want to find by using a filter expression. Running the GetTraceSummaries operation retrieves IDs and annotations for traces available for a specified time frame using an optional filter.
+
+A trace segment is a JSON representation of a request that your application serves. A trace segment records information about the original request, information about the work that your application does locally, and subsegments with information about downstream calls that your application makes to AWS resources, HTTP APIs, and SQL databases.
+Hence, adding annotations in the subsegment section of the segment document is the correct answer.
+
+Amazon RDS supports using Transparent Data Encryption (TDE) to encrypt stored data on your DB instances running Microsoft SQL Server. TDE automatically encrypts data before it is written to storage, and automatically decrypts data when the data is read from storage.
+
+If your identity store is not compatible with SAML 2.0, then you can build a custom identity broker application to perform a similar function.
+
+1 RCU can do 1 strongly consistent read or 2 eventually consistent reads for an item up to 4KB.
+
+To get the RCU with strongly consistent reads, do the following steps:
+
+Step #1 Divide the average item size by 4 KB. Round up the result
+
+Average Item Size = 17 KB
+
+= 17KB/4KB
+
+= 4.25 ≈ 5
+
+Step #2 Multiply the number of reads per second by the resulting value from Step 1. (Divide the product by 2 for eventually consistent reads)
+
+= 320 reads per second x 5
+
+= 1,600 strongly consistent read requests
 
 */
