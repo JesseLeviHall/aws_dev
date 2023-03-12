@@ -222,7 +222,14 @@ It equates a teams CI software to compile source code and test changes before de
 
 With developer authenticated identities you can register an auth users via your own existing process while still using Amazon Cognito to sync user data (GetOpenIdTokenForDeveloperIdentity).
 
+Beanstalk allows you to configure the retention setting to save source bundles in an s3 bucket even after the lifecycle poicy limits versions. 
+
 KMS allows you to temporarily disable keys and re-enable them. 
+
+In DyamoDB you can control access to individual data items and attributes in a table by writing an IAM permissions policy that specifies conditions in the condition element, attach to IAM users groups or roles. Optionaly you can use web id federation to control access by using a 'dynamodb:LeadingKeys' condition key to the IAM policy associated with the identity providers role. 
+
+
+
 
 
 
