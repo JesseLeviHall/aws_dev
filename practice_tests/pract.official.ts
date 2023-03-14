@@ -194,10 +194,15 @@ Correct. You can use X-Ray to trace the DynamoDB API call from a Lambda function
 A gaming company maintains a website that must display a list of the top 10 highest scores for a game. The company stores the top 10 list in Amazon DynamoDB. Users who access this page are not authenticated. The company must use the AWS SDK for JavaScript in the Browser to make the DynamoDB API call.
 
 Which solution is the MOST secure way to meet these requirements?
-I thougth "create an IAM Role, store the ARN of the role in teh website, use the ARN to call STS Assumerole. but ( The AssumeRole API requires AWS security credentials. A role ARN is not a security credential.)
-so it was create IAM Role and cognito identity pool, associate the role with unauthed identities. create DB table client object with the temp creds from AWS.CognitoIdentityCrentials object. 
-An Amazon Cognito identity pool can grant unauthenticated users access to AWS services by using temporary credentials. The role's policies authorize calls made by using these temporary credentials.
+I thougth the answer was "create an IAM Role, store the ARN of the role in the website, use the ARN to call STS Assumerole." But the AssumeRole API requires AWS security credentials and a role ARN is not a security credential.
+So the answer was create an IAM Role and cognito identity pool, associate the role with unauthenticated identities. Then create a DynamoDB table client object with the temporary credentials from the AWS.CognitoIdentityCrentials object. 
+
 =================
 Correct. The GetObject API call must specify the customer-provided encryption key that is used to initially encrypt the data
+
+
+=================
+A company is migrating a legacy application to Amazon EC2 instances. The application uses a user name and password that are stored in the source code to connect to a MySQL database. The company will migrate the database to an Amazon RDS for MySQL DB instance. As part of the migration, the company needs to implement a secure way to store and automatically rotate the database credentials.
+Secrets Manager.
 
 */
