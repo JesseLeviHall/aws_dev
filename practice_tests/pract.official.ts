@@ -205,4 +205,9 @@ Correct. The GetObject API call must specify the customer-provided encryption ke
 A company is migrating a legacy application to Amazon EC2 instances. The application uses a user name and password that are stored in the source code to connect to a MySQL database. The company will migrate the database to an Amazon RDS for MySQL DB instance. As part of the migration, the company needs to implement a secure way to store and automatically rotate the database credentials.
 Secrets Manager.
 
+======================
+A developer is creating a web application that must give users the ability to post comments and receive feedback in near real time.
+A) Create an AWS AppSync schema and corresponding APIs. Use an Amazon DynamoDB table as the data store.
+B) Create a WebSocket API in Amazon API Gateway. Use an AWS Lambda function as the backend. Use an Amazon DynamoDB table as the data store.
+
 */
