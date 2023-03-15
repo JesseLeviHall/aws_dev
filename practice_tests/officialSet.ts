@@ -94,7 +94,14 @@ B – Lazy loading is a caching strategy in which a record does not load until t
 How can the developer maintain these environments with the LEAST amount of configuration?
 B – With deployment stages in Amazon API Gateway, you can manage multiple release stages for each API. You can configure stage variables so that an API deployment stage can interact with different backend endpoints. You can use API Gateway stage variables to reference a single AWS Lambda function with multiple versions and aliases.
 B) Create one REST API. Integrate the API with the Lambda function by using a stage variable in place of an alias. Deploy the API to two different stages: dev and prod. Create a stage variable in each stage with different aliases as the values. Access the API by using the different stage URLs.
-
+===============================
+9) A developer wants to track the performance of an application that runs on a fleet of Amazon EC2 instances. The developer wants to view and track statistics, such as the average request latency and the maximum request latency, across the fleet. The developer wants to receive immediate notification if the average response time exceeds a threshold.
+Which solution will meet these requirements?
+C) Configure the application to write the response times to a log file. Install and configure the Amazon CloudWatch agent on the EC2 instances to stream the application log to CloudWatch Logs. Create a metric filter of the response time from the log. View the metrics graphs in the CloudWatch console. Create a CloudWatch alarm to send an Amazon Simple Notification Service (Amazon SNS) notification when the average of the response time metric exceeds the threshold.
+===============================
+When the developer tests the application remotely, the Lambda function does not run because of missing dependencies.
+Which solution will resolve this issue?
+D) Create a layer that contains the missing dependencies. Attach the layer to the Lambda function.
 
 
 
