@@ -88,9 +88,12 @@ the database.
 ===============================
 7) A developer is adding Amazon ElastiCache for Memcached to a company's existing record storage application. The developer has decided to use lazy loading based on an analysis of common record handling patterns.
 Which pseudocode example will correctly implement lazy loading?
-
-
-
+B – Lazy loading is a caching strategy in which a record does not load until the record is needed. When you implement lazy loading, the application first checks the cache for a record. If the record is not present, the application retrieves the record from the database and stores the record in the cache.
+===============================
+8) A developer is building a web application that uses Amazon API Gateway. The developer wants to maintain different environments for development (dev) and production (prod) workloads. The API will be backed by an AWS Lambda function with two aliases: one for dev and one for prod.
+How can the developer maintain these environments with the LEAST amount of configuration?
+B – With deployment stages in Amazon API Gateway, you can manage multiple release stages for each API. You can configure stage variables so that an API deployment stage can interact with different backend endpoints. You can use API Gateway stage variables to reference a single AWS Lambda function with multiple versions and aliases.
+B) Create one REST API. Integrate the API with the Lambda function by using a stage variable in place of an alias. Deploy the API to two different stages: dev and prod. Create a stage variable in each stage with different aliases as the values. Access the API by using the different stage URLs.
 
 
 
