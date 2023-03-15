@@ -63,8 +63,40 @@ When you configure the DynamoDB Encryption Client to use AWS KMS, the DynamoDB E
 =======Sample questions==============
 A developer is creating a web application that must give users the ability to post comments and receive feedback in near real time.
 Which solutions will meet these requirements? (Select TWO.)
-A) Create an AWS AppSync schema and corresponding APIs. Use an Amazon DynamoDB table as the data store.
-B) Create a WebSocket API in Amazon API Gateway. Use an AWS Lambda function as the backend. Use an Amazon DynamoDB table as the data store.
+
+A, B – AWS AppSync simplifies application development by giving you the ability to create a flexible API to securely access, manipulate, and combine data from one or more data sources. AWS AppSync is a managed service that uses GraphQL to help applications get the exact data that they need. You can use AWS AppSync to build scalable applications that require real-time updates on a range of data sources, including Amazon DynamoDB.
+In Amazon API Gateway, you can create a WebSocket API as a stateful frontend for an AWS service (such as AWS Lambda or DynamoDB) or for an HTTP endpoint. The WebSocket API invokes the backend based on the content of the messages that the API receives from client applications. Unlike a REST API, which receives and responds to requests, a WebSocket API supports two-way communication between client applications and the backend.
+====================
+A developer is adding sign-up and sign-in functionality to an application. The application must make an API call to a custom analytics solution to log user sign-in events.
+Which combination of actions should the developer perform to meet these requirements? (Select TWO.)
+A, E – Amazon Cognito adds user sign-up, sign-in, and access control to web and mobile applications. You can also create an AWS Lambda function to make an API call to a custom analytics solution and then invoke that function by using an Amazon Cognito post authentication trigger.
+======================
+4) A company is using Amazon API Gateway for its REST APIs in an AWS account. A developer wants to allow only IAM users from another AWS accounts to access the APIs.
+Which combination of steps should the developer take to meet these requirements? (Select TWO.)
+A, D – A resource policy can grant API access in one AWS account to users in a different AWS account by using Signature Version 4 (SigV4) protocols.
+A) Create an IAM permission policy. Attach the policy to each IAM user. Set the method authorization type for the APIs to AWS_IAM. Use Signature Version 4 to sign the API requests.
+D) Create a resource policy for the APIs to allow access for each IAM user only.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 */
