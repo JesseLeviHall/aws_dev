@@ -60,4 +60,11 @@ To add "stageVariable" to the Lambda ARN, you do not use the Lambda alias name. 
 ==================
 When you configure the DynamoDB Encryption Client to use AWS KMS, the DynamoDB Encryption Client uses a KMS key that is always encrypted when the key is used outside of AWS KMS. This cryptographic materials provider returns a unique encryption key and a signing key for every table item. This method of encryption would require a symmetric KMS key, not an asymmetric key.
 
+=======Sample questions==============
+A developer is creating a web application that must give users the ability to post comments and receive feedback in near real time.
+Which solutions will meet these requirements? (Select TWO.)
+A) Create an AWS AppSync schema and corresponding APIs. Use an Amazon DynamoDB table as the data store.
+B) Create a WebSocket API in Amazon API Gateway. Use an AWS Lambda function as the backend. Use an Amazon DynamoDB table as the data store.
+
+
 */
