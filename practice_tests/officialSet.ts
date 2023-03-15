@@ -76,8 +76,18 @@ Which combination of steps should the developer take to meet these requirements?
 A, D – A resource policy can grant API access in one AWS account to users in a different AWS account by using Signature Version 4 (SigV4) protocols.
 A) Create an IAM permission policy. Attach the policy to each IAM user. Set the method authorization type for the APIs to AWS_IAM. Use Signature Version 4 to sign the API requests.
 D) Create a resource policy for the APIs to allow access for each IAM user only.
-
-
+===============================
+The new application must read the files as they arrive in Amazon S3 and must convert the files to .pdf files by using an AWS Lambda function. The developer has written an IAM policy to allow access to Amazon S3 and Amazon CloudWatch Logs.
+What should the developer do to ensure that the Lambda function has the correct permissions?
+A) Create a Lambda execution role by using AWS Identity and Access Management (IAM). Attach the IAM policy to the role. Assign the Lambda execution role to the Lambda function.
+A – An AWS Lambda function's execution role grants the Lambda function permission to access AWS services and resources. You provide this role when you create a function, and Lambda assumes the role when a function is invoked.
+===============================
+A developer is working on an application that stores highly confidential data in a database. The developer must use AWS Key Management Service (AWS KMS) with envelope encryption to protect the data.
+D) Encrypt the data by using a generated data key. Store the encrypted data and the encrypted data key in
+the database.
+===============================
+7) A developer is adding Amazon ElastiCache for Memcached to a company's existing record storage application. The developer has decided to use lazy loading based on an analysis of common record handling patterns.
+Which pseudocode example will correctly implement lazy loading?
 
 
 
