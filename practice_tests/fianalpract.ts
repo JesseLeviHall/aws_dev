@@ -32,11 +32,35 @@ Stage variables are not applied to the security definitions section of the API s
 Hence, the correct answer in this scenario is to use stage variables.
 
 =======================
+STS: Sec Token Service
+Create and provide trusted users with temporary security credentials that can control access to your AWS resources.
+Temporary security credentials are short-term and are not stored with the user but are generated dynamically and provided to the user when requested.
+By default, AWS STS is a global service with a single endpoint at https://sts.amazonaws.com.
+Trust policies – resource-based policies that are attached to a role and define which principals can assume the role.
 
-
-
-
-
+AssumeRole – Returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use AssumeRole within your account or for cross-account access. 
+You can include multi-factor authentication (MFA) information when you call AssumeRole. This is useful for cross-account scenarios to ensure that the user that assumes the role has been authenticated with an AWS MFA device.
+AssumeRoleWithSAML – Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This allows you to link your enterprise identity store or directory to role-based AWS access without user-specific credentials or configuration.
+AssumeRoleWithWebIdentity – Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider. Example providers include Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible identity provider.
+tokens:
+GetFederationToken – Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user. You must call the GetFederationToken operation using the long-term security credentials of an IAM user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network.
+GetSessionToken – Returns a set of temporary credentials for an AWS account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. You must call the GetSessionToken operation using the long-term security credentials of an IAM user. Typically, you use GetSessionToken if you want to use MFA to protect programmatic calls to specific AWS API operations.
+Best Practices:
+Lock Away Your AWS Account Root User Access Keys
+Create Individual IAM Users
+Use Groups to Assign Permissions to IAM Users
+Use AWS Defined Policies to Assign Permissions Whenever Possible
+Grant Least Privilege
+Use Access Levels to Review IAM Permissions
+Configure a Strong Password Policy for Your Users
+Enable MFA for Privileged Users
+Use Roles for Applications That Run on Amazon EC2 Instances
+Use Roles to Delegate Permissions
+Do Not Share Access Keys
+Rotate Credentials Regularly
+Remove Unnecessary Credentials
+Use Policy Conditions for Extra Security
+Monitor Activity in Your AWS Account
 
 
 
