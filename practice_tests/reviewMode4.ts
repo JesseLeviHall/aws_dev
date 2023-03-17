@@ -135,7 +135,7 @@ With AppSync, you can build scalable applications, including those requiring rea
 You can narrow the results to just the traces that you want to find by using a filter expression. Running the GetTraceSummaries operation retrieves IDs and annotations for traces available for a specified time frame using an optional filter.
 
 A trace segment is a JSON representation of a request that your application serves. A trace segment records information about the original request, information about the work that your application does locally, and subsegments with information about downstream calls that your application makes to AWS resources, HTTP APIs, and SQL databases.
-Hence, adding annotations in the subsegment section of the segment document is the correct answer.
+Hence, adding annotations in the subsegment section of the segment document is the correct answer. Annotations
 
 Amazon RDS supports using Transparent Data Encryption (TDE) to encrypt stored data on your DB instances running Microsoft SQL Server. TDE automatically encrypts data before it is written to storage, and automatically decrypts data when the data is read from storage.
 
