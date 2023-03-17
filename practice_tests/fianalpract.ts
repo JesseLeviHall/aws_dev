@@ -62,13 +62,5 @@ Remove Unnecessary Credentials
 Use Policy Conditions for Extra Security
 Monitor Activity in Your AWS Account
 
-Unanswered questions are scored as incorrect; there is no penalty for guessing. The exam includes 50 questions that will affect your score.
-The target candidate has 1 or more years of hands-on experience in developing and maintaining applications by using AWS services.
-
-Design architectures (for example, distributed systems, microservices, database schemas and modeling)
-• Design and create CI/CD pipelines
-• Administer IAM users and groups
-• Administer servers and operating systems
-• Design AWS networking infrastructure (for example, Amazon VPC, AWS Direct Connect)
 
 */
