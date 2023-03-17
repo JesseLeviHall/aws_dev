@@ -63,7 +63,7 @@ Use Policy Conditions for Extra Security
 Monitor Activity in Your AWS Account
 
 
-
+The target candidate has 1 or more years of hands-on experience in developing and maintaining applications by using AWS services.
 
 
 */
