@@ -159,4 +159,8 @@ Step #2 Multiply the number of reads per second by the resulting value from Step
 
 = 1,600 strongly consistent read requests
 
+===========
+If you want to use presigned urls on an s3 bucket with cloudfront, you need an OAI origing access identity from cloudfront, and a bucket policy that only allows that identity, or people will still be able to access the bucket. 
+
+
 */
